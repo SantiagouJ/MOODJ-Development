@@ -50,6 +50,7 @@ These are the libraries that we use hehehehe
 - **Package Manager:** npm
 - **Module Bundler:** Webpack, Webpack CLI, Webpack Dev Server
 - **Tools:** Husky, TS-Loader
+- **CSS Framework:** Tailwind CSS
 
 ## Behavior:
 - **humor:** its ok to make fun of each other because it ensures great teamwork
