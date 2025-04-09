@@ -60,17 +60,7 @@ class PostCard extends HTMLElement{
         const container = this.shadowRoot.querySelector('.song-space');
         const songCard = document.createElement('song-card')
         container?.appendChild(songCard);
-        const heartBtn = this.shadowRoot.querySelector('.heart-icon');
-        const saveBtn = this.shadowRoot.querySelector('.save-icon');
-        const followBtn = this.shadowRoot.querySelector('.follow-btn');
 
-        heartBtn?.addEventListener('click', () => {
-            if (heartBtn.textContent === 'favorite_border') {
-              heartBtn.textContent = 'favorite'; // filled
-            } else {
-              heartBtn.textContent = 'favorite_border'; // outlined
-            }
-          });
 
     }
     }
