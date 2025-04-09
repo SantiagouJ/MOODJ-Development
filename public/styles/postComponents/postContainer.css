@@ -1,5 +1,5 @@
 .post-card {
-    width: 41.667%;
+    max-width: 41.667%;
     min-width: 800px;
     height: 646px;
     background: linear-gradient(318deg, #778AFF 6.06%, #5267EE 29.24%);

@@ -1,4 +1,17 @@
-class PostCard extends HTMLElement{ 
+import { FormattedPost, Song } from "../../adapters/adaptData";
+class PostCard extends HTMLElement{
+
+    private _data!: FormattedPost;
+
+    set data(value: FormattedPost) {
+      this._data = value;
+      this.render();
+    }
+  
+    get data(): FormattedPost {
+      return this._data;
+      
+    }
     constructor() {
         super()
         this.attachShadow({mode: "open"})
@@ -7,7 +20,15 @@ class PostCard extends HTMLElement{
         this.render()
     }
     render() {
+        const { user, post } = this._data;
+
         if (this.shadowRoot !== null) {
+        const songCard = document.createElement('song-card') as HTMLElement & { data: Song & { username: string } };
+        songCard.data = {
+          ...this._data.song,
+          username: this._data.user.username,
+        };
+        
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -17,11 +38,11 @@ class PostCard extends HTMLElement{
             <div class="post-top">
             <div class="post-topl">
             <div class="profile-pic">
-                <img src="/icons/blushing-pfp.svg" alt="" class="post-profile">
+                <img src="${user.profilePicture}" alt="" class="post-profile">
             </div>
             <div class="post-user">
-                <h4 class="heading4">Santiago</h4>
-                <p class="smalltext">@santiti</p>
+                <h4 class="heading4">${user.name}</h4>
+                <p class="smalltext">${user.username}</p>
             </div>
             </div>
             <div class="post-topr">
@@ -36,12 +57,12 @@ class PostCard extends HTMLElement{
                 <span class="material-symbols-outlined" id="heart-icon">
                     favorite
                 </span>
-                <p>134</p>
+                <p>${post.likes}</p>
                     
                 <span class="material-symbols-outlined" id="comment-icon">
                     chat_bubble
                 </span>
-                <p>12</p>
+                <p>${post.comments}</p>
                 </div>
                 <div class="interact-two">
                     <span class="material-symbols-outlined" id="send-icon">
@@ -52,15 +73,13 @@ class PostCard extends HTMLElement{
                     </span>
                 </div>
             </div>
-                <p class="liked-by">Liked by <span style="font-weight:600;">leiderr.js</span> and 133 more</p>
+                <p class="liked-by"><span style="font-weight:600;">${post.likedby}</span></p>
         </div>
         </div>
     </div>
         `
-        const container = this.shadowRoot.querySelector('.song-space');
-        const songCard = document.createElement('song-card')
-        container?.appendChild(songCard);
-
+    const songContainer = this.shadowRoot.querySelector('.song-space');
+    songContainer?.appendChild(songCard);
 
     }
     }
