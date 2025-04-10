@@ -1,4 +1,5 @@
-import { FormattedPost, Song } from "../../adapters/adaptData";
+import { FormattedPost, Song, Comment } from "../../adapters/adaptData";
+import { CommentCard } from "./CommentCard";
 class PostCard extends HTMLElement{
 
     private _data!: FormattedPost;
@@ -7,7 +8,7 @@ class PostCard extends HTMLElement{
       this._data = value;
       this.render();
     }
-  
+    
     get data(): FormattedPost {
       return this._data;
       
@@ -19,8 +20,9 @@ class PostCard extends HTMLElement{
     connectedCallback() {
         this.render()
     }
+    
     render() {
-        const { user, post } = this._data;
+        const { user, post, comments } = this._data;
 
         if (this.shadowRoot !== null) {
         const songCard = document.createElement('song-card') as HTMLElement & { data: Song & { username: string } };
@@ -28,11 +30,12 @@ class PostCard extends HTMLElement{
           ...this._data.song,
           username: this._data.user.username,
         };
+
         
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
+        <div id="overlay-container"></div>
         <div class="container">
         <div class="post-card">
             <div class="post-top">
@@ -80,9 +83,34 @@ class PostCard extends HTMLElement{
         `
     const songContainer = this.shadowRoot.querySelector('.song-space');
     songContainer?.appendChild(songCard);
+    const overlayContainer = this.shadowRoot!.querySelector('#overlay-container');
+
+    const commentsBtn = this.shadowRoot!.querySelector('#comment-icon');
+    commentsBtn?.addEventListener('click', () => {
+    this.toggleComments(comments, overlayContainer);
+    });
 
     }
     }
+
+    toggleComments(comments: Comment[], container: Element | null) {
+        if (!container) return;
+
+        const existing = container.querySelector('comments-over');
+        if (existing) {
+            container.innerHTML = '';
+            return;
+        }
+        
+        const commentSection = document.createElement('comments-over') as HTMLElement & { data: Comment[] };
+        commentSection.data = comments;
+        commentSection.setAttribute('pfp', this.data.user.profilePicture)
+        commentSection.setAttribute('name', this.data.user.name)
+        commentSection.setAttribute('username', this.data.user.username)
+
+        container.appendChild(commentSection);
+    }
+
 
 }
 

@@ -7,9 +7,6 @@ class PostSong extends HTMLElement{
         this._data = value;
         this.render();
       }
-    static get observedAttributes() {
-        return ['img', 'name', 'artist'];
-      }
 
     constructor() {
         super()
