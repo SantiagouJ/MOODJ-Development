@@ -1,18 +1,16 @@
-/* Base styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Host element styles */
 :host {
     display: block;
     width: 100%;
     font-family: "Inter", sans-serif;
 }
 
-/* Carousel container */
+
 .carousel-container {
     background-color: #1E1E1E;
     border-radius: 20px;
@@ -35,14 +33,13 @@ h2 {
     font-weight: 600;
 }
 
-/* Main carousel element - replaces .swiper */
 .carousel {
     height: 220px;
     position: relative;
     overflow: hidden;
 }
 
-/* Wrapper for slides - replaces .swiper-wrapper */
+
 .carousel-wrapper {
     display: flex;
     width: 100%;
@@ -52,7 +49,6 @@ h2 {
     cursor: grab;
 }
 
-/* Individual slide - replaces .swiper-slide */
 .carousel-slide {
     flex-shrink: 0;
     height: 100%;
@@ -62,25 +58,19 @@ h2 {
     padding: 0 15px;
 }
 
-/* Navigation buttons - replace swiper-button-prev/next */
 .carousel-prev,
 .carousel-next {
     position: absolute;
-    top: 45%;
-    width: 40px;
-    height: 40px;
+    top: 45%;    
     margin-top: -20px;
     z-index: 10;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent;
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
+    
+
+  
 }
 
 .carousel-prev {
@@ -91,13 +81,12 @@ h2 {
     right: -6px;
 }
 
-/* When dragging the carousel */
 .carousel-wrapper.dragging {
     cursor: grabbing;
     transition: none;
 }
 
-/* User card styles - unchanged */
+
 .carousel-card {
     width: 220px;
     height: 174px;

@@ -12,7 +12,7 @@ class CarouselComponent extends HTMLElement {
       if (this.shadowRoot) {
         this.shadowRoot.innerHTML = `
                     
-            <user-carousel></user-carousel>
+          <user-carousel></user-carousel>
           
         `;
       }
