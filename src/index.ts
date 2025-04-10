@@ -2,7 +2,7 @@ import { CommentsOverlay } from "./components/postComponents/CommentsOverlay";
 import { PostCard } from "./components/postComponents/Post";
 import { PostSong } from "./components/postComponents/PostSong";
 import { CommentCard } from "./components/postComponents/CommentCard";
-import { WeeklyStats } from "./components/postComponents/WeeklyStats";
+import { WeeklyStats } from "./components/WeeklyStats";
 
 customElements.define('comment-overlay', CommentsOverlay);
 customElements.define('post-card', PostCard);
