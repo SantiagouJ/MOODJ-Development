@@ -1,5 +1,4 @@
 import { FormattedPost, Song, Comment } from "../../adapters/adaptData";
-import { CommentCard } from "./CommentCard";
 class PostCard extends HTMLElement{
 
     private _data!: FormattedPost;
