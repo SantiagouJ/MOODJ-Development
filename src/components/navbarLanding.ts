@@ -23,11 +23,23 @@ class NavbarLanding extends HTMLElement {
         this.shadowRoot.innerHTML = `
           <link rel="stylesheet" href="/styles/navbarLanding.css">
           <div class="navbar">
-            <img src="/logos/Logo-medium.svg" alt="Logo">
-            <div class="register-buttons">
-              <button>Sign in</button>
-              <button>Sign up</button>
-            </div>
+          
+              <img class="logo" src="/logos/Logo-medium.svg" alt="Logo">
+              <img class="mobile-logo" src="/logos/Logo-small.svg" alt="Small-logo">
+
+              <div class="container-right">
+
+                <div class="register-buttons">
+                  <button>Sign in</button>
+                  <button>Sign up</button>
+                </div>
+
+                <div>
+                  <img class="menu" src="/icons/Menu-responsive.svg" alt="Menu">
+                </div>
+
+              </div>
+            
           </div>
         `;
 

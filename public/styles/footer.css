@@ -47,7 +47,7 @@ footer {
     text-align: center;
     flex: 1;
     position: absolute;
-    left: 43%;
+    left: 44%;
     margin-top: 2rem;
 
 }
@@ -75,4 +75,46 @@ footer {
 
 }
 
+
+@media (max-width: 768px) {
+
+    .feedback{
+
+        display: none;
+
+    }
+
+    .mobile-layout{
+
+        flex-direction: column;
+
+    }
+
+    .footer-logo {
+
+        margin-top: 0;
+        position:static;
+
+    }
+
+    footer {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 12rem;
+        flex-direction: column;
+        font-size: 0.8rem;
+    
+    }
+
+    .contact{
+
+        margin-right: 0;
+      
+    
+    }
+
+
+}
 

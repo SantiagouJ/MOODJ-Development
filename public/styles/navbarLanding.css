@@ -10,13 +10,14 @@
 
 }
 
-.navbar img{
+.logo{
 
     margin-left: 3rem;
+   
 
 }
 
-.register-buttons {
+.container-right {
 
     display: flex;
     margin-right: 2.5rem;
@@ -45,5 +46,63 @@
 
    background-color: #C06DFF;
    color: #1F1F1F;
+
+}
+
+.mobile-logo{
+
+    display: none;
+
+}
+
+.menu {
+
+    display: none;
+
+}
+
+@media (max-width: 768px) {
+
+
+    .logo{
+
+        display: none;
+    
+    }
+
+    .mobile-logo{
+
+        margin-left: 2.5rem;
+        height: 38px;
+        width: auto;
+        display: block;
+    
+    }
+
+    .navbar {
+
+    
+        height: 8rem;
+        align-items: end;
+        padding-bottom: 1rem;
+    
+    }
+
+    .register-buttons {
+
+        display: none;
+
+    }
+
+    .menu {
+
+        display: block;
+        height: 50px;
+        width: auto;
+        margin-bottom: 6px;
+    
+    }
+
+   
 
 }

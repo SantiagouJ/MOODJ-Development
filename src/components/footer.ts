@@ -35,17 +35,21 @@ class FooterElement extends HTMLElement {
 
                     </div>
 
-                    <div class="footer-logo">
+                    <div class="mobile-layout">
 
-                        <img src="/logos/Logo-slogan.svg" alt="">
-                        
-                    </div>
+                        <div class="footer-logo">
 
-                    <div class="contact">
+                            <img src="/logos/Logo-slogan.svg" alt="">
+                            
+                        </div>
 
-                        <p>Reach out to our team</p>
-                        <p class="email">Moodjteam@gmail.com</p>
-                        
+                        <div class="contact">
+
+                            <p>Reach out to our team</p>
+                            <p class="email">Moodjteam@gmail.com</p>
+                            
+                        </div>
+
                     </div>
 
                 </footer>
