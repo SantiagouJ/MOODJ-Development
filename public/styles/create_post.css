@@ -93,6 +93,7 @@ h1{
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    cursor: pointer;
 }
 #music-img img {
     height: 77px;

@@ -5,6 +5,8 @@ import { Song } from "./typeSong"
 class CreatePost extends HTMLElement {
   private currentSlideIndex: number = 0
   private slides: HTMLElement[] = []
+  private currentAudio: HTMLAudioElement | null = null
+
 
   constructor() {
     super()
@@ -110,7 +112,25 @@ class CreatePost extends HTMLElement {
   
     searchResultsDiv.classList.add("hidden")
     searchResultsDiv.innerHTML = ""
+  
+    if (this.currentAudio) {
+      this.currentAudio.pause()
+      this.currentAudio = null
+    }
+  
+    this.currentAudio = new Audio(song.preview)
+  
+    musicImgDiv.onclick = () => {
+      if (!this.currentAudio) return
+  
+      if (this.currentAudio.paused) {
+        this.currentAudio.play()
+      } else {
+        this.currentAudio.pause()
+      }
+    }
   }
+  
   
 }
 

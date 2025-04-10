@@ -6,5 +6,6 @@ export interface Song {
     album: {
       cover_xl: string
     };
+    preview: string
   }
   
