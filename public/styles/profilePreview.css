@@ -1,0 +1,120 @@
+:host{
+    background-color: #222222;
+    font-family: 'Inter', sans-serif;
+}
+
+.profile-preview {
+    position: absolute;
+    left: 74%;
+    top: 0px;
+    width: 411px;
+    height: 820px;
+    background-color: #5267EE;
+    border-radius: 40px 0px 0px 40px;
+    box-shadow: -4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.user-data {
+    height: 50px;
+    width: 100px;
+    position: absolute;
+    margin-left: 31%;
+    top: 24%;
+}
+
+.name {
+    margin: 0;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.user {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.71);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.usercontainer {
+    position: absolute;
+    left: 8%;
+    width: 376px;
+    height: 98px;
+    flex-shrink: 0;
+    border-radius: 0px 0px 0px 64px;
+    background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+}
+
+.profilepicture {
+    position: absolute;
+    top: 15px;
+    left: 39px;
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    fill: var(--d-9-d-9-d-9, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A);
+    filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.profile-stats {
+    width: 351px;
+    height: 142px;
+    flex-shrink: 0;
+    border-radius: 18px;
+}
+
+.profile-lists {
+    width: 351px;
+    height: 142px;
+    flex-shrink: 0;
+    border-radius: 18px;
+}
+
+.statsimg {
+    position: absolute;
+    margin-top: 50%;
+    margin-left: 8% ;
+    width: 351px;
+    height: 142px;
+    flex-shrink: 0;
+
+}
+.listimg {
+    position: absolute;
+    margin-top: 60%;
+    margin-left: 8%;
+    width: 351px;
+    height: 142px;
+    flex-shrink: 0;
+}
+
+.sign-out button {
+
+    height: 1.8rem;
+    width: 6.5rem;
+    background-color: #1F1F1F;
+    color: #FFFF;
+    border: 1px solid #C06DFF;
+    border-radius: 10px;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    margin-top: 117%;
+    margin-left: 69%;
+
+}
+
+.sign-out button:hover {
+
+   background-color: #C06DFF;
+   color: #1F1F1F;
+   transition: 0.3s;
+
+}

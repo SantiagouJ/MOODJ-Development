@@ -21,23 +21,23 @@ class WeeklyStats extends HTMLElement{
                 <div class="sad-data"><p>Sad 30%</p></div>
                 <div class="bored-data"><p>Bored 20%</p></div>
                 <div class="angry-data"><p>Angry 10%</p></div>
-                <div class="division"><img src="stats/Line.svg" alt="line" class="line"></div>
+                <div class="division"><img src="images/stats/Line.svg" alt="line" class="line"></div>
             </div>
             <div class="deco-bubbles">
-                <img src="stats/mini circles.svg" alt="mini circles" class="mini-circles">
+                <img src="images/stats/mini circles.svg" alt="mini circles" class="mini-circles">
             </div>
             
             <div class="bubble happy">
-                <img src="stats/yellow circle.svg" alt="Happy face" class="happy-icon">
+                <img src="images/stats/yellow circle.svg" alt="Happy face" class="happy-icon">
             </div>
             <div class="bubble sad">
-                <img src="stats/sad circle.svg" alt="sad face" class="sad-icon">
+                <img src="images/stats/sad circle.svg" alt="sad face" class="sad-icon">
             </div>
             <div class="bubble bored">
-                <img src="stats/serious circle.svg" alt="bored face" class="bored-icon">
+                <img src="images/stats/serious circle.svg" alt="bored face" class="bored-icon">
             </div>
             <div class="bubble angry">
-                <img src="stats/mad circle.svg" alt="mad face" class="mad-icon">
+                <img src="images/stats/mad circle.svg" alt="mad face" class="mad-icon">
             </div>
         </div>
             `
