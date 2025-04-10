@@ -1,0 +1,232 @@
+:host{
+    font-family: 'Inter', sans-serif;
+}
+h1{
+    font-size: 60px;
+    margin: 0px;
+}
+#text1{
+    font-style: normal;
+    font-size: 24px;
+    margin: 0px;
+}
+#createPost-container {
+    width: 966px;
+    height: 493px;
+    margin: auto;
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 4px solid transparent;
+    background-image: linear-gradient(#222222, #222222), 
+                      linear-gradient(to bottom, #5267EE, #C06DFF);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+#createPost-info{
+    width: 50%;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 45px;
+    gap: 20px;
+}
+#createPost-carrousel{
+    width: 50%;
+    height: 100%;
+}
+#music-container{
+    width: 406px;
+    height: 151px;
+    background-color: #5267EE;
+    border-radius: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#search{
+    width: 90%;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+#search span{
+    color: #C06DFF;
+    font-size: 24px;
+    position: absolute;
+    left: 10px;
+}
+#input1{
+    width: 315px;
+    height: 32px;
+    border-radius: 20px;
+    border: 1px solid #C06DFF;
+    padding-left: 35px;
+    color: #C06DFF;
+    font-size: 16px;
+    outline: none;
+}
+#search input::placeholder {
+    color: #C06DFF;
+}
+#music-render{
+    width: 364px;
+    height: 77px;
+    background-color: #5267EE;
+    border-radius: 12px;
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+}
+#music-img {
+    background: linear-gradient(to bottom, #5267EE, #C06DFF);
+    height: 77px;
+    width: 77px;
+    border: 1px solid white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+#music-img img {
+    height: 77px;
+    width: 77px;
+    
+}
+#music-img span{
+    font-size: 60px;
+    opacity: 0.5;
+}
+#text2{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    margin: 10px 30px;
+}
+#text3{
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 10px 30px;
+}
+#input2 {
+    width: 407px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #C06DFF;
+    background-color: #222222;
+    color: #C06DFF;
+    outline: none;
+    padding: 0px 10px 25px 20px; 
+    box-sizing: border-box;
+}
+#input2::placeholder {
+    color: #C06DFF;
+}
+#btn1{
+    width: 145px;
+    height: 44px;
+    background-color: #C06DFF;
+    border-radius: 22px;
+    border: none;
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+#btn1:hover{
+    background-color: #222222;
+    border: 2px solid #C06DFF;
+}
+#createPost-carrousel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+#createPost-carrousel span {
+    font-size: 60px; 
+    color: white; 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+    user-select: none;
+}
+#createPost-carrousel span:hover {
+    font-size: 60px; 
+    color: rgb(118, 118, 118); 
+    cursor: pointer; 
+    transition: color 0.3s ease;
+    user-select: none;
+
+}
+
+/* Swiper Container */
+/* Carrusel */
+.swiper-container {
+    width: 248px;
+    height: 248px;
+    overflow: hidden;
+    position: relative;
+    border: 4px solid white;
+    border-radius: 100%;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.swiper-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+#search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#search-results.hidden {
+    display: none;
+}
+
+.search-result-item {
+    padding: 10px;
+    cursor: pointer;
+    color: black;
+    border-bottom: 1px solid #eee;
+}
+
+.search-result-item:hover {
+    background-color: #f0f0f0;
+}
+
