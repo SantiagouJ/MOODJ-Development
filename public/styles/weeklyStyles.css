@@ -1,0 +1,175 @@
+:host {
+    background-color: #222222;
+    font-family: 'Inter', sans-serif;
+  }
+.stats-section {
+    position: relative;
+    height: 100vh; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.statsbox {
+    position: relative;
+    width: 1110px;
+    height: 627px;
+    margin: auto;
+    display: flex;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 4px solid transparent;
+    background-image: linear-gradient(#222222, #222222), 
+                      linear-gradient(to bottom, #5267EE, #C06DFF);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.stats-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0px;
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 83%;
+    top: 8%;
+}
+
+.division {
+    position: absolute;
+    left: -25%;
+    top: 104%;
+}
+
+.happy-data {
+    margin: 0; 
+    padding: 0;
+    text-align: right;
+    width: 150px;
+    height: 46px;
+    color: #FFEA4B  ;
+    line-height: 0 ;
+}
+
+.sad-data {
+    margin: 0; 
+    padding: 0;
+    text-align: right;
+    width: 150px;
+    height: 46px;
+    color: #5267EE ;
+    line-height: 0 ;
+}
+
+.bored-data {
+    margin: 0; 
+    padding: 0;
+    text-align: right;
+    width: 150px;
+    height: 46px;
+    color: #C06DFF ;
+    line-height: 0 ;
+}
+
+.angry-data {
+    margin: 0; 
+    padding: 0;
+    text-align: right;
+    width: 150px;
+    height: 46px;
+    color: #FF6D6D ;
+    line-height: 0 ;
+}
+
+
+.deco-bubbles {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 48%;
+    top: 14.8%;
+}
+
+.mini-circles {
+    width: 339px;
+    height: 160px;
+}
+
+.stats-title {
+    color: white;
+    height: 58.19px;
+    width: 554px;
+    font-size: 49px;
+    font-weight: bold;
+    position: absolute;
+    top: 0%;   
+    left: 5%;
+}
+
+.happy {
+  width: 200px;
+  height: 200px;
+  background-color: #FFD83D;
+  left: 55.6%;
+  top: 53%;
+}
+
+.sad {
+  width: 200px;
+  height: 200px;
+  background-color: #4263EB;
+  left: 5.4%;
+  top: 59%;
+}
+
+.bored {
+  width: 120px;
+  height: 120px;
+  background-color: #A463F2;
+  left: 31.5%;
+  top: 40.4%;
+}
+
+.angry {
+  width: 200px;
+  height: 200px;
+  background-color: #F25C5C;
+  left: 81.5%;
+  top: 67.4%;
+}
+
+.happy-icon {
+    width: 455.75px; 
+    height: 455.75px;
+}
+  
+.sad-icon {
+    width: 375.72px; 
+    height: 375.72px;
+}
+
+.bored-icon {
+    width: 380.28px;
+    height: 380.28px;
+}
+
+.mad-icon {
+    width: 368.28px;
+    height: 368.28px;
+}
