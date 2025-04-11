@@ -59,7 +59,7 @@ class PostCard extends HTMLElement {
             <div class="post-interact">
               <div class="interact-one">
                 <span class="material-symbols-outlined" id="heart-icon">favorite</span>
-                <p>${post.likes}</p>
+                <p id="post-likes">${post.likes}</p>
 
                 <span class="material-symbols-outlined" id="comment-icon">chat_bubble</span>
                 <p>${post.comments}</p>
@@ -87,9 +87,19 @@ class PostCard extends HTMLElement {
       const heartIcon = this.shadowRoot!.querySelector('#heart-icon');
       const sendIcon = this.shadowRoot!.querySelector('#send-icon');
       const saveIcon = this.shadowRoot!.querySelector('#save-icon');
+      const postLikes = this.shadowRoot!.querySelector('#post-likes')
+
+      let isFilled = false;
+      let currentLikes = post.likes; 
 
       heartIcon?.addEventListener('click', () => {
+        isFilled = !isFilled;
         heartIcon.classList.toggle('active');
+        post.likes++
+        currentLikes += isFilled ? 1 : -1;
+        if(postLikes != null) {
+          postLikes.textContent = `${currentLikes}`;
+        }
       });
 
       sendIcon?.addEventListener('click', () => {
