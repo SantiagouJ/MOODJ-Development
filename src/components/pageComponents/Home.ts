@@ -10,8 +10,6 @@ class Home extends HTMLElement{
     render() {
         if (this.shadowRoot !== null) {
         this.shadowRoot.innerHTML = `
-        <nav-bar></nav-bar>
-        <profile-preview></profile-preview>
         <create-post></create-post>
         <recent-posts></recent-posts>
         <home-posts></home-posts>
