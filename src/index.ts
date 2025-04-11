@@ -17,7 +17,6 @@ if (!customElements.get("nav-bar")) {
   }
 customElements.define('navbar-landing', NavbarLanding);
 customElements.define('footer-element', FooterElement);
-customElements.define('comment-overlay', CommentsOverlay);
 customElements.define('post-card', PostCard);
 customElements.define('song-card', PostSong);
 customElements.define('comment-card', CommentCard);
@@ -32,8 +31,5 @@ if (!customElements.get('create-post')) {
     customElements.define('create-post', CreatePost);
   }
 customElements.define('home-posts', HomePosts);
-customElements.define('post-card', PostCard)
-customElements.define('song-card', PostSong)
 customElements.define('comments-over', CommentsOverlay)
-customElements.define('comment-card', CommentCard)
 customElements.define('recent-posts', RecentPosts)
