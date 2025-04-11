@@ -1,12 +1,11 @@
 
 .post-card {
-
-    width: 800px;
+    max-width: 41.667%;
+    min-width: 800px;
     height: 646px;
     background: linear-gradient(318deg, #778AFF 6.06%, #5267EE 29.24%);
     border-radius: 34px;
     margin-top: 88px;
-    
 }
 .container {
     display: flex;
@@ -253,33 +252,20 @@
     font-weight: 300;
     line-height: normal;
     margin-left: 60px;
-    margin-bottom: 25px;
 }
 
 @media screen and (max-width: 768px) {
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        width: 100%;
-        gap: 25px;
-        padding: 0;
-        box-sizing: border-box;
-        margin: auto;
-      }
-
     .post-card {
-        width: 90vw;
-        max-width: 500px;
-        min-width: unset;
-        height: auto;
-        border-radius: 34px;
-        margin: 40px auto;
-        box-sizing: border-box;
-      }
-    
+      width: 90vw;
+      min-width: 320px; /* ✅ esto asegura que no se vuelva ultra flaca */
+      max-width: 500px;
+      height: auto;
+      border-radius: 34px;
+      margin-top: 40px;
+      /* padding: 0px 16px 16px;        */
+      box-sizing: border-box;
+    }
   
     .post-top {
         display: flex;
@@ -296,7 +282,7 @@
       width: 180px;
       height: auto;
       background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
-      border-radius: 27.5px 0px 64px 0px;
+      border-radius: 34px 0px 64px 0px;
       padding: 10px;
       align-items: center;
       gap: 12px;
@@ -319,7 +305,7 @@
       height: auto;
       margin: 0;
     }
-  
+
     .post-user {
       margin: 0;
     }
@@ -344,8 +330,8 @@
       font-size: 14px;
       padding: 6px 12px;
       height: auto;
-      width: 120px;
-      margin: 0;
+      width: 105px;
+      margin: 20px;
       border-radius: 8px;
     }
   
@@ -356,7 +342,6 @@
   
     .heading2 {
       font-size: 20px;
-      margin-bottom: 12px;
     }
   
     .song-card {
@@ -440,18 +425,21 @@
       gap: 12px;
       flex-wrap: wrap;
       font-size: 16px;
+      height: 50px;
     }
   
-    .interact-one,
-    .interact-two {
+    .interact-one {
       display: flex;
-      gap: 12px;
     }
-  
+    
+    .interact-two {
+        display: flex;
+        gap: 0px;
+      }
+
     .liked-by {
       font-size: 13px;
       margin-top: 12px;
       margin-left: 5px;
     }
   }
-  
