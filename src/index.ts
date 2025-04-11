@@ -7,8 +7,12 @@ import { PostSong } from "./components/postComponents/PostSong";
 import { CommentCard } from "./components/postComponents/CommentCard";
 import { WeeklyStats } from "./components/WeeklyStats";
 import { ProfilePreview } from "./components/ProfilePreview";
+import { CreatePost } from "./components/create_post";
 
-customElements.define('nav-bar', NavBar);
+if (!customElements.get("nav-bar")) {
+    customElements.define("nav-bar", NavBar);
+  }
+  
 customElements.define('navbar-landing', NavbarLanding);
 customElements.define('footer-element', FooterElement);
 customElements.define('comment-overlay', CommentsOverlay);
@@ -16,4 +20,9 @@ customElements.define('post-card', PostCard);
 customElements.define('song-card', PostSong);
 customElements.define('comment-card', CommentCard);
 customElements.define('weekly-stats', WeeklyStats);
-customElements.define('profile-preview', ProfilePreview);
+if (!customElements.get("profile-preview")) {
+    customElements.define("profile-preview", ProfilePreview);
+  }
+if (!customElements.get('create-post')) {
+    customElements.define('create-post', CreatePost);
+  }
