@@ -1,7 +1,7 @@
-:host {
-    background-color: #222222;
+:host{
     font-family: 'Inter', sans-serif;
-  }
+}
+
 .stats-section {
     position: relative;
     height: 100vh; 
@@ -15,6 +15,8 @@
     width: 1110px;
     height: 627px;
     margin: auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
     display: flex;
     border-radius: 30px;
     overflow: hidden;
@@ -23,11 +25,8 @@
                       linear-gradient(to bottom, #5267EE, #C06DFF);
     background-origin: border-box;
     background-clip: content-box, border-box;
-    display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
-    margin-bottom: 100px;
 }
 
 
@@ -74,8 +73,8 @@
     text-align: right;
     width: 150px;
     height: 46px;
-    color: #5267EE ;
-    line-height: 0 ;
+    color: #5267EE;
+    line-height: 0;
 }
 
 .bored-data {
@@ -84,8 +83,8 @@
     text-align: right;
     width: 150px;
     height: 46px;
-    color: #C06DFF ;
-    line-height: 0 ;
+    color: #C06DFF;
+    line-height: 0;
 }
 
 .angry-data {
@@ -175,3 +174,178 @@
     width: 368.28px;
     height: 368.28px;
 }
+
+.mobile-stats-data {
+
+    display: none;
+
+}
+
+.mobile-stats-title{
+
+    display: none;
+    
+
+}
+
+@media(max-width: 768px){
+
+    .division {
+        display: none;
+    }
+
+    .mobile-division{ 
+
+        margin-top: 120px;
+        background-color: #5267EE;
+        height: 4px;
+        width: 280px;
+
+    }
+
+    
+
+    .mobile-stats-data {
+
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 30px;
+
+
+     
+    }
+
+    .stats-data {
+
+        display: none;
+        
+    }
+
+    .stats-title{
+
+        display: none;
+
+    }
+
+    .mobile-stats-title{
+
+        display:block;
+        color: white;
+        height: 58.19px;
+        width: 554px;
+        font-size: 26px;
+        font-weight: bold;  
+        margin-left: 25px;
+
+    }
+
+    .statsbox {
+      width: 380px;
+      height: 215px;
+      margin-left: 25px ;
+      margin-bottom: 10px;
+    }
+  
+    .happy {
+      width: 68px;
+      height: 68px;
+    }
+  
+    .sad {
+      width: 68px;
+      height: 68px;
+    }
+  
+    .bored {
+      width: 41px;
+      height: 41px;
+    }
+  
+    .angry {
+      width: 68px;
+      height: 68px;
+    }
+  
+    .happy-icon {
+      width: 156px;
+      height: 156px;
+    }
+  
+    .sad-icon {
+      width: 129px;
+      height: 129px;
+    }
+  
+    .bored-icon {
+      width: 130px;
+      height: 130px;
+    }
+  
+    .mad-icon {
+      width: 126px;
+      height: 126px;
+    }
+  
+    .mini-circles {
+      width: 116px;
+      height: 55px;
+    }
+  
+    .deco-bubbles {
+      left: 48%;
+      top: 14.8%;
+    }
+  
+    .happy .icon,
+    .sad .icon,
+    .bored .icon,
+    .angry .icon {
+      transform: scale(0.5);
+    }
+    .mobile-happy-data {
+       
+        text-align: right;
+        width: 250px;
+        height: 46px;
+        color: #FFEA4B  ;
+        line-height: 0 ;
+        margin-right: 50px;
+    }
+    
+    .mobile-sad-data {
+        
+        text-align: right;
+        width: 250px;
+        height: 46px;
+        color: #5267EE;
+        line-height: 2;
+        margin-right: 50px;
+    }
+    
+    .mobile-bored-data {
+        
+        text-align: right;
+        width: 250px;
+        height: 46px;
+        color: #C06DFF;
+        line-height: 4;
+        margin-right: 50px;
+    }
+    
+    .mobile-angry-data {
+        
+        text-align: right;
+        width: 250px;
+        height: 46px;
+        color: #FF6D6D ;
+        line-height: 6;
+        margin-right: 50px;
+    }
+    
+    
+ }

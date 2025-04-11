@@ -173,7 +173,6 @@
     height: 62.928px;
     flex-shrink: 0;
     color: rgba(255, 255, 255, 0.75);
-    font-family: Inter;
     font-size: 15px;
     font-style: normal;
     font-weight: 400;
@@ -253,6 +252,12 @@
     line-height: normal;
     margin-left: 60px;
 }
+.material-symbols-outlined.active {
+  color: #C06DFF !important;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 768px) {
 

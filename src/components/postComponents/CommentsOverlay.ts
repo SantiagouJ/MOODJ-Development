@@ -1,361 +1,247 @@
 import { Comment } from "../../adapters/adaptData";
 
-class CommentsOverlay extends HTMLElement{ 
-    comments: Comment[] = [];
-    static get observedAttributes() {
-      return ['pfp', 'name', 'username'];
-      }
-    
+class CommentsOverlay extends HTMLElement {
+  comments: Comment[] = [];
 
-    constructor() {
-        super()
-        this.attachShadow({mode: "open"})
+  static get observedAttributes() {
+    return ['pfp', 'name', 'username'];
+  }
 
-    }
-    
-    set data(commentsData: Comment[]) {
-        this.comments = commentsData;
-        this.render();
-      }
-    connectedCallback() {
-        if (this.hasAttribute('name') && this.comments) {
-            this.render();
-          }
-        const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
-        const commentBtn = this.shadowRoot?.querySelector('#post-comment')
-        console.log(commentBtn)
-      
-        overlay?.addEventListener('click', (event: MouseEvent) => {
-          if (event.target === overlay) {
-            this.remove();
-          }
-        });
-        commentBtn?.addEventListener('click', () => {
-            this.createComment()
-        })
-      }
-      createComment() {
-        const input = this.shadowRoot?.querySelector('.write-comment') as HTMLInputElement
-        const inputVal = input?.value
-        if(!inputVal) {
-            return
-        }
-        const container = this.shadowRoot?.querySelector('.comments');
-        const commentCard = this.ownerDocument.createElement('comment-card');
-        commentCard.setAttribute('pfp', '/moods/angrypfp.svg');
-        commentCard.setAttribute('name', 'Leider');
-        commentCard.setAttribute('username', 'leider.js');
-        commentCard.setAttribute('comment', inputVal);
-        commentCard.setAttribute('likes', '0');
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+  }
 
-        container?.prepend(commentCard);
-        input.value = '';
-            
-      }
-      
-    render() {
-        if (this.shadowRoot !== null) {
-        this.shadowRoot.innerHTML = `
-        <style>
-        .comments-overlay {
-        position: fixed; 
-        z-index: 1000;
-        display: block;
-        width: 100%; 
-        height: 100%; 
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+  set data(commentsData: Comment[]) {
+    this.comments = commentsData;
+    this.render();
+  }
+
+  connectedCallback() {
+    if (this.hasAttribute('name') && this.comments) {
+      this.render();
     }
 
-      
+    const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
+    const commentBtn = this.shadowRoot?.querySelector('#post-comment');
 
-    .comments-container::-webkit-scrollbar { 
-        display: none;
-    }
-
-    .comments-container {
-        max-width: 911px;
-        max-height: 702px;
-        border-radius: 37px;
-        background: #222;
-        position: relative;
-        overflow: scroll;
-        
-    }
-
-    .user-area {
-        height: 98px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        border-radius: 35px 35px 0px 0px;
-        background: #1F1F1F;
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        position: absolute;
-        top: 0;
-        gap: 390px;
-
-        
-    }
-    .new-comment {
-        height: 98px;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        border-radius: 0px 0px 35px 35px;
-        background: #1F1F1F;
-        box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.25);
-        position: absolute;
-        bottom: 0;
-    }
-
-    .comment-topl {
-        display: flex;
-        flex-direction: row;
-        width: 390px;
-        border-radius: 31px 0px 64px 0px;
-        background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
-    }
-
-    .post-user {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
-    }
-
-    .profile-pic {
-        background-color: #1F1F1F;
-        text-align: center;
-        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-        display: block;
-        min-width: 40px;
-        min-height: 40px;
-        height: 70px;
-        width: 70px;
-        border-radius: 80px;
-        margin-left: 45px;
-        margin-top: 12px;
-        margin-bottom: 12px;
-    }
-    .post-profile {
-        margin-top: 10px;
-        min-width: 30px;
-        min-height: auto;
-    }
-
-    .heading4 {
-        margin-left: 24px;
-        margin-bottom: 0px;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin-top: 23px;
-    }
-
-    .smalltext {
-        color: rgba(255, 255, 255, 0.62);
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: normal;
-        margin-top: 4px;
-        margin-left: 24px;
-    }
-
-    .comment-topr {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .blue-btn {
-        width: 140px;
-        margin-right: 33px;
-        height: 39px;
-        border-radius: 11px;
-        background: #5267EE;
-        border: none;
-        color: white;
-        font-size: 18px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
-        margin-right: 50px;
-    }
-
-    .comments {
-        margin-top: 150px;
-        margin-left: 44px;
-        display: flex;
-        flex-direction: column;
-        min-height: 506px;
-
-    }
-
-    .comment {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px;
-        gap: 330px;
-    }
-
-    .commentl {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .commentr {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        margin-left: auto;
-        margin-right: 30px;
-    }
-
-    .user-info {
-        display: flex;
-        flex-direction: column;
-        margin-left: 10px;
-        margin-right: 20px;
-
-    }
-
-    #comment-name {
-        color: #FFF;
-        font-size: 24px;
-        font-weight: 600;
-        margin: 0px;
-    }
-
-    #comment-user {
-        color: rgba(255, 255, 255, 0.62);
-        font-size: 16px;
-        font-weight: 400;
-        margin: 2px;
-    }
-
-    #comment-msg {
-        color: #FFF;
-        font-family: Inter;
-        font-size: 15px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
-    }
-
-    .comment-profile {
-        width: 52.791px;
-        height: 50px;
-    }
-
-    .profile-pic2 {
-        background-color: #1F1F1F;
-        text-align: center;
-        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 70px;
-        width: 70px;
-        border-radius: 80px;
-    }
-
-    #comment-num {
-        color: #FFF;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        margin-right: 16px;
-    }
-
-    #heart-icon {
-        font-size: 36px;
-        margin-right: 8px;
-    }
-
-    .new-comment {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-        position: sticky;
-        bottom: 0;
-
-
-    }
-    .write-comment {
-    margin-left: 50px;
-    margin-right: 300px;
-    width: 407px;
-    height: 60px;
-    border-radius: 6px;
-    border: 1px solid #C06DFF;
-    background-color: #222222;
-    color: #C06DFF;
-    outline: none;
-    padding: 0px 10px 25px 20px; 
-    box-sizing: border-box;
-    }
-    .write-comment::placeholder {
-    font-size: 16px;
-    opacity: 0,5;
-    color: #C06DFF;
-
-    }
-        </style>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-        
-        <div class="comments-overlay">
-        <div class="comments-container">
-            <div class="user-area">
-                <div class="comment-topl">
-                    <div class="profile-pic">
-                    <img src="${this.getAttribute('pfp') || 'moods/boredpfp.svg'}" alt="" class="post-profile">
-                    </div>
-                    <div class="post-user">
-                    <h4 class="heading4">${this.getAttribute('name')}</h4>
-                    <p class="smalltext">${this.getAttribute('username')}</p>
-                    </div>
-                </div>
-                <div class="comment-topr">
-                    <button class="blue-btn">Follow</button>
-                </div>
-            </div>
-            <div class="comments">
-            </div>
-            <div class="new-comment">
-                <input class="write-comment" placeholder="Write a comment..."></input>
-                <button class="blue-btn" id="post-comment">Publish</button>
-            </div>
-        </div>
-    </div>`
-    const container = this.shadowRoot.querySelector('.comments');
-    if (!container) return;
-
-    this.comments.forEach((comment) => {
-      const commentCard = this.ownerDocument.createElement('comment-card');
-      commentCard.setAttribute('pfp', comment.profilePicture);
-      commentCard.setAttribute('name', comment.name);
-      commentCard.setAttribute('username', comment.username);
-      commentCard.setAttribute('comment', comment.comment);
-      commentCard.setAttribute('likes', comment.likes.toString());
-
-      container.appendChild(commentCard);
+    overlay?.addEventListener('click', (event: MouseEvent) => {
+      if (event.target === overlay) this.remove();
     });
 
-    }
+    commentBtn?.addEventListener('click', () => this.createComment());
+  }
 
-}}
-export {CommentsOverlay};
+  createComment() {
+    const input = this.shadowRoot?.querySelector('.write-comment') as HTMLInputElement;
+    const inputVal = input?.value.trim();
+    if (!inputVal) return;
+
+    const container = this.shadowRoot?.querySelector('.comments');
+    const commentCard = this.ownerDocument.createElement('comment-card');
+    commentCard.setAttribute('pfp', '/moods/angrypfp.svg');
+    commentCard.setAttribute('name', 'Leider');
+    commentCard.setAttribute('username', 'leider.js');
+    commentCard.setAttribute('comment', inputVal);
+    commentCard.setAttribute('likes', '0');
+
+    container?.prepend(commentCard);
+    input.value = '';
+  }
+
+  render() {
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = `
+        <style>
+          .comments-overlay {
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .comments-container {
+  background: #222;
+  border-radius: 32px;
+  width: 80vw;               /* más ancho en desktop */
+  height: 85vh;              /* más alto en desktop */
+  max-width: 1080px;         /* límite máximo para pantallas muy grandes */
+  max-height: 880px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+          .user-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+            border-radius: 32px 32px 0 0;
+            padding: 16px 24px;
+          }
+
+          .profile-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          }
+
+          .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #1F1F1F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .post-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+          }
+
+          .post-user {
+            display: flex;
+            flex-direction: column;
+          }
+
+          .heading4 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+          }
+
+          .smalltext {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin: 0;
+          }
+
+          .blue-btn {
+            background: #5267EE;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 8px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+          }
+
+          .comments {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 0;
+          }
+
+          .comments::-webkit-scrollbar {
+            display: none;
+          }
+
+          .new-comment {
+            background: #1F1F1F;
+            padding: 12px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            border-radius: 0 0 32px 32px;
+          }
+
+          .write-comment {
+            flex: 1;
+            height: 40px;
+            background: #222;
+            border: 1px solid #C06DFF;
+            border-radius: 8px;
+            padding: 0 12px;
+            color: #C06DFF;
+            font-size: 14px;
+            outline: none;
+          }
+
+          .write-comment::placeholder {
+            color: #C06DFF;
+            opacity: 0.6;
+          }
+
+          /* Responsive */
+          @media (max-width: 480px) {
+            .comments-container {
+              width: 95%;
+              height: 70%;
+              border-radius: 24px;
+            }
+
+            .heading4 {
+              font-size: 16px;
+            }
+
+            .smalltext {
+              font-size: 13px;
+            }
+
+            .blue-btn {
+              font-size: 13px;
+              padding: 6px 16px;
+            }
+
+            .write-comment {
+              font-size: 13px;
+              height: 36px;
+            }   
+          }
+        </style>
+
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+        <div class="comments-overlay">
+          <div class="comments-container">
+            <div class="user-area">
+              <div class="profile-box">
+                <div class="profile-pic">
+                  <img src="${this.getAttribute('pfp') || 'moods/boredpfp.svg'}" alt="" class="post-profile">
+                </div>
+                <div class="post-user">
+                  <h4 class="heading4">${this.getAttribute('name')}</h4>
+                  <p class="smalltext">@${this.getAttribute('username')}</p>
+                </div>
+              </div>
+              <button class="blue-btn">Follow</button>
+            </div>
+
+            <div class="comments"></div>
+
+            <div class="new-comment">
+              <input class="write-comment" placeholder="Write a comment..." />
+              <button class="blue-btn" id="post-comment">Publish</button>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Render comentarios existentes
+      const container = this.shadowRoot.querySelector('.comments');
+      if (!container) return;
+
+      this.comments.forEach((comment) => {
+        const commentCard = this.ownerDocument.createElement('comment-card');
+        commentCard.setAttribute('pfp', comment.profilePicture);
+        commentCard.setAttribute('name', comment.name);
+        commentCard.setAttribute('username', comment.username);
+        commentCard.setAttribute('comment', comment.comment);
+        commentCard.setAttribute('likes', comment.likes.toString());
+        container.appendChild(commentCard);
+      });
+    }
+  }
+}
+
+export { CommentsOverlay };

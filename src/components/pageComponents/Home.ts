@@ -11,6 +11,7 @@ class Home extends HTMLElement{
         if (this.shadowRoot !== null) {
         this.shadowRoot.innerHTML = `
         <create-post></create-post>
+        <carousel-component></carousel-component>
         <recent-posts></recent-posts>
         <home-posts></home-posts>
         <weekly-stats></weekly-stats>

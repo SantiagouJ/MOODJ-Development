@@ -22,12 +22,15 @@ class ProfilePreview extends HTMLElement {
 
             const clickedInsidePreview = target.closest('profile-preview');
             const navBar = document.querySelector("nav-bar")
-            const clickedInPf = navBar?.shadowRoot?.querySelector(".pf")
-            const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf)
+            const clickedInPf = navBar?.shadowRoot?.querySelector(".pf");
+const clickedInMenu = navBar?.shadowRoot?.querySelector(".menu");
 
-            if (!clickedInsidePreview && !clickedInsidePf) {
-                container?.classList.remove("active")
-            }
+const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf);
+const clickedInsideMenu = clickedInMenu && composedPath.includes(clickedInMenu);
+
+if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
+    container?.classList.remove("active");
+}
         })
     }
 

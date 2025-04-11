@@ -40,6 +40,14 @@ class WeeklyStats extends HTMLElement{
                 <img src="images/stats/mad circle.svg" alt="mad face" class="mad-icon">
             </div>
         </div>
+
+        <div class="mobile-stats-data">
+                    <div class="mobile-happy-data"><p>Happy 40%</p></div>
+                    <div class="mobile-sad-data"><p>Sad 30%</p></div>
+                    <div class="mobile-bored-data"><p>Bored 20%</p></div>
+                    <div class="mobile-angry-data"><p>Angry 10%</p></div>
+                    <div class="mobile-division"></div>
+                </div>
             `
         }
     }

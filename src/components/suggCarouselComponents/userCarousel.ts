@@ -80,12 +80,12 @@ class UserCarousel extends HTMLElement {
   loadUsers() {
     if (this.users.length === 0) {
       this.users = [
-        { name: "Eli", username: "@elipinipon", avatar: "icons/Pfp1.svg" },
-        { name: "Santiago", username: "@santiti", avatar: "icons/Pfp2.svg" },
-        { name: "Luis F", username: "@terricola", avatar: "icons/Pfp3.svg" },
-        { name: "Leider", username: "@leiderr.js", avatar: "icons/Pfp4.svg" },
-        { name: "Isa", username: "@itsabella", avatar: "icons/Pfp5.svg" },
-        { name: "Terry", username: "@not.terrypriv", avatar: "icons/Pfp6.svg" },
+        { name: "Eli", username: "@elipinipon", avatar: "/moods/blushpfp.svg" },
+        { name: "Santiago", username: "@santiti", avatar: "/moods/blushpfp.svg" },
+        { name: "Luis F", username: "@terricola", avatar: "/moods/boredpfp.svg" },
+        { name: "Leider", username: "@leiderr.js", avatar: "/moods/blushpfp.svg" },
+        { name: "Isa", username: "@itsabella", avatar: "/moods/happypfp.svg" },
+        { name: "Terry", username: "@not.terrypriv", avatar: "/moods/sadmood.svg" },
       ];
     }
   }
@@ -155,7 +155,6 @@ class UserCarousel extends HTMLElement {
     // Set initial position
     this.goToSlide(0);
     
-    console.log('Carousel setup complete');
   }
 
   addTouchEvents() {
@@ -223,7 +222,6 @@ class UserCarousel extends HTMLElement {
   }
 
   prevSlide() {
-    console.log('Previous slide clicked');
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
@@ -234,7 +232,6 @@ class UserCarousel extends HTMLElement {
   }
 
   nextSlide() {
-    console.log('Next slide clicked');
     if (this.currentIndex < this.users.length - this.slidesPerView) {
       this.currentIndex++;
     } else {
@@ -250,7 +247,6 @@ class UserCarousel extends HTMLElement {
     this.currentIndex = index;
     const translateX = -index * this.slideWidth;
     
-    console.log(`Going to slide ${index}, translateX: ${translateX}px`);
     
     this.wrapper.style.transition = 'transform 0.3s ease-out';
     this.wrapper.style.transform = `translateX(${translateX}px)`;
