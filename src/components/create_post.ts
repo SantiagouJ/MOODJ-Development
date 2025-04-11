@@ -196,4 +196,4 @@ class CreatePost extends HTMLElement {
 }
 
 customElements.define("create-post", CreatePost)
-export default CreatePost
+export {CreatePost}

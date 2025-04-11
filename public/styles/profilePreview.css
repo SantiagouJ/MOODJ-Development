@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    background-color: #222222;
+    font-family: "Inter", sans-serif;
+  }
+  
+  .profile-preview {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 411px;
+    height: 95%;
+    background-color: #5267EE;
+    border-radius: 40px 0px 0px 40px;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+  }
+  
+  .profile-preview.active {
+    right: 0;
+  }
+  
+  
+  .usercontainer {
+    width: 95%;
+    height: 98px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0px 0px 0px 64px;
+    background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+  }
+  
+  .profilepicture {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+    margin-left: 20px;
+    filter: drop-shadow(4px 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  
+  .profilepicture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .user-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .name {
+    margin: 0;
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .user {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.71);
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .container-img{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+  
+  .profile-stats,
+  .profile-lists {
+    width: 100%;
+    height: 142px;
+    border-radius: 18px;
+  }
+  
+  .statsimg,
+  .listimg {
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    object-fit: cover;
+  }
+  
+  .sign-out {
+    margin-top: 90px;
+    margin-right: 55px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .sign-out button {
+    height: 1.8rem;
+    width: 6.5rem;
+    background-color: #1F1F1F;
+    color: #FFF;
+    border: 1px solid #C06DFF;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  .sign-out button:hover {
+    background-color: #C06DFF;
+    color: #1F1F1F;
+  }
+  

@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-=======
 npm test
 #!/bin/sh
->>>>>>> feat/mockdata-render
 npm run lint
