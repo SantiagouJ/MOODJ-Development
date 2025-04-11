@@ -18,7 +18,9 @@ class ProfilePreview extends HTMLElement {
 
         window.addEventListener("click", (event) => {
             const composedPath = event.composedPath()
-            const clickedInsidePreview = composedPath.includes(this)
+            const target = event.composedPath()[0] as HTMLElement;
+
+            const clickedInsidePreview = target.closest('profile-preview');
             const navBar = document.querySelector("nav-bar")
             const clickedInPf = navBar?.shadowRoot?.querySelector(".pf")
             const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf)
@@ -56,5 +58,4 @@ class ProfilePreview extends HTMLElement {
     }
 }
 
-customElements.define("profile-preview", ProfilePreview)
 export { ProfilePreview }
