@@ -42,10 +42,10 @@ if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
 
                 <div class="profile-preview">
                     <div class="usercontainer">
-                        <div class="profilepicture"><img src="icons/Profilepic.svg" alt=""></div>
+                        <div class="profilepicture"><img src="moods/angrypfp.svg" alt=""></div>
                         <div class="user-data">
-                            <h3 class="name">Kevin</h3>
-                            <h3 class="user">@kevinro</h3>
+                            <h3 class="name">Leider</h3>
+                            <h3 class="user">@leider.js</h3>
                         </div>
                     </div>
                     <div class="container-img">

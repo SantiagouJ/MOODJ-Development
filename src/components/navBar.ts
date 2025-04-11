@@ -65,14 +65,14 @@ class NavBar extends HTMLElement {
 
                     <div class="user">
 
-                        <h4>Kevin</h4>
-                        <p>@keloco</p>
+                        <h4>Leider</h4>
+                        <p>@leider.js</p>
 
                     </div>
 
                     <div class="pfp-container">
 
-                        <img class="pfp" src="/moods/smilypfp.svg" alt="">
+                        <img class="pfp" src="/moods/angrypfp.svg" alt="">
 
                     </div>
                 </div>

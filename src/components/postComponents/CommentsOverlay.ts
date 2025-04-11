@@ -64,17 +64,16 @@ class CommentsOverlay extends HTMLElement {
           }
 
           .comments-container {
-  background: #222;
-  border-radius: 32px;
-  width: 80vw;               /* más ancho en desktop */
-  height: 85vh;              /* más alto en desktop */
-  max-width: 1080px;         /* límite máximo para pantallas muy grandes */
-  max-height: 880px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-}
+          background: #222;
+          border-radius: 32px;
+          height: 85vh;
+          max-width: 911px;
+          max-height: 880px;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
+          box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
 
           .user-area {
             display: flex;
@@ -211,7 +210,7 @@ class CommentsOverlay extends HTMLElement {
                 </div>
                 <div class="post-user">
                   <h4 class="heading4">${this.getAttribute('name')}</h4>
-                  <p class="smalltext">@${this.getAttribute('username')}</p>
+                  <p class="smalltext">${this.getAttribute('username')}</p>
                 </div>
               </div>
               <button class="blue-btn">Follow</button>

@@ -15,7 +15,7 @@ class CommentCard extends HTMLElement {
             .comment {
               display: flex;
               justify-content: space-between;
-              align-items: flex-start;
+              align-items: center;
               padding: 12px 20px;
               gap: 8px;
               width: 100%;
@@ -140,7 +140,7 @@ class CommentCard extends HTMLElement {
               </div>
               <div class="user-info">
                 <h4 id="comment-name">${this.getAttribute('name')}</h4>
-                <p id="comment-user">@${this.getAttribute('username')}</p>
+                <p id="comment-user">${this.getAttribute('username')}</p>
               </div>
             </div>
             <p id="comment-msg">${this.getAttribute('comment')}</p>
