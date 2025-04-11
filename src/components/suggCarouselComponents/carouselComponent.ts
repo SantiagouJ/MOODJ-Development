@@ -6,7 +6,6 @@ class CarouselComponent extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    this.offsetHeight;
     
   }
 

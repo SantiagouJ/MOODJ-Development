@@ -30,7 +30,6 @@ class UserCarousel extends HTMLElement {
     this.render();
     
     // Force layout recalculation
-    this.offsetHeight; // This triggers a reflow
     
     // Setup carousel with a slight delay to ensure DOM is ready
     setTimeout(() => {
