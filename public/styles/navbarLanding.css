@@ -1,0 +1,108 @@
+.navbar {
+
+    background-color: #1F1F1F;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+
+}
+
+.logo{
+
+    margin-left: 3rem;
+   
+
+}
+
+.container-right {
+
+    display: flex;
+    margin-right: 2.5rem;
+      
+    
+
+}
+
+.register-buttons button {
+
+    height: 32px;
+    width: 114px;
+    background-color: #1F1F1F;
+    color: #FFFF;
+    border: 1px solid #C06DFF;
+    border-radius: 10px;
+    margin-right: 1.5rem;
+    font-weight: 500;
+    font-size: 15px;
+    
+    
+
+}
+
+.register-buttons button:hover {
+
+   background-color: #C06DFF;
+   color: #1F1F1F;
+
+}
+
+.mobile-logo{
+
+    display: none;
+
+}
+
+.menu {
+
+    display: none;
+
+}
+
+@media (max-width: 768px) {
+
+
+    .logo{
+
+        display: none;
+    
+    }
+
+    .mobile-logo{
+
+        margin-left: 2.5rem;
+        height: 38px;
+        width: auto;
+        display: block;
+    
+    }
+
+    .navbar {
+
+    
+        height: 8rem;
+        align-items: end;
+        padding-bottom: 1rem;
+    
+    }
+
+    .register-buttons {
+
+        display: none;
+
+    }
+
+    .menu {
+
+        display: block;
+        height: 50px;
+        width: auto;
+        margin-bottom: 6px;
+    
+    }
+
+   
+
+}

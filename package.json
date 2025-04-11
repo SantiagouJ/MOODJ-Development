@@ -15,7 +15,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Tests no implementados\" && exit 0",
     "build": "webpack --mode=production",
     "start": "webpack serve --mode=development",
     "lint": "eslint src/ --ext .ts,.js --report-unused-disable-directives",
