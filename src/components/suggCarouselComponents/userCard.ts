@@ -20,10 +20,21 @@ class UserCard extends HTMLElement {
     }
   
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
-      if (oldValue !== newValue) {
-        (this as any)[name] = newValue;
-        this.render();
+      if (oldValue === newValue) return;
+      
+      switch (name) {
+        case 'name':
+          this.name = newValue;
+          break;
+        case 'username':
+          this.username = newValue;
+          break;
+        case 'avatar':
+          this.avatar = newValue;
+          break;
       }
+      
+      this.render();
     }
   
     addEventListeners() {

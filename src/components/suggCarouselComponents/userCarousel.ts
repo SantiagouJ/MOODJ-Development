@@ -14,6 +14,7 @@ class UserCarousel extends HTMLElement {
   private startPos: number = 0;
   private currentTranslate: number = 0;
   private prevTranslate: number = 0;
+  private resizeObserver: ResizeObserver | null = null;
 
   constructor() {
     super();
@@ -28,16 +29,53 @@ class UserCarousel extends HTMLElement {
     this.loadUsers();
     this.render();
     
-    // Wait for DOM to be ready
+    // Force layout recalculation
+    this.offsetHeight; // This triggers a reflow
+    
+    // Setup carousel with a slight delay to ensure DOM is ready
     setTimeout(() => {
       this.setupCarousel();
-    }, 0);
+      
+      // Force visibility
+      if (this.shadowRoot) {
+        const container = this.shadowRoot.querySelector('.carousel-container');
+        if (container) {
+          (container as HTMLElement).style.visibility = 'visible';
+          (container as HTMLElement).style.opacity = '1';
+        }
+      }
+    }, 50);
+    
+    // Setup resize observer for more reliable size updates
+    this.setupResizeObserver();
     
     window.addEventListener('resize', this.handleResize);
+    
+    // Add load event listener to window to ensure all resources are loaded
+    window.addEventListener('load', () => {
+      this.updateSlideWidth();
+      this.goToSlide(this.currentIndex);
+    });
   }
 
   disconnectedCallback() {
     window.removeEventListener('resize', this.handleResize);
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  }
+
+  setupResizeObserver() {
+    if ('ResizeObserver' in window) {
+      this.resizeObserver = new ResizeObserver(entries => {
+        for (const entry of entries) {
+          if (entry.target === this) {
+            this.handleResize();
+          }
+        }
+      });
+      this.resizeObserver.observe(this);
+    }
   }
 
   loadUsers() {
@@ -49,7 +87,6 @@ class UserCarousel extends HTMLElement {
         { name: "Leider", username: "@leiderr.js", avatar: "icons/Pfp4.svg" },
         { name: "Isa", username: "@itsabella", avatar: "icons/Pfp5.svg" },
         { name: "Terry", username: "@not.terrypriv", avatar: "icons/Pfp6.svg" },
-  
       ];
     }
   }
@@ -59,7 +96,7 @@ class UserCarousel extends HTMLElement {
     this.render();
     setTimeout(() => {
       this.setupCarousel();
-    }, 0);
+    }, 50);
   }
 
   handleResize() {
@@ -113,10 +150,77 @@ class UserCarousel extends HTMLElement {
       nextButton.addEventListener('click', this.nextSlide);
     }
     
+    // Add touch events
+    this.addTouchEvents();
+    
     // Set initial position
     this.goToSlide(0);
     
     console.log('Carousel setup complete');
+  }
+
+  addTouchEvents() {
+    if (!this.wrapper) return;
+    
+    this.wrapper.addEventListener('touchstart', this.touchStart.bind(this), { passive: true });
+    this.wrapper.addEventListener('touchmove', this.touchMove.bind(this), { passive: false });
+    this.wrapper.addEventListener('touchend', this.touchEnd.bind(this), { passive: true });
+    
+    // Mouse events for desktop
+    this.wrapper.addEventListener('mousedown', this.touchStart.bind(this));
+    this.wrapper.addEventListener('mousemove', this.touchMove.bind(this));
+    this.wrapper.addEventListener('mouseup', this.touchEnd.bind(this));
+    this.wrapper.addEventListener('mouseleave', this.touchEnd.bind(this));
+  }
+
+  touchStart(event: TouchEvent | MouseEvent) {
+    this.isDragging = true;
+    this.startPos = this.getPositionX(event);
+    
+    if (this.wrapper) {
+      this.wrapper.classList.add('dragging');
+    }
+  }
+
+  touchMove(event: TouchEvent | MouseEvent) {
+    if (!this.isDragging) return;
+    
+    const currentPosition = this.getPositionX(event);
+    this.currentTranslate = this.prevTranslate + currentPosition - this.startPos;
+    
+    if (this.wrapper) {
+      this.wrapper.style.transform = `translateX(${this.currentTranslate}px)`;
+    }
+    
+    // Prevent default to stop scrolling when dragging
+    if (event.cancelable) {
+      event.preventDefault();
+    }
+  }
+
+  touchEnd() {
+    this.isDragging = false;
+    
+    const movedBy = this.currentTranslate - this.prevTranslate;
+    
+    // Determine if slide should advance
+    if (movedBy < -100 && this.currentIndex < this.users.length - this.slidesPerView) {
+      this.currentIndex += 1;
+    } else if (movedBy > 100 && this.currentIndex > 0) {
+      this.currentIndex -= 1;
+    }
+    
+    this.goToSlide(this.currentIndex);
+    
+    if (this.wrapper) {
+      this.wrapper.classList.remove('dragging');
+    }
+  }
+
+  getPositionX(event: TouchEvent | MouseEvent): number {
+    return event instanceof TouchEvent 
+      ? event.touches[0].clientX 
+      : (event as MouseEvent).clientX;
   }
 
   prevSlide() {
@@ -160,190 +264,9 @@ class UserCarousel extends HTMLElement {
     if (!this.shadowRoot) return;
 
     this.shadowRoot.innerHTML = `
-      <style>
-        /* Base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        /* Host element styles */
-        :host {
-            display: block;
-            width: 100%;
-            font-family: "Inter", sans-serif;
-        }
-        
-        /* Carousel container */
-        .carousel-container {
-            background-color: #1E1E1E;
-            border-radius: 20px;
-            padding: 25px;
-            border: 3px solid #4361EE;
-            box-shadow: 0 4px 20px rgba(67, 97, 238, 0.15);
-            color: white;
-            width: 800px;
-            height: 300px;
-            margin: auto;
-            justify-self: center;
-            align-self: center;
-            position: relative;
-            display: block;
-        }
-        
-        h2 {
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-weight: 600;
-        }
-        
-        /* Main carousel element */
-        .carousel {
-            height: 220px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Wrapper for slides */
-        .carousel-wrapper {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            position: relative;
-        }
-        
-        /* Individual slide */
-        .carousel-slide {
-            flex-shrink: 0;
-            height: 100%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            padding: 0 15px;
-        }
-        
-        /* Navigation buttons */
-        .carousel-prev,
-        .carousel-next {
-            position: absolute;
-            top: 45%;
-            width: 40px;
-            height: 40px;
-            margin-top: -20px;
-            z-index: 10;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: transparent;
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
-        .carousel-prev {
-            left: -6px;
-        }
-        
-        .carousel-next {
-            right: -6px;
-        }
-        
-        /* User card styles */
-        .carousel-card {
-            width: 220px;
-            height: 174px;
-            background-color: #4361EE;
-            border-radius: 15px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        
-        .user-info {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-        
-        .avatar {
-            width: 72px;
-            height: 72px;                      
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #121212;
-            border-radius: 50%;
-        }
-        
-        .avatar img {
-            width: 50px;
-            height: 50px;
-        }
-        
-        .user-details {
-            margin-left: 8px;
-        }
-        
-        .user-details h3 {
-            font-size: 24px;
-            margin-bottom: 2px;
-            color: white;
-        }
-        
-        .username {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .follow-btn {
-            background-color: #1E1E1E;
-            color: white;
-            border: none;
-            border-radius: 11px;
-            padding: 8px 0;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            width: 140px;
-            height: 39px;
-            align-self: center;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease;
-        }
-        
-        .follow-btn:hover {
-            background-color: #333;
-        }
-        
-        /* Responsive styles */
-        @media (max-width: 840px) {
-            .carousel-container {
-                width: 90%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .carousel-container {
-                padding: 20px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .carousel-prev,
-            .carousel-next {
-                width: 30px;
-                height: 30px;
-                font-size: 18px;
-            }
-        }
-      </style>
+      <link rel="stylesheet" href="/styles/moodCarousel.css">
       
-      <div class="carousel-container">
+      <div class="carousel-container" style="visibility: hidden; opacity: 0; transition: opacity 0.3s ease;">
         <h2>You may know...</h2>
         
         <div class="carousel">
@@ -361,7 +284,6 @@ class UserCarousel extends HTMLElement {
           
           <img class="carousel-prev" src="/icons/Left-arrow.svg" alt="Prev">
           <img class="carousel-next" src="/icons/Right-arrow.svg" alt="Next">
-          
         </div>
       </div>
     `;
