@@ -10,6 +10,10 @@ import { ProfilePreview } from "./components/ProfilePreview";
 import { CreatePost } from "./components/create_post";
 import { HomePosts } from "./components/renderPosts/homePosts";
 import { RecentPosts } from "./components/newPost";
+import { UserCard } from "./components/suggCarouselComponents/userCard";
+import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
+import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
+
 
 
 if (!customElements.get("nav-bar")) {
@@ -28,12 +32,13 @@ if (!customElements.get("profile-preview")) {
 if (!customElements.get('create-post')) {
     customElements.define('create-post', CreatePost);
   }
-if (!customElements.get('create-post')) {
-    customElements.define('create-post', CreatePost);
-  }
 customElements.define('home-posts', HomePosts);
 customElements.define('post-card', PostCard)
 customElements.define('song-card', PostSong)
 customElements.define('comments-over', CommentsOverlay)
 customElements.define('comment-card', CommentCard)
 customElements.define('recent-posts', RecentPosts)
+customElements.define('user-card', UserCard);
+customElements.define('user-carousel', UserCarousel);
+customElements.define('carousel-component', CarouselComponent);
+
