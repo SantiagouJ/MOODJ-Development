@@ -11,13 +11,6 @@ class FooterElement extends HTMLElement {
     }
 
 
-    attributeChangedCallback(name: string, oldValue: string, newValue: string){
-        if (oldValue !== newValue) {
-            (this as any)[name] = newValue;
-            this.render();
-        }
-    }
-
         render(){
 
             if(this.shadowRoot){

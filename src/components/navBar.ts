@@ -18,12 +18,6 @@ class NavBar extends HTMLElement {
         return ["pfp", "name", "username"];
     }
 
-    attributeChangedCallback(name: string, oldValue: string, newValue: string): void {
-        if (oldValue !== newValue) {
-            (this as any)[name] = newValue;
-            this.render();
-        }
-    }
 
     setupListeners() {
         const pf = this.shadowRoot?.querySelector(".pf");
