@@ -1,9 +1,10 @@
 .post-card {
-    width: 41.667%;
+    max-width: 41.667%;
     min-width: 800px;
     height: 646px;
     background: linear-gradient(318deg, #778AFF 6.06%, #5267EE 29.24%);
     border-radius: 34px;
+    margin-top: 88px;
 }
 .container {
     display: flex;
@@ -174,6 +175,9 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 .mood-contain {
     width: 148.231px;
@@ -246,3 +250,193 @@
     line-height: normal;
     margin-left: 60px;
 }
+
+@media screen and (max-width: 768px) {
+
+    .post-card {
+      width: 90vw;
+      min-width: 320px; /* ✅ esto asegura que no se vuelva ultra flaca */
+      max-width: 500px;
+      height: auto;
+      border-radius: 34px;
+      margin-top: 40px;
+      /* padding: 0px 16px 16px;        */
+      box-sizing: border-box;
+    }
+  
+    .post-top {
+        display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 0;
+    padding-top: 0;
+    padding-left: 0;
+    }
+  
+    .post-topl {
+      flex-direction: row;
+      width: 180px;
+      height: auto;
+      background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+      border-radius: 34px 0px 64px 0px;
+      padding: 10px;
+      align-items: center;
+      gap: 12px;
+    }
+    .post-content,
+  .post-interact,
+  .liked-by {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+    .profile-pic {
+      width: 48px;
+      height: 48px;
+      margin: 0;
+    }
+  
+    .post-profile {
+      width: 100%;
+      height: auto;
+      margin: 0;
+    }
+
+    .post-user {
+      margin: 0;
+    }
+  
+    .heading4 {
+      margin: 0;
+      font-size: 16px;
+    }
+  
+    .smalltext {
+      margin: 0;
+      font-size: 13px;
+    }
+  
+    .post-topr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #follow-btn {
+      font-size: 14px;
+      padding: 6px 12px;
+      height: auto;
+      width: 105px;
+      margin: 20px;
+      border-radius: 8px;
+    }
+  
+    .post-content {
+      margin: 24px 16px;
+      padding: 0;
+    }
+  
+    .heading2 {
+      font-size: 20px;
+    }
+  
+    .song-card {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      padding: 16px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+  
+    #album-cover {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin: 0;
+    }
+  
+    .song-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin: 0;
+    }
+  
+    #song-title {
+      font-size: 14px;
+      margin: 0;
+    }
+  
+    #artist-name {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0;
+    }
+  
+    #post-text {
+      font-size: 13px;
+      width: 100%;
+      height: auto;
+      margin: 4px 0 0 0;
+      word-break: break-word;
+    }
+  
+    #play-song {
+      font-size: 24px;
+    }
+  
+    .mood-contain {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    #mood-post {
+      width: 42px;
+      height: 42px;
+    }
+    #heart-icon,
+  #comment-icon,
+  #send-icon,
+  #save-icon {
+    font-size: 24px;
+  }
+  
+    .post-interact {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 5px;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 16px;
+      height: 50px;
+    }
+  
+    .interact-one {
+      display: flex;
+    }
+    
+    .interact-two {
+        display: flex;
+        gap: 0px;
+      }
+
+    .liked-by {
+      font-size: 13px;
+      margin-top: 12px;
+      margin-left: 5px;
+    }
+  }

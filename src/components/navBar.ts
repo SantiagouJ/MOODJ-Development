@@ -39,6 +39,7 @@ class NavBar extends HTMLElement {
                     <div class="nav-buttons">
                         <button>Home</button>
                         <button>Profile</button>
+
                     </div>
 
                     <div class="search">
