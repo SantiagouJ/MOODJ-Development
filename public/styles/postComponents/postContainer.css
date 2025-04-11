@@ -1,0 +1,252 @@
+.post-card {
+    max-width: 41.667%;
+    min-width: 800px;
+    height: 646px;
+    background: linear-gradient(318deg, #778AFF 6.06%, #5267EE 29.24%);
+    border-radius: 34px;
+    margin-top: 88px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-top {
+    display: flex;
+    flex-direction: row;
+    gap: 237px;
+    
+}
+
+.post-topl {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 390px;
+    height: 98px;
+    border-radius: 31px 0px 64px 0px;
+    background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+}
+
+.post-user {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.profile-pic {
+    background-color: #1F1F1F;
+    text-align: center;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+    display: block;
+    min-width: 40px;
+    min-height: 40px;
+    height: 70px;
+    width: 70px;
+    border-radius: 80px;
+    margin-left: 45px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+.post-profile {
+    margin-top: 10px;
+    min-width: 30px;
+    min-height: auto;
+}
+
+.heading4 {
+    margin-left: 24px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 23px;
+}
+
+.smalltext {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 4px;
+    margin-left: 24px;
+}
+
+.post-topr {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#follow-btn {
+    width: 140px;
+    margin-right: 33px;
+    height: 39px;
+    border-radius: 11px;
+    background: var(--HeaderGray, #1F1F1F);
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.post-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 56px;
+    margin-right: 56px;
+    margin-top: 32px;
+    height: 80%;
+    
+}
+
+.heading2 {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.song-card {
+    border-radius: 23px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A;
+    width: 686.618px;
+    height: 269.892px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+#album-cover {
+    width: 251.713px;
+    height: 236.331px;
+    border-radius: 15px;
+    margin-left: 19px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+
+}
+.song-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 22.95px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#song-title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0px;
+}
+
+#artist-name {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0px;
+}
+
+#play-song {
+    font-size: 36px;
+}
+
+#post-text {
+    width: 213.956px;
+    height: 62.928px;
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+.mood-contain {
+    width: 148.231px;
+    height: 148.231px;
+    flex-shrink: 0;
+    border: 1.5px, solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mood-post {
+    width: 117.47px;
+    height: 109.65px;
+    flex-shrink: 0;
+}
+
+#heart-icon {
+    font-size: 36px;
+    margin-right: 8px;
+}
+
+#comment-icon {
+    font-size: 36px;
+    margin-left: 32px;
+    margin-right: 8px;
+}
+
+#send-icon {
+    font-size: 36px;
+}
+
+#save-icon {
+    font-size: 36px;
+    margin-left: 24px;
+}
+
+.post-interact {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+    flex-direction: row;
+    margin-top: 4px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    gap: 400px;
+    margin-bottom: 0px;
+    height: 64px;
+}
+
+.interact-one {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.interact-two {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.liked-by {
+    margin-top: 0px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 60px;
+}

@@ -21,11 +21,13 @@ export function initializeCarousel(
     ]
   
     const realSlides = slidesData.map((src, index) => {
-      const slide = document.createElement("div")
-      slide.className = "swiper-slide"
-      slide.innerHTML = `<img src="${src}" alt="Mood ${index + 1}">`
-      return slide
-    })
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
+      slide.setAttribute("data-mood", src);
+      slide.innerHTML = `<img src="${src}" alt="Mood ${index + 1}">`;
+      return slide;
+    });
+    
   
     const firstClone = realSlides[0].cloneNode(true) as HTMLElement
     const lastClone = realSlides[realSlides.length - 1].cloneNode(true) as HTMLElement
