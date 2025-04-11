@@ -52,7 +52,7 @@ class NavBar extends HTMLElement {
                             <p>@keloco</p>
                         </div>
                         <div class="pfp-container">
-                            <img class="pfp" src="/icons/Pfp1.svg" alt="">
+                            <img class="pfp" src="icons/Profilepic.svg" alt="">
                         </div>
                     </div>
                 </div>

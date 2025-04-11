@@ -101,12 +101,6 @@
 
 }
 
-.pfp {
-
-    width: 39px;
-    height: 37px;
-    
-}
 
 .user {
 
@@ -150,4 +144,61 @@
 
 .search-icon {
     color: #C06DFF;
+}
+@media (max-width: 768px) {
+
+
+    .full-logo{
+
+        display: none;
+    
+    }
+
+    .mobile-logo{
+
+        margin-left: 2.5rem;
+        height: 38px;
+        width: auto;
+        display: block;
+    
+    }
+
+    .navbar-home {
+
+        height: 8rem;
+        align-items: end;
+        padding-bottom: 1rem;
+    
+    }
+
+    .nav-buttons {
+
+        display: none;
+
+    }
+
+    .search{
+
+        display: none;
+
+    }
+
+    .pf {
+
+        display: none;
+           
+    }
+
+    .menu {
+
+        display: block;
+        height: 50px;
+        width: auto;
+        margin-bottom: 2px;
+        margin-right: 42px;
+    
+    }
+
+   
+
 }

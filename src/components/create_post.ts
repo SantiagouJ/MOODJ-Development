@@ -1,8 +1,10 @@
 import { initializeCarousel } from "./carrousel"
 import { setupSearch } from "./musicSearch"
 import { Song } from "./typeSong"
+import { NewMoodj } from "./typeSong";
 
 class CreatePost extends HTMLElement {
+  private selectedSong: Song | null = null;
   private currentSlideIndex: number = 0
   private slides: HTMLElement[] = []
   private currentAudio: HTMLAudioElement | null = null
@@ -24,8 +26,65 @@ class CreatePost extends HTMLElement {
         (index) => { this.currentSlideIndex = index }
       )
       setupSearch(this.shadowRoot, this.renderSelectedSong.bind(this))
+      const postBtn = this.shadowRoot.querySelector('#btn1')
+      postBtn?.addEventListener('click', () => {
+        this.createPost();
+      })
     }
+
   }
+  createPost() {
+    if (!this.shadowRoot) return;
+  
+    const input = this.shadowRoot.querySelector('#input2') as HTMLInputElement;
+    const text = input?.value.trim();
+
+    if (text.length > 120) {
+      alert("Input limit is 120 characters.");
+      return;
+    }
+    
+    if (!this.selectedSong) {
+      alert("Please select a song before posting.");
+      return;
+    }
+  
+    if (!text) {
+      alert("Please write something in the input before posting.");
+      return;
+    }
+    const currentSlide = this.slides[this.currentSlideIndex];
+    const mood = currentSlide?.getAttribute('data-mood') || '/photos/Smily.svg';
+      
+    this.dispatchEvent(new CustomEvent<NewMoodj>('post-created', {
+      detail: {
+        mood,
+        text,
+        song: this.selectedSong.title,
+        artist: this.selectedSong.artist.name,
+        cover: this.selectedSong.album.cover_xl,
+        preview: this.selectedSong.preview,
+        user: {
+          profilePicture: '/moods/angrypfp.svg',
+          name: 'Leider',
+          username: 'leider.js',
+        }
+      },
+      bubbles: true, 
+      composed: true 
+    }));
+    
+    const text2 = this.shadowRoot.querySelector("#text2") as HTMLParagraphElement
+    const text3 = this.shadowRoot.querySelector("#text3") as HTMLParagraphElement
+    const musicImgDiv = this.shadowRoot.querySelector("#music-img") as HTMLDivElement
+    input.value = "";
+    text2.textContent = 'Your mood in a song';
+    text3.textContent = 'By your favorite artists';
+    musicImgDiv.innerHTML = `<span class="material-symbols-outlined">headphones</span>`;
+    this.currentAudio = null;
+
+  }
+  
 
   render(): void {
     if (!this.shadowRoot) return
@@ -35,7 +94,7 @@ class CreatePost extends HTMLElement {
 
                 <div id="createPost-container">
                     <div id="createPost-info">
-                        <h1>Hello Kevin!</h1>
+                        <h1>Hello Leider!</h1>
                         <p id="text1">How are you feeling today?</p>
 
                         <div id="music-container">
@@ -51,7 +110,7 @@ class CreatePost extends HTMLElement {
                                 </div>
                                 <div id="music-text">
                                     <p id="text2">Your mood in a song</p>
-                                    <p id="text3">By your favorite artist</p>
+                                    <p id="text3">By your favorite artists</p>
                                 </div>
                             </div>
                         </div>
@@ -100,6 +159,7 @@ class CreatePost extends HTMLElement {
 
   renderSelectedSong(song: Song) {
     if (!this.shadowRoot) return
+    
   
     const text2 = this.shadowRoot.querySelector("#text2") as HTMLParagraphElement
     const text3 = this.shadowRoot.querySelector("#text3") as HTMLParagraphElement
@@ -112,7 +172,8 @@ class CreatePost extends HTMLElement {
   
     searchResultsDiv.classList.add("hidden")
     searchResultsDiv.innerHTML = ""
-  
+    this.selectedSong = song;
+
     if (this.currentAudio) {
       this.currentAudio.pause()
       this.currentAudio = null

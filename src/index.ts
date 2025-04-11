@@ -8,11 +8,13 @@ import { CommentCard } from "./components/postComponents/CommentCard";
 import { WeeklyStats } from "./components/WeeklyStats";
 import { ProfilePreview } from "./components/ProfilePreview";
 import { CreatePost } from "./components/create_post";
+import { HomePosts } from "./components/renderPosts/homePosts";
+import { RecentPosts } from "./components/newPost";
+
 
 if (!customElements.get("nav-bar")) {
     customElements.define("nav-bar", NavBar);
   }
-  
 customElements.define('navbar-landing', NavbarLanding);
 customElements.define('footer-element', FooterElement);
 customElements.define('comment-overlay', CommentsOverlay);
@@ -26,3 +28,12 @@ if (!customElements.get("profile-preview")) {
 if (!customElements.get('create-post')) {
     customElements.define('create-post', CreatePost);
   }
+if (!customElements.get('create-post')) {
+    customElements.define('create-post', CreatePost);
+  }
+customElements.define('home-posts', HomePosts);
+customElements.define('post-card', PostCard)
+customElements.define('song-card', PostSong)
+customElements.define('comments-over', CommentsOverlay)
+customElements.define('comment-card', CommentCard)
+customElements.define('recent-posts', RecentPosts)

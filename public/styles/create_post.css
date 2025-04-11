@@ -22,6 +22,7 @@ h1{
                       linear-gradient(to bottom, #5267EE, #C06DFF);
     background-origin: border-box;
     background-clip: content-box, border-box;
+    margin-top: 100px;
 }
 #createPost-info{
     width: 50%;
