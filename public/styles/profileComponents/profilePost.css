@@ -1,0 +1,57 @@
+#song-img {
+    width: 228.04px;
+    height: 214.104px;
+    border-radius: 15px;
+    margin-left: 18px;
+    margin-right: 20px;
+}
+
+#mood {
+    width: 106.422px;
+    height: 99.337px;
+}
+
+.mood-contain {
+    width: 134.29px;
+    height: 134.29px;
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 46px;
+}
+
+.post {
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    background-color: #2A2A2A;
+    width: 472px;
+    height: 244.607px;
+}
+
+.post-border {
+    margin-top: 90px;
+    border-radius: 34px;
+    width: 521px;
+    height: 302px;
+    background-color: #5267EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#song-title {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#artist {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 13px;
+    font-weight: 500;
+}
