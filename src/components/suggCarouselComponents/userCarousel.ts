@@ -80,12 +80,12 @@ class UserCarousel extends HTMLElement {
   loadUsers() {
     if (this.users.length === 0) {
       this.users = [
-        { name: "Eli", username: "@elipinipon", avatar: "/moods/blushpfp.svg" },
-        { name: "Santiago", username: "@santiti", avatar: "/moods/blushpfp.svg" },
-        { name: "Luis F", username: "@terricola", avatar: "/moods/boredpfp.svg" },
-        { name: "Leider", username: "@leiderr.js", avatar: "/moods/blushpfp.svg" },
-        { name: "Isa", username: "@itsabella", avatar: "/moods/happypfp.svg" },
-        { name: "Terry", username: "@not.terrypriv", avatar: "/moods/sadmood.svg" },
+        { name: "Eli", username: "@elipinipon", avatar: "/images/moods2/Love.svg" },
+        { name: "Santiago", username: "@santiti", avatar: "/images/moods2/Love.svg" },
+        { name: "Luis F", username: "@terricola", avatar: "/images/moods2/Worried.svg" },
+        { name: "Leider", username: "@leiderr.js", avatar: "/images/moods2/Angry.svg" },
+        { name: "Isa", username: "@itsabella", avatar: "/images/moods2/Happy.svg" },
+        { name: "Terry", username: "@not.terrypriv", avatar: "/images/moods2/Sad.svg" },
       ];
     }
   }
@@ -260,7 +260,7 @@ class UserCarousel extends HTMLElement {
 
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="/styles/moodCarousel.css">
-      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
       <div class="carousel-container" style="visibility: hidden; opacity: 0; transition: opacity 0.3s ease;">
         <h2>You may know...</h2>
         
@@ -277,8 +277,8 @@ class UserCarousel extends HTMLElement {
             `).join('')}
           </div>
           
-          <img class="carousel-prev" src="/icons/Left-arrow.svg" alt="Prev">
-          <img class="carousel-next" src="/icons/Right-arrow.svg" alt="Next">
+          <img class="carousel-prev" src="/images/icons/Left-arrow.svg" alt="Prev">
+          <img class="carousel-next" src="/images/icons/Right-arrow.svg" alt="Next">
         </div>
       </div>
     `;

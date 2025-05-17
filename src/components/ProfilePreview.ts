@@ -42,15 +42,15 @@ if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
 
                 <div class="profile-preview">
                     <div class="usercontainer">
-                        <div class="profilepicture"><img src="moods/angrypfp.svg" alt=""></div>
+                        <div class="profilepicture"><img src="/images/moods2/Angry.svg" alt=""></div>
                         <div class="user-data">
                             <h3 class="name">Leider</h3>
                             <h3 class="user">@leider.js</h3>
                         </div>
                     </div>
                     <div class="container-img">
-                        <div class="profile-stats"><img src="icons/your stats.png" alt="" class="statsimg"></div>
-                        <div class="profile-lists"><img src="icons/your lists.png" alt="" class="listimg"></div>
+                        <div class="profile-stats"><img src="/images/icons/your stats.png" alt="" class="statsimg"></div>
+                        <div class="profile-lists"><img src="/images/icons/your lists.png" alt="" class="listimg"></div>
                     </div>
                     <div class="sign-out">
                         <button>Sign out</button>

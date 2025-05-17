@@ -10,14 +10,14 @@ export function initializeCarousel(
     const nextBtn = shadowRoot.querySelector("#next-btn") as HTMLElement
   
     const slidesData: string[] = [
-      "photos/moods/Happy.svg",
-      "photos/moods/Angry.svg",
-      "photos/moods/Crying.svg",
-      "photos/moods/Love.svg",
-      "photos/moods/Sad.svg",
-      "photos/moods/Serious.svg",
-      "photos/moods/Smily.svg",
-      "photos/moods/Worried.svg"
+      "images/moods2/Happy.svg",
+      "images/moods2/Angry.svg",
+      "images/moods2/Crying.svg",
+      "images/moods2/Love.svg",
+      "images/moods2/Sad.svg",
+      "images/moods2/Serious.svg",
+      "images/moods2/Smily.svg",
+      "images/moods2/Worried.svg"
     ]
   
     const realSlides = slidesData.map((src, index) => {
