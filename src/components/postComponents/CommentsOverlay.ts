@@ -39,7 +39,7 @@ class CommentsOverlay extends HTMLElement {
 
     const container = this.shadowRoot?.querySelector('.comments');
     const commentCard = this.ownerDocument.createElement('comment-card');
-    commentCard.setAttribute('pfp', '/moods/angrypfp.svg');
+    commentCard.setAttribute('pfp', '/images/moods/angrypfp.svg');
     commentCard.setAttribute('name', 'Leider');
     commentCard.setAttribute('username', 'leider.js');
     commentCard.setAttribute('comment', inputVal);
@@ -53,177 +53,404 @@ class CommentsOverlay extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = `
         <style>
-          .comments-overlay {
-            position: fixed;
-            z-index: 1000;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
+        .comments-overlay {
+        position: fixed; 
+        z-index: 1000;
+        display: block;
+        width: 100%; 
+        height: 100%; 
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-          .comments-container {
-          background: #222;
-          border-radius: 32px;
-          height: 85vh;
-          max-width: 911px;
-          max-height: 880px;
-          display: flex;
-          flex-direction: column;
-          overflow: hidden;
-          box-shadow: 0 0 15px rgba(0,0,0,0.4);
+      
+
+    .comments-container::-webkit-scrollbar { 
+        display: none;
+    }
+
+    .comments-container {
+        max-width: 911px;
+        max-height: 702px;
+        border-radius: 37px;
+        background: #222;
+        position: relative;
+        overflow: scroll;
+        
+    }
+
+    .user-area {
+        height: 98px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        border-radius: 35px 35px 0px 0px;
+        background: #1F1F1F;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        position: absolute;
+        top: 0;
+        gap: 390px;
+
+        
+    }
+    .new-comment {
+        height: 98px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        border-radius: 0px 0px 35px 35px;
+        background: #1F1F1F;
+        box-shadow: 0px -4px 4px 0px rgba(0, 0, 0, 0.25);
+        position: absolute;
+        bottom: 0;
+    }
+
+    .comment-topl {
+        display: flex;
+        flex-direction: row;
+        width: 390px;
+        border-radius: 31px 0px 64px 0px;
+        background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+    }
+
+    .post-user {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+    }
+
+    .profile-pic {
+        background-color: #1F1F1F;
+        text-align: center;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+        display: block;
+        min-width: 40px;
+        min-height: 40px;
+        height: 70px;
+        width: 70px;
+        border-radius: 80px;
+        margin-left: 45px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+    }
+    .post-profile {
+        margin-top: 10px;
+        min-width: 30px;
+        min-height: auto;
+    }
+
+    .heading4 {
+        margin-left: 24px;
+        margin-bottom: 0px;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-top: 23px;
+    }
+
+    .smalltext {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-top: 4px;
+        margin-left: 24px;
+    }
+
+    .comment-topr {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .blue-btn {
+        width: 140px;
+        margin-right: 33px;
+        height: 39px;
+        border-radius: 11px;
+        background: #5267EE;
+        border: none;
+        color: white;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        margin-right: 50px;
+    }
+
+    .comments {
+        margin-top: 150px;
+        margin-left: 44px;
+        display: flex;
+        flex-direction: column;
+        min-height: 506px;
+
+    }
+
+    .comment {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        gap: 330px;
+    }
+
+    .commentl {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .commentr {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        margin-left: auto;
+        margin-right: 30px;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 20px;
+
+    }
+
+    #comment-name {
+        color: #FFF;
+        font-size: 24px;
+        font-weight: 600;
+        margin: 0px;
+    }
+
+    #comment-user {
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 16px;
+        font-weight: 400;
+        margin: 2px;
+    }
+
+    #comment-msg {
+        color: #FFF;
+        font-family: Inter;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+    }
+
+    .comment-profile {
+        width: 52.791px;
+        height: 50px;
+    }
+
+    .profile-pic2 {
+        background-color: #1F1F1F;
+        text-align: center;
+        filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 70px;
+        width: 70px;
+        border-radius: 80px;
+    }
+
+    #comment-num {
+        color: #FFF;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-right: 16px;
+    }
+
+    #heart-icon {
+        font-size: 36px;
+        margin-right: 8px;
+    }
+
+    .new-comment {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        position: sticky;
+        bottom: 0;
+
+
+    }
+    .write-comment {
+    margin-left: 50px;
+    margin-right: 300px;
+    width: 407px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #C06DFF;
+    background-color: #222222;
+    color: #C06DFF;
+    outline: none;
+    padding: 0px 10px 25px 20px; 
+    box-sizing: border-box;
+    }
+    .write-comment::placeholder {
+    font-size: 16px;
+    opacity: 0,5;
+    color: #C06DFF;
+
+    }
+
+    /* Estilos responsive */
+    @media screen and (max-width: 768px) {
+        .comments-container {
+            max-width: 100%;
+            max-height: 75vh;
+            height: 75vh;
+            border-radius: 20px;
+            margin: 0;
         }
 
-          .user-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
-            border-radius: 32px 32px 0 0;
-            padding: 16px 24px;
-          }
+        .user-area {
+            gap: 20px;
+            border-radius: 20px 20px 0 0;
+        }
 
-          .profile-box {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-          }
+        .new-comment {
+            border-radius: 0 0 20px 20px;
+        }
 
-          .profile-pic {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: #1F1F1F;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
+        .comment-topl {
+            width: 60%;
+        }
 
-          .post-profile {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-          }
+        .comment-topr {
+            padding-right: 15px;
+        }
 
-          .post-user {
-            display: flex;
-            flex-direction: column;
-          }
+        .blue-btn {
+            width: 100px;
+            font-size: 16px;
+            margin-right: 0;
+        }
 
-          .heading4 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #fff;
-            margin: 0;
-          }
-
-          .smalltext {
-            font-size: 14px;
-            color: rgba(255,255,255,0.7);
-            margin: 0;
-          }
-
-          .blue-btn {
-            background: #5267EE;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 8px 20px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-          }
-
-          .comments {
-            flex: 1;
+        .comments {
+            margin: 120px 15px 98px 15px;
+            min-height: calc(75vh - 218px);
+            max-height: calc(75vh - 218px);
             overflow-y: auto;
+        }
+
+        .comment {
+            gap: 20px;
             padding: 12px 0;
-          }
+        }
 
-          .comments::-webkit-scrollbar {
-            display: none;
-          }
+        .write-comment {
+            margin: 15px;
+            width: calc(100% - 130px);
+        }
 
-          .new-comment {
-            background: #1F1F1F;
-            padding: 12px 16px;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            border-radius: 0 0 32px 32px;
-          }
+        #post-comment {
+            margin-right: 15px;
+        }
+    }
 
-          .write-comment {
-            flex: 1;
-            height: 40px;
-            background: #222;
-            border: 1px solid #C06DFF;
-            border-radius: 8px;
-            padding: 0 12px;
-            color: #C06DFF;
+    @media screen and (max-width: 480px) {
+        .comments-container {
+            border-radius: 15px;
+        }
+
+        .user-area {
+            border-radius: 15px 15px 0 0;
+        }
+
+        .new-comment {
+            border-radius: 0 0 15px 15px;
+        }
+
+        .profile-pic{
+            overflow: hidden;
+            height: 50px;
+            width: 50px;
+            margin-left: 15px;
+        }
+
+        .heading4 {
+            font-size: 20px;
+            margin-left: 15px;
+        }
+
+        .smalltext {
             font-size: 14px;
-            outline: none;
-          }
+            margin-left: 15px;
+        }
 
-          .write-comment::placeholder {
-            color: #C06DFF;
-            opacity: 0.6;
-          }
+        .blue-btn {
+            width: 80px;
+            height: 35px;
+            font-size: 14px;
+        }
 
-          /* Responsive */
-          @media (max-width: 480px) {
-            .comments-container {
-              width: 95%;
-              height: 70%;
-              border-radius: 24px;
-            }
+        #comment-name {
+            font-size: 18px;
+        }
 
-            .heading4 {
-              font-size: 16px;
-            }
+        #comment-user {
+            font-size: 14px;
+        }
 
-            .smalltext {
-              font-size: 13px;
-            }
+        #comment-msg {
+            font-size: 14px;
+        }
 
-            .blue-btn {
-              font-size: 13px;
-              padding: 6px 16px;
-            }
+        .write-comment {
+            height: 50px;
+            font-size: 14px;
+            width: calc(100% - 100px);
+        }
 
-            .write-comment {
-              font-size: 13px;
-              height: 36px;
-            }   
-          }
+        .write-comment::placeholder {
+            font-size: 14px;
+        }
+    }
         </style>
-
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
+        
         <div class="comments-overlay">
-          <div class="comments-container">
+        <div class="comments-container">
             <div class="user-area">
-              <div class="profile-box">
-                <div class="profile-pic">
-                  <img src="${this.getAttribute('pfp') || 'moods/boredpfp.svg'}" alt="" class="post-profile">
+                <div class="comment-topl">
+                    <div class="profile-pic">
+                    <img src="${this.getAttribute('pfp') || 'moods/boredpfp.svg'}" alt="" class="post-profile">
+                    </div>
+                    <div class="post-user">
+                    <h4 class="heading4">${this.getAttribute('name')}</h4>
+                    <p class="smalltext">${this.getAttribute('username')}</p>
+                    </div>
                 </div>
-                <div class="post-user">
-                  <h4 class="heading4">${this.getAttribute('name')}</h4>
-                  <p class="smalltext">${this.getAttribute('username')}</p>
+                <div class="comment-topr">
+                    <button class="blue-btn">Follow</button>
                 </div>
-              </div>
-              <button class="blue-btn">Follow</button>
             </div>
-
-            <div class="comments"></div>
-
+            <div class="comments">
+            </div>
             <div class="new-comment">
-              <input class="write-comment" placeholder="Write a comment..." />
-              <button class="blue-btn" id="post-comment">Publish</button>
+                <input class="write-comment" placeholder="Write a comment..."></input>
+                <button class="blue-btn" id="post-comment">Publish</button>
             </div>
-          </div>
         </div>
+    </div>
       `;
 
       // Render comentarios existentes
