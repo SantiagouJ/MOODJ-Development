@@ -19,28 +19,19 @@ class logIn extends HTMLElement {
             <link rel="stylesheet" href="./styles/logIn.css">
             
             <div class="container">
-
-
-                <div class="circle-container">
-
-                    <img class="yellow-circle" src="/images/moods2/happy-yellow-circle.svg" alt="">
-                    <img class="red-circle" src="/images/moods2/happy-red-circle.svg" alt="">
-
+                <div class="left-side">
+                    <div class="circle-container">
+                        <img class="yellow-circle" src="/images/moods2/happy-yellow-circle.svg" alt="">
+                        <img class="red-circle" src="/images/moods2/happy-red-circle.svg" alt="">
+                    </div>
+                    <h1 class="greeting">Welcome<br>back!</h1>
                 </div>
-
-                <h1 class="greeting">Welcome<br>back!</h1>
-
-                
-
                 <div class="card">
-
                     <div class="text-elements">
                         <h2 class="login-title">Login</h2>
                         <p class="welcome-text">Welcome back! Please log in to<br>your MOODJ account</p>
                     </div>
-
                     <div class="form-elements">
-
                         <form>
                             <label for="username">Username</label>
                             <input type="text" id="username" placeholder="Enter username">
@@ -51,15 +42,11 @@ class logIn extends HTMLElement {
                             </div>
                             <button type="submit" class="login-btn">Log in</button>
                         </form>
-
                         <div class="signup-row">
                             <span>New user? </span><a href="#" class="signup-link">sign up</a>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
                         
             `;
