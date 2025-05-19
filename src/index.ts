@@ -15,6 +15,7 @@ import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
 import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
 import { PrivateStats } from "./components/PrivateStats";
+import { UserLists } from "./components/userLists";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -26,6 +27,7 @@ if (!customElements.get("nav-bar")) {
     customElements.define("profile-preview", ProfilePreview);
   }
 
+customElements.define('user-lists', UserLists);
 customElements.define('private-stats', PrivateStats);
 customElements.define('navbar-landing', NavbarLanding);
 customElements.define('footer-element', FooterElement);
