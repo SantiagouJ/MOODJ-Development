@@ -14,6 +14,7 @@ import { Home } from "./components/pageComponents/Home";
 import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
 import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
+import { PrivateStats } from "./components/PrivateStats";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -24,6 +25,8 @@ if (!customElements.get("nav-bar")) {
   if (!customElements.get("profile-preview")) {
     customElements.define("profile-preview", ProfilePreview);
   }
+
+customElements.define('private-stats', PrivateStats);
 customElements.define('navbar-landing', NavbarLanding);
 customElements.define('footer-element', FooterElement);
 customElements.define('post-card', PostCard);
