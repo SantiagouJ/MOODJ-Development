@@ -17,6 +17,8 @@ import { CarouselComponent } from "./components/suggCarouselComponents/carouselC
 import { Profile } from "./components/pageComponents/Profile";
 import { ProfileRender } from "./components/profileComponents/ProfileRender";
 import { ProfilePost } from "./components/profileComponents/ProfilePost";
+import { AProfilePost } from "./components/otherProfile/AProfilePost";
+import { OtherProfile } from "./components/otherProfile/OtherProfile";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -42,4 +44,6 @@ customElements.define('user-card', UserCard);
 customElements.define('carousel-component', CarouselComponent);
 customElements.define('profile-page', Profile);
 customElements.define('profile-render', ProfileRender);
-customElements.define('profile-post', ProfilePost)
+customElements.define('profile-post', ProfilePost);
+customElements.define('a-profile-post', AProfilePost);
+customElements.define('other-profile', OtherProfile);
