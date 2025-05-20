@@ -17,8 +17,8 @@ class NavbarLanding extends HTMLElement {
           <link rel="stylesheet" href="/styles/navbarLanding.css">
           <div class="navbar">
           
-              <img class="logo" src="/logos/Logo-medium.svg" alt="Logo">
-              <img class="mobile-logo" src="/logos/Logo-small.svg" alt="Small-logo">
+              <img class="logo" src="/images/logos/Logo-medium.svg" alt="Logo">
+              <img class="mobile-logo" src="/images/logos/Logo-small.svg" alt="Small-logo">
 
               <div class="container-right">
 
@@ -28,7 +28,7 @@ class NavbarLanding extends HTMLElement {
                 </div>
 
                 <div>
-                  <img class="menu" src="/icons/Menu-responsive.svg" alt="Menu">
+                  <img class="menu" src="/images/icons/Menu-responsive.svg" alt="Menu">
                 </div>
 
               </div>

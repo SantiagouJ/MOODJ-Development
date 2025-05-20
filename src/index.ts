@@ -14,6 +14,8 @@ import { Home } from "./components/pageComponents/Home";
 import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
 import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
+import { LandingPage } from "./components/pageComponents/LandingPage";
+import { BannerLanding } from "./components/landingpage/bannerLanding";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -37,3 +39,5 @@ customElements.define('home-page', Home);
 customElements.define('user-carousel', UserCarousel);
 customElements.define('user-card', UserCard);
 customElements.define('carousel-component', CarouselComponent);
+customElements.define('landing-page', LandingPage);
+customElements.define('banner-landing', BannerLanding);
