@@ -11,8 +11,8 @@ class LandingPage extends HTMLElement{
         this.shadowRoot.innerHTML = `
         <navbar-landing></navbar-landing>
         <banner-landing></banner-landing>
+        <info-landing></info-landing>
         <footer-element></footer-element>
-
         `
     }
     }
