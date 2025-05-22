@@ -14,7 +14,11 @@ import { Home } from "./components/pageComponents/Home";
 import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
 import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
-import { logIn } from "./components/logIn";
+import { LandingPage } from "./components/pageComponents/LandingPage";
+import { BannerLanding } from "./components/landingpage/bannerLanding";
+import { InfoLanding } from "./components/landingpage/infoLanding";
+import { BannerTwo } from "./components/landingpage/bannerTwo";
+import { BannerThree } from "./components/landingpage/bannerThree";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -38,4 +42,8 @@ customElements.define('home-page', Home);
 customElements.define('user-carousel', UserCarousel);
 customElements.define('user-card', UserCard);
 customElements.define('carousel-component', CarouselComponent);
-customElements.define('log-in', logIn);
+customElements.define('landing-page', LandingPage);
+customElements.define('banner-landing', BannerLanding);
+customElements.define('info-landing', InfoLanding);
+customElements.define('banner-two', BannerTwo);
+customElements.define('banner-three', BannerThree);
