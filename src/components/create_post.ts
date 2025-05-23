@@ -65,7 +65,7 @@ class CreatePost extends HTMLElement {
         cover: this.selectedSong.album.cover_xl,
         preview: this.selectedSong.preview,
         user: {
-          profilePicture: '/moods/angrypfp.svg',
+          profilePicture: '/images/moods/angrypfp.svg',
           name: 'Leider',
           username: 'leider.js',
         }
