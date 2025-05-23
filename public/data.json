@@ -1,13 +1,13 @@
 [
     {
       "user": {
-        "profilePicture": "/moods/blushpfp.svg",
+        "profilePicture": "/images/moods/blushpfp.svg",
         "name": "Santiago",
         "username": "@santiti"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/d98eaccfbb945bdf68241d6de7fe6a49/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/happymood.svg",
+        "mood": "/images/moods/happymood.svg",
         "name": "VOY A LLeVARTE PA PR",
         "artistname": "Bad Bunny",
         "description": "This song makes me wanna dance all day and all night long! #benito #DtMF"
@@ -19,49 +19,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "This song feels like a home warm hug.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Luisa",
           "username": "@lulu",
           "comment": "This song feels like a home warm hug.",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "Just added this to my daily playlist.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "The beat? Immaculate.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Ollie",
           "username": "@puff",
           "comment": "This one goes straight to my heart every time.",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "You really got taste bro",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "Now I need to learn the lyrics lol",
@@ -71,13 +71,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/happypfp.svg",
+        "profilePicture": "/images/moods/happypfp.svg",
         "name": "Isa",
         "username": "@tiburcio"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/c64acd4abaf6e8f2d7c895b4b73f3764/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/happymood.svg",
+        "mood": "/images/moods/happymood.svg",
         "name": "1979",
         "artistname": "The Smashing Pumpkins",
         "description": "This song so beautiful and nostalgic! I love it so much"
@@ -89,49 +89,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "Pure serotonin. Love it.",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "100% mood booster",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "This one goes straight to my heart every time.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "We really do have the exact same taste",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Finn",
           "username": "@lulu",
           "comment": "Literally obsessed with this!",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "Such a banger, I can't stop listening.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Literally the best of bests!",
@@ -141,13 +141,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/blushpfp.svg",
+        "profilePicture": "/images/moods/blushpfp.svg",
         "name": "Eli",
         "username": "@elipinipon"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/a98df7a584f8a3f50d4bb312bdbc44ff/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/blushmood.svg",
+        "mood": "/images/moods/blushmood.svg",
         "name": "Red (Taylor's Version)",
         "artistname": "Taylor swift",
         "description": "A voice like this should be illegal. Def my favorite song #onrepeat"
@@ -159,49 +159,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "Autum vibes on point.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Ivy",
           "username": "@kiki",
           "comment": "Just added this to my daily playlist.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Yes, yes and yes, what's your fav album?",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "Red season is getting closer!",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "Pure serotonin. Love it.",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "The perfect amount of sad and mad",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "Pure emotion on the tv, even more than in the sv",
@@ -211,13 +211,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/boredpfp.svg",
+        "profilePicture": "/images/moods/boredpfp.svg",
         "name": "Luis z.",
         "username": "@terry"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/67bbf9fc8e49fc8d373c91963061572b/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/crymood.svg",
+        "mood": "/images/moods/crymood.svg",
         "name": "Dance The Night",
         "artistname": "Dua Lipa",
         "description": "Yes. Just yes. #vibes"
@@ -229,49 +229,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Pop icon",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "duolingos best hit",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "summer song",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Honestly this was her prime, a classic",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Lex",
           "username": "@bop",
           "comment": "Such a banger, I can't stop listening.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "100% mood booster",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Lex",
           "username": "@bop",
           "comment": "white girl music taste haha, love it",
@@ -281,13 +281,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/worriedpfp.svg",
+        "profilePicture": "/images/moods/worriedpfp.svg",
         "name": "Zara",
         "username": "@zuzu"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/98610629a40996b61b3d24bd5ab8c2e1/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/boredmood.svg",
+        "mood": "/images/moods/boredmood.svg",
         "name": "Flowers",
         "artistname": "Miley Cyrus",
         "description": "Independent anthem. #queen"
@@ -299,49 +299,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Zara",
           "username": "@zuzu",
           "comment": "The beat? Immaculate.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Ivy",
           "username": "@kiki",
           "comment": "OMG Miley queen love her sm",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "I danced to this in the kitchen today",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Now I need to learn the lyrics lol, what a song",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Ollie",
           "username": "@puff",
           "comment": "OMG this track gives me goosebumps!",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "You really got taste, respect, aura",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Lex",
           "username": "@bop",
           "comment": "Playing this on a nonstop loop! sue me!",
@@ -351,13 +351,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/happypfp.svg",
+        "profilePicture": "/images/moods/happypfp.svg",
         "name": "Ollie",
         "username": "@puff"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/87468622c8e7ac9dce7b541be136aa4c/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/blushmood.svg",
+        "mood": "/images/moods/blushmood.svg",
         "name": "Peaches",
         "artistname": "Justin Bieber",
         "description": "I got my peaches out in Georgia #sweet"
@@ -369,49 +369,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Justin golden era. Such an icon",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "This one goes straight to my heart every time.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "Just added this to my daily playlist.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Aww didn't this song, it's so sweet!",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "The beat? Immaculate.",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Finn",
           "username": "@lulu",
           "comment": "You really got taste, Justin supremacy",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "Pure serotonin. Love it.",
@@ -421,13 +421,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/smilypfp.svg",
+        "profilePicture": "/images/moods/smilypfp.svg",
         "name": "Raya",
         "username": "@nibs"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/fd00ebd6d30d7253f813dba3bb1c66a9/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/sadmood.svg",
+        "mood": "/images/moods/sadmood.svg",
         "name": "Blinding Lights",
         "artistname": "The Weeknd",
         "description": "Never gets old. #nostalgia"
@@ -439,49 +439,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "This song feels like a warm hug.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Zara",
           "username": "@zuzu",
           "comment": "Suuuuch a vibeee man",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "Just added this to my daily playlist.",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "The beat? Immaculate.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Finn",
           "username": "@lulu",
           "comment": "Kinda overated, but is my guilty pleasure I must admit.",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Finn",
           "username": "@lulu",
           "comment": "OMG this track gives me goosebumps!",
@@ -491,13 +491,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/angrypfp.svg",
+        "profilePicture": "/images/moods/angrypfp.svg",
         "name": "Finn",
         "username": "@lulu"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/137883cc0d312240318d61a1b005846f/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/smilymood.svg",
+        "mood": "/images/moods/smilymood.svg",
         "name": "abcdefu",
         "artistname": "GAYLE",
         "description": "Scream therapy. #raw"
@@ -509,49 +509,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Who needs therapy when having this banger?!",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "I danced to this in the kitchen today \ud83d\ude02",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "Just added this to my daily playlist.",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Your taste is soooo fine, recoemnd more" ,
           "likes": 5
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "100% mood booster \ud83c\udfb6",
@@ -561,13 +561,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/boredpfp.svg",
+        "profilePicture": "/images/moods/boredpfp.svg",
         "name": "Nova",
         "username": "@twix"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/dcacd1ec05df9b16b85f0d2b71816b55/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/angrymood.svg",
+        "mood": "/images/moods/angrymood.svg",
         "name": "Levitating",
         "artistname": "Dua Lipa",
         "description": "Catchiest beat ever. #groove"
@@ -579,49 +579,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Literally obsessed with this!",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "This one goes straight to my heart every time.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "This song feels like a warm hug.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "This one goes straight to my heart every time.",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Ollie",
           "username": "@puff",
           "comment": "The beat? Immaculate.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "Wooow, traveling to another planet with that beat",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "Pure serotonin. Love it.",
@@ -631,13 +631,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/blushpfp.svg",
+        "profilePicture": "/images/moods/blushpfp.svg",
         "name": "Lex",
         "username": "@bop"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/10adb38fa6ded265e61d7c95377e5484/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/worriedmood.svg",
+        "mood": "/images/moods/worriedmood.svg",
         "name": "Stay",
         "artistname": "The Kid LAROI & Justin Bieber",
         "description": "This duo >> #stay #believer4life"
@@ -649,49 +649,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "Literally obsessed with this!",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "I danced to this in the kitchen today \ud83d\ude02",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "Just added this to my daily playlist.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Lex",
           "username": "@bop",
           "comment": "This one goes straight to my fav songs.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Lex",
           "username": "@bop",
           "comment": "Just added this to my daily playlist.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "Just added this to my daily playlist.",
@@ -701,13 +701,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/angrypfp.svg",
+        "profilePicture": "/images/moods/angrypfp.svg",
         "name": "Ivy",
         "username": "@kiki"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/e68da86fd7976135c2d2d1715afaef7c/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/angrymood.svg",
+        "mood": "/images/moods/angrymood.svg",
         "name": "good 4 u",
         "artistname": "Olivia Rodrigo",
         "description": "She snapped on this one. #angst"
@@ -719,49 +719,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "Literally obsessed with this!",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Zara",
           "username": "@zuzu",
           "comment": "Such a banger, I can't stop listening.",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Why is the song 4 hours long? hehe.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Ivy",
           "username": "@kiki",
           "comment": "Just added this to my daily playlist.",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Ollie",
           "username": "@puff",
           "comment": "This one goes straight to my heart every time.",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Zara",
           "username": "@zuzu",
           "comment": "Literally obsessed with this!",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "OMG this track gives me goosebumps!",
@@ -771,13 +771,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/happypfp.svg",
+        "profilePicture": "/images/moods/happypfp.svg",
         "name": "Theo",
         "username": "@peep"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/08ef06855e180d24ececb12f2d4a9ef7/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/boredmood.svg",
+        "mood": "/images/moods/boredmood.svg",
         "name": "Heat Waves",
         "artistname": "Glass Animals",
         "description": "Summer in a song. #heat"
@@ -789,49 +789,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nova",
           "username": "@twix",
           "comment": "100% mood booster \ud83c\udfb6",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Finn",
           "username": "@lulu",
           "comment": "Your music taste is wonderful, let's be friends",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "Now I need to learn the lyrics lol",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "OMG this track gives me goosebumps!",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Ollie",
           "username": "@puff",
           "comment": "I have so many memories with this song.",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Remi",
           "username": "@nono",
           "comment": "The beat? Immaculate.",
@@ -841,13 +841,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/blushpfp.svg",
+        "profilePicture": "/images/moods/blushpfp.svg",
         "name": "Mika",
         "username": "@bibi"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/3cfd6900fd2b342ec0e478faf300f6a2/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/happymood.svg",
+        "mood": "/images/moods/happymood.svg",
         "name": "Industry Baby",
         "artistname": "Lil Nas X & Jack Harlow",
         "description": "Iconic from start to finish. #power"
@@ -859,49 +859,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Pure serotonin. Love it.",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Sky",
           "username": "@dodo",
           "comment": "This one goes straight to my heart every time.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "Saved this song to listen to it later in the subway",
           "likes": 9
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Just added this to my daily playlist.",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Raya",
           "username": "@nibs",
           "comment": "This song feels like a warm hug.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "We should marry based on our music taste",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Literally obsessed with this!",
@@ -911,13 +911,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/boredpfp.svg",
+        "profilePicture": "/images/moods/boredpfp.svg",
         "name": "Remi",
         "username": "@nono"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/fd00ebd6d30d7253f813dba3bb1c66a9/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/crymood.svg",
+        "mood": "/images/moods/crymood.svg",
         "name": "Save Your Tears",
         "artistname": "The Weeknd",
         "description": "Tears? Saved. #emotions"
@@ -929,49 +929,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Such a banger, I can't stop listening.",
           "likes": 7
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Remi",
           "username": "@nono",
-          "comment": "/moods/blushpfp.svg",
+          "comment": "/images/moods/blushpfp.svg",
           "likes": 8
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "This song feels like a warm hug.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "I danced to this in the club las weekend #neverendingparty",
           "likes": 5
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Ivy",
           "username": "@kiki",
           "comment": "This song feels like a warm hug.",
           "likes": 6
         },
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "OMG this track gives me goosebumps!",
           "likes": 2
         },
         {
-          "profilePicture": "/moods/worriedpfp.svg",
+          "profilePicture": "/images/moods/worriedpfp.svg",
           "name": "Juno",
           "username": "@jinx",
           "comment": "I danced to this in the kitchen today \ud83d\ude02",
@@ -981,13 +981,13 @@
     },
     {
       "user": {
-        "profilePicture": "/moods/smilypfp.svg",
+        "profilePicture": "/images/moods/smilypfp.svg",
         "name": "Sky",
         "username": "@dodo"
       },
       "song": {
         "img": "https://cdn-images.dzcdn.net/images/cover/66ae12120936d9660d3e30a7db7627b8/1000x1000-000000-80-0-0.jpg",
-        "mood": "/moods/happymood.svg",
+        "mood": "/images/moods/happymood.svg",
         "name": "Watermelon Sugar",
         "artistname": "Harry Styles",
         "description": "Tastes like summer. #sweetvibes"
@@ -999,49 +999,49 @@
       },
       "comments": [
         {
-          "profilePicture": "/moods/happypfp.svg",
+          "profilePicture": "/images/moods/happypfp.svg",
           "name": "Luna",
           "username": "@momo",
           "comment": "This song feels like a warm hug.",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/angrypfp.svg",
+          "profilePicture": "/images/moods/angrypfp.svg",
           "name": "Zara",
           "username": "@zuzu",
           "comment": "This song feels like a warm hug.",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Nico",
           "username": "@coco",
           "comment": "The beat? Immaculate.",
           "likes": 1
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Theo",
           "username": "@peep",
           "comment": "This song reminds me to my college days",
           "likes": 10
         },
         {
-          "profilePicture": "/moods/boredpfp.svg",
+          "profilePicture": "/images/moods/boredpfp.svg",
           "name": "Milo",
           "username": "@loopy",
           "comment": "LOL there are sm song I don't know about but are somehow so great",
           "likes": 4
         },
         {
-          "profilePicture": "/moods/smilypfp.svg",
+          "profilePicture": "/images/moods/smilypfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "Hosting a party themed by this song, every one is invited!",
           "likes": 3
         },
         {
-          "profilePicture": "/moods/blushpfp.svg",
+          "profilePicture": "/images/moods/blushpfp.svg",
           "name": "Mika",
           "username": "@bibi",
           "comment": "This one goes straight to my heart every time.",

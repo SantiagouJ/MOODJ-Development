@@ -43,8 +43,8 @@ class NavBar extends HTMLElement {
    
             <div class="navbar-home">
 
-                <img class="full-logo" src="/logos/Full-logo.svg" alt="">
-                <img class="mobile-logo" src="/logos/Logo-small.svg" alt="Small-logo">
+                <img class="full-logo" src="/images/logos/Full-logo.svg" alt="">
+                <img class="mobile-logo" src="/images/logos/Logo-small.svg" alt="Small-logo">
 
                 <div class="nav-buttons">
 
@@ -55,7 +55,7 @@ class NavBar extends HTMLElement {
 
                 <div class="search">
                 
-                    <img class="search-icon" src="/icons/search_icon.svg" alt="">
+                    <img class="search-icon" src="/images/icons/search_icon.svg" alt="">
 
                     <input type="search" placeholder="Find users...">
 
@@ -72,13 +72,13 @@ class NavBar extends HTMLElement {
 
                     <div class="pfp-container">
 
-                        <img class="pfp" src="/moods/angrypfp.svg" alt="">
+                        <img class="pfp" src="/images/moods2/Angry.svg" alt="">
 
                     </div>
                 </div>
 
                
-                  <img class="menu" src="icons/Menu-responsive.svg" alt="Menu">
+                  <img class="menu" src="/images/icons/Menu-responsive.svg" alt="Menu">
                 
     
             </div>
