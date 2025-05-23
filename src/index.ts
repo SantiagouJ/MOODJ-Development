@@ -16,6 +16,7 @@ import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
 import { SignUp } from "./components/pageComponents/SignUp";
 import { SignUpComp } from "./components/SignUpComp";
+import { logIn } from "./components/logIn";
 
 if (!customElements.get('create-post')) {
   customElements.define('create-post', CreatePost);
@@ -41,3 +42,4 @@ customElements.define('user-card', UserCard);
 customElements.define('carousel-component', CarouselComponent);
 customElements.define('sign-up', SignUp);
 customElements.define('sign-up-comp', SignUpComp);
+customElements.define('log-in', logIn);
