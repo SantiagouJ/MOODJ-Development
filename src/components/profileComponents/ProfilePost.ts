@@ -17,7 +17,7 @@ class ProfilePost extends HTMLElement{
                     <h2 id="song-title">Dance the night</h2>
                     <p id="artist">Dua Lipa</p>
                     <div class="mood-contain">
-                        <img src="moods/happymood.svg" id="mood">
+                        <img src="/images/moods/happymood.svg" id="mood">
                     </div>
                 </div>
                 

@@ -68,14 +68,13 @@
         border: 1px solid #C06DFF;
         background: var(--d-9-d-9-d-9, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A);
         color: #FFF;
-        font-family: Inter;
         font-size: 15px;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
     }
         .follow-button:hover {
-        transition: all 1s;
+        transition: all 0.2s;
         display: flex;
         width: 137px;
         height: 32px;
@@ -87,7 +86,6 @@
         border-radius: 11px;
         border: 1px solid #C06DFF;
         background: var(--d-9-d-9-d-9, #C06DFF);        color: #FFF;
-        font-family: Inter;
         font-size: 15px;
         font-style: normal;
         font-weight: 500;
@@ -103,7 +101,6 @@
 
     .stats p {
       color: rgba(255, 255, 255, 0.62);
-        font-family: Inter;
         font-size: 20px;
         font-style: normal;
         font-weight: 500;
@@ -114,7 +111,6 @@
     .stats h2 {
         margin: 0px;
         color: #FFF;
-        font-family: Inter;
         font-size: 20px;
         font-style: normal;
         font-weight: 500;

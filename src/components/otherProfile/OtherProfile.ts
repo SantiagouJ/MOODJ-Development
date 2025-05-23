@@ -13,7 +13,7 @@ class OtherProfile extends HTMLElement{
 
         <div class="banner">
         <div class="profile-container">
-            <img src="moods/smilypfp.svg" class="profile-pic" />
+            <img src="/images/moods/smilypfp.svg" class="profile-pic" />
         </div>
         </div>
             <div class="profile-info">
