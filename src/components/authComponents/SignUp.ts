@@ -1,4 +1,4 @@
-import { initializeCarousel } from "./carrousel"
+import { initializeCarousel } from "../postComponents/carrousel"
 
 class SignUpComp extends HTMLElement {
   private currentSlideIndex: number = 0

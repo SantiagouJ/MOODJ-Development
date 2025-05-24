@@ -1,5 +1,5 @@
 import { FormattedPost } from "../adapters/adaptData";
-import { NewMoodj } from "./typeSong";
+import { NewMoodj } from "../utils/types/SongTypes";
 
 let listenerAdded = false; 
 

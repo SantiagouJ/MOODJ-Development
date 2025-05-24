@@ -1,44 +1,44 @@
 // Navigation Components
-import { NavBar } from "./components/navBar";
-import { NavbarLanding } from "./components/navbarLanding";
-import { FooterElement } from "./components/footer";
+import { NavBar } from "./components/navigationComponents/navBar";
+import { NavbarLanding } from "./components/navigationComponents/navbarLanding";
+import { FooterElement } from "./components/navigationComponents/footer";
 
 // Post and Comment Components
-import { CreatePost } from "./components/create_post";
+import { CreatePost } from "./components/homeComponents/create_post";
 import { PostCard } from "./components/postComponents/Post";
 import { PostSong } from "./components/postComponents/PostSong";
 import { CommentsOverlay } from "./components/postComponents/CommentsOverlay";
 import { CommentCard } from "./components/postComponents/CommentCard";
-import { HomePosts } from "./components/renderPosts/homePosts";
+import { HomePosts } from "./components/homeComponents/homePosts";
 import { RecentPosts } from "./components/newPost";
 
 // Stats and Profile Components
-import { WeeklyStats } from "./components/WeeklyStats";
-import { ProfilePreview } from "./components/ProfilePreview";
-import { PrivateStats } from "./components/PrivateStats";
-import { UserLists } from "./components/userLists";
+import { WeeklyStats } from "./components/homeComponents/WeeklyStats";
+import { ProfilePreview } from "./components/navigationComponents/ProfilePreview";
+import { PrivateStats } from "./components/profileComponents/stats/PrivateStats";
+import { UserLists } from "./components/profileComponents/lists/userLists";
 
 // Page Components
-import { Home } from "./components/pageComponents/Home";
-import { Profile } from "./components/pageComponents/Profile";
-import { LandingPage } from "./components/pageComponents/LandingPage";
-import { SignUp } from "./components/pageComponents/SignUp";
+import { Home } from "./pages/Home";
+import { Profile } from "./pages/Profile";
+import { LandingPage } from "./pages/LandingPage";
+import { SignUp } from "./pages/SignUp";
 
 // Profile Related Components
 import { ProfileRender } from "./components/profileComponents/ProfileRender";
 import { ProfilePost } from "./components/profileComponents/ProfilePost";
-import { AProfilePost } from "./components/otherProfile/AProfilePost";
-import { OtherProfile } from "./components/otherProfile/OtherProfile";
+import { AProfilePost } from "./components/otherProfileComponents/AProfilePost";
+import { OtherProfile } from "./pages/OtherProfile";
 
 // Landing Page Components
-import { BannerLanding } from "./components/landingpage/bannerLanding";
-import { InfoLanding } from "./components/landingpage/infoLanding";
-import { BannerTwo } from "./components/landingpage/bannerTwo";
-import { BannerThree } from "./components/landingpage/bannerThree";
+import { BannerLanding } from "./components/landingComponents/bannerLanding";
+import { InfoLanding } from "./components/landingComponents/infoLanding";
+import { BannerTwo } from "./components/landingComponents/bannerTwo";
+import { BannerThree } from "./components/landingComponents/bannerThree";
 
 // Authentication Components
-import { SignUpComp } from "./components/SignUpComp";
-import { logIn } from "./components/logIn";
+import { SignUpComp } from "./components/authComponents/SignUp";
+import { logIn } from "./components/authComponents/logIn";
 
 // Carousel Components
 import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";

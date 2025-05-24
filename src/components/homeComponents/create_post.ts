@@ -1,7 +1,7 @@
-import { initializeCarousel } from "./carrousel"
-import { setupSearch } from "./musicSearch"
-import { Song } from "./typeSong"
-import { NewMoodj } from "./typeSong";
+import { initializeCarousel } from "../postComponents/carrousel"
+import { setupSearch } from "../../utils/musicAPI/musicSearch"
+import { Song } from "../../utils/types/SongTypes"
+import { NewMoodj } from "../../utils/types/SongTypes";
 
 class CreatePost extends HTMLElement {
   private selectedSong: Song | null = null;

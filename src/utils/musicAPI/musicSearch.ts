@@ -1,4 +1,4 @@
-import { Song } from "./typeSong"
+import { Song } from "../types/SongTypes"
 
 export function setupSearch(
   shadowRoot: ShadowRoot,
