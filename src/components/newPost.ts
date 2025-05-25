@@ -35,6 +35,7 @@ class RecentPosts extends HTMLElement {
                 name: song,
                 artistname: artist,
                 description: text,
+                previewUrl: detail.preview,
               },
               post: {
                 likes: 0,

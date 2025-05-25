@@ -65,7 +65,6 @@ class PostCard extends HTMLElement {
                 <p>${post.comments}</p>
               </div>
               <div class="interact-two">
-                <span class="material-symbols-outlined" id="send-icon">send</span>
                 <span class="material-symbols-outlined" id="save-icon">bookmark</span>
               </div>
             </div>

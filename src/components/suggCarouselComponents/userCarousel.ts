@@ -277,8 +277,8 @@ class UserCarousel extends HTMLElement {
             `).join('')}
           </div>
           
-          <img class="carousel-prev" src="/images/icons/Left-arrow.svg" alt="Prev">
-          <img class="carousel-next" src="/images/icons/Right-arrow.svg" alt="Next">
+<span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
+<span id="next-btn" class="carousel-next material-symbols-outlined">keyboard_arrow_right</span>
         </div>
       </div>
     `;
