@@ -52,11 +52,13 @@
     margin-left: 45px;
     margin-top: 12px;
     margin-bottom: 12px;
+    cursor: pointer;
 }
 .post-profile {
     margin-top: 10px;
     min-width: 30px;
     min-height: auto;
+    cursor: pointer;
 }
 
 .heading4 {
@@ -67,6 +69,7 @@
     font-weight: 500;
     line-height: normal;
     margin-top: 23px;
+    cursor: pointer;
 }
 
 .smalltext {
@@ -77,6 +80,7 @@
     line-height: normal;
     margin-top: 4px;
     margin-left: 24px;
+    cursor: default;
 }
 
 .post-topr {
@@ -98,6 +102,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    cursor: pointer;
 }
 
 .post-content {
@@ -166,6 +171,7 @@
 
 #play-song {
     font-size: 36px;
+    cursor: pointer;
 }
 
 #post-text {
@@ -201,21 +207,20 @@
 #heart-icon {
     font-size: 36px;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 #comment-icon {
     font-size: 36px;
     margin-left: 32px;
     margin-right: 8px;
-}
-
-#send-icon {
-    font-size: 36px;
+    cursor: pointer;
 }
 
 #save-icon {
     font-size: 36px;
     margin-left: 24px;
+    cursor: pointer;
 }
 
 .post-interact {
@@ -237,6 +242,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 }
 .interact-two {
     display: flex;
@@ -251,6 +257,7 @@
     font-weight: 300;
     line-height: normal;
     margin-left: 60px;
+    cursor:default;
 }
 .material-symbols-outlined.active {
   color: #C06DFF !important;
@@ -297,27 +304,32 @@
   .liked-by {
     padding-left: 16px;
     padding-right: 16px;
+    cursor: pointer;
   }
   
     .profile-pic {
       width: 48px;
       height: 48px;
       margin: 0;
+      cursor: pointer;
     }
   
     .post-profile {
       width: 100%;
       height: auto;
       margin: 0;
+      cursor: pointer;
     }
 
     .post-user {
       margin: 0;
+      cursor: pointer;
     }
   
     .heading4 {
       margin: 0;
       font-size: 16px;
+      cursor: pointer;
     }
   
     .smalltext {
@@ -338,6 +350,8 @@
       width: 105px;
       margin: 20px;
       border-radius: 8px;
+      cursor: pointer;
+      
     }
   
     .post-content {
@@ -399,6 +413,7 @@
   
     #play-song {
       font-size: 24px;
+      cursor: pointer;
     }
   
     .mood-contain {
@@ -420,6 +435,7 @@
   #send-icon,
   #save-icon {
     font-size: 24px;
+    cursor: pointer;
   }
   
     .post-interact {
@@ -431,10 +447,12 @@
       flex-wrap: wrap;
       font-size: 16px;
       height: 50px;
+      cursor: pointer;
     }
   
     .interact-one {
       display: flex;
+      cursor: pointer;
     }
     
     .interact-two {

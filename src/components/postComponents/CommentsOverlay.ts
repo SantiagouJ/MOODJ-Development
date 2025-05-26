@@ -1,52 +1,40 @@
-import { Comment } from "../../adapters/adaptData";
+import { createComment } from "../../services/Firebase/Posts/NewCommentService";
+import { CommentType } from "../../utils/types/CommentType";
+import { fetchComments } from "../../services/Firebase/Posts/GetCommentsService";
 
 class CommentsOverlay extends HTMLElement {
-  comments: Comment[] = [];
 
-  static get observedAttributes() {
-    return ['pfp', 'name', 'username'];
-  }
+    private comments: CommentType[] = [];
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
-  set data(commentsData: Comment[]) {
-    this.comments = commentsData;
-    this.render();
+   set data(comments: CommentType[]) {
+    this.comments = comments;
   }
 
   connectedCallback() {
-    if (this.hasAttribute('name') && this.comments) {
-      this.render();
-    }
-
-    const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
-    const commentBtn = this.shadowRoot?.querySelector('#post-comment');
-
-    overlay?.addEventListener('click', (event: MouseEvent) => {
-      if (event.target === overlay) this.remove();
-    });
-
-    commentBtn?.addEventListener('click', () => this.createComment());
+    this.render();
   }
 
-  createComment() {
+  async createComment() {
+    const postId = this.getAttribute('postId');
+    if (!postId) return;
     const input = this.shadowRoot?.querySelector('.write-comment') as HTMLInputElement;
     const inputVal = input?.value.trim();
     if (!inputVal) return;
 
-    const container = this.shadowRoot?.querySelector('.comments');
-    const commentCard = this.ownerDocument.createElement('comment-card');
-    commentCard.setAttribute('pfp', '/images/moods/angrypfp.svg');
-    commentCard.setAttribute('name', 'Leider');
-    commentCard.setAttribute('username', 'leider.js');
-    commentCard.setAttribute('comment', inputVal);
-    commentCard.setAttribute('likes', '0');
+    await createComment(postId, {
+    userId: "2PF9LdFvpdNg9o79u7pg",
+    content: inputVal,
+    likes: 0
+    });
 
-    container?.prepend(commentCard);
     input.value = '';
+    this.comments = await fetchComments(postId);
+    this.render();
   }
 
   render() {
@@ -432,7 +420,7 @@ class CommentsOverlay extends HTMLElement {
             <div class="user-area">
                 <div class="comment-topl">
                     <div class="profile-pic">
-                    <img src="${this.getAttribute('pfp') || 'moods/boredpfp.svg'}" alt="" class="post-profile">
+                    <img src="${this.getAttribute('pfp') || 'images/pfp/boredpfp.svg'}" alt="" class="post-profile">
                     </div>
                     <div class="post-user">
                     <h4 class="heading4">${this.getAttribute('name')}</h4>
@@ -453,16 +441,23 @@ class CommentsOverlay extends HTMLElement {
     </div>
       `;
 
+    const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
+    const commentBtn = this.shadowRoot?.querySelector('#post-comment');
+
+    overlay?.addEventListener('click', (event: MouseEvent) => {
+      if (event.target === overlay) this.remove();
+    });
+
+    commentBtn?.addEventListener('click', () => this.createComment());
+
       // Render comentarios existentes
       const container = this.shadowRoot.querySelector('.comments');
       if (!container) return;
 
       this.comments.forEach((comment) => {
         const commentCard = this.ownerDocument.createElement('comment-card');
-        commentCard.setAttribute('pfp', comment.profilePicture);
-        commentCard.setAttribute('name', comment.name);
-        commentCard.setAttribute('username', comment.username);
-        commentCard.setAttribute('comment', comment.comment);
+        commentCard.setAttribute('userId', comment.userId);
+        commentCard.setAttribute('comment', comment.content);
         commentCard.setAttribute('likes', comment.likes.toString());
         container.appendChild(commentCard);
       });

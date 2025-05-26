@@ -1,36 +1,109 @@
-import { FormattedPost, Song, Comment } from "../../adapters/adaptData";
+import { fetchUser } from "../../services/Firebase/GetUserService";
+import { fetchLikes } from "../../services/Firebase/Posts/GetLikesService";
+import { CommentType } from "../../utils/types/CommentType";
+import { fetchComments } from "../../services/Firebase/Posts/GetCommentsService";
+import { fetchLastLike } from "../../services/Firebase/Posts/LastLikeService";
+import { UserType } from "../../utils/types/UserType";
 
 class PostCard extends HTMLElement {
-
-  private _data!: FormattedPost;
-
-  set data(value: FormattedPost) {
-    this._data = value;
-    this.render();
-  }
-
-  get data(): FormattedPost {
-    return this._data;
-  }
+  private userData: UserType | null = null;
 
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
   }
 
-  connectedCallback() {
-    this.render();
+  async connectedCallback() {
+    const userId = this.getAttribute('userId');
+    if(userId) {
+      this.userData = await fetchUser(userId)
+    }
+    this.render()
   }
 
-  render() {
-    const { user, post, comments } = this._data;
 
-    if (this.shadowRoot !== null) {
-      const songCard = document.createElement('song-card') as HTMLElement & { data: Song & { username: string } };
-      songCard.data = {
-        ...this._data.song,
-        username: this._data.user.username,
+  async showPostLikes(postId: string) {
+
+  const likes = await fetchLikes(postId);
+  const totalLikes = likes.length;
+
+  const likesEl = this.shadowRoot?.querySelector("#post-likes");
+  if (!likesEl) return;
+  likesEl.textContent = `${totalLikes}`;
+
+  const latestLike = await fetchLastLike(postId);
+  console.log(latestLike)
+  if (latestLike) {
+  const user = await fetchUser(latestLike.userId);
+  if (user) {
+    const likedByElement = this.shadowRoot?.querySelector('.liked-by');
+    likedByElement!.innerHTML = `<span style="font-weight:600;">Liked by</span> ${user.username}`;
+  }
+}
+
+
+  }
+
+  async commentNumber(postId: string) {
+
+  const comments = await fetchComments(postId);
+  const totalComments = comments.length;
+
+  const commentsEl = this.shadowRoot?.querySelector("#comments");
+  if (!commentsEl) return;
+  commentsEl.textContent = `${totalComments}`;
+
+  }
+
+  async toggleComments(postId: string, overlayContainer: HTMLElement, userData:UserType) {
+    const existingOverlay = overlayContainer.querySelector("comments-over");
+    if (existingOverlay) {
+      overlayContainer.removeChild(existingOverlay);
+      return;
+  }
+
+  const comments = await fetchComments(postId);
+      const commentSection = document.createElement("comments-over") as HTMLElement & {
+        data: CommentType[];
       };
+
+      commentSection.data = comments;
+
+      if (!userData) return;
+      commentSection.setAttribute("pfp", userData.pfp);
+      commentSection.setAttribute("name", userData.name);
+      commentSection.setAttribute("username", userData.username);
+      commentSection.setAttribute("postId", postId);
+
+      overlayContainer.appendChild(commentSection);
+}
+
+
+  render() {
+    if (this.shadowRoot !== null) {
+
+      if (!this.userData) return;
+      const { username, name, pfp } = this.userData;
+
+      const title = this.getAttribute('title');
+      const artist = this.getAttribute('artist');
+      const album = this.getAttribute('album');
+      const audio = this.getAttribute('audio');
+      const mood = this.getAttribute('mood')
+      const caption = this.getAttribute('caption')
+      const postId = this.getAttribute('id');
+
+      if(!postId) return;
+
+      const songCard = document.createElement('song-card') as HTMLElement;
+      songCard.setAttribute('title', title || '');
+      songCard.setAttribute('artist', artist || '');
+      songCard.setAttribute('album', album || '');
+      songCard.setAttribute('audio', audio || '');
+      songCard.setAttribute('mood', mood || '')
+      songCard.setAttribute('caption', caption || '');
+      songCard.setAttribute('username', username);
+
 
       this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
@@ -42,11 +115,11 @@ class PostCard extends HTMLElement {
             <div class="post-top">
               <div class="post-topl">
                 <div class="profile-pic">
-                  <img src="${user.profilePicture}" alt="" class="post-profile">
+                  <img src="${pfp}" alt="" class="post-profile">
                 </div>
                 <div class="post-user">
-                  <h4 class="heading4">${user.name}</h4>
-                  <p class="smalltext">${user.username}</p>
+                  <h4 class="heading4">${name}</h4>
+                  <p class="smalltext">${username}</p>
                 </div>
               </div>
               <div class="post-topr">
@@ -59,75 +132,47 @@ class PostCard extends HTMLElement {
             <div class="post-interact">
               <div class="interact-one">
                 <span class="material-symbols-outlined" id="heart-icon">favorite</span>
-                <p id="post-likes">${post.likes}</p>
+                <p id="post-likes">0</p>
 
                 <span class="material-symbols-outlined" id="comment-icon">chat_bubble</span>
-                <p>${post.comments}</p>
+                <p id="comments">0</p>
               </div>
               <div class="interact-two">
-                <span class="material-symbols-outlined" id="send-icon">send</span>
                 <span class="material-symbols-outlined" id="save-icon">bookmark</span>
               </div>
             </div>
 
-            <p class="liked-by"><span style="font-weight:600;">${post.likedby}</span></p>
+            <p class="liked-by"></p>
           </div>
         </div>
       `;
 
+      // Show song information
       const songContainer = this.shadowRoot.querySelector('.song-space');
       songContainer?.appendChild(songCard);
 
-      const overlayContainer = this.shadowRoot!.querySelector('#overlay-container');
+      //Show likes through async function! 
+      this.showPostLikes(postId);
+      //Show how many comments
+      this.commentNumber(postId)
+
+
+      const overlayContainer = this.shadowRoot!.querySelector('#overlay-container') as HTMLElement;
       const commentsBtn = this.shadowRoot!.querySelector('#comment-icon');
-      commentsBtn?.addEventListener('click', () => {
-        this.toggleComments(comments, overlayContainer);
+
+      commentsBtn?.addEventListener("click", () => {
+        if(!this.userData) return;
+        this.toggleComments(postId, overlayContainer, this.userData);
       });
 
-      const heartIcon = this.shadowRoot!.querySelector('#heart-icon');
-      const sendIcon = this.shadowRoot!.querySelector('#send-icon');
+
       const saveIcon = this.shadowRoot!.querySelector('#save-icon');
-      const postLikes = this.shadowRoot!.querySelector('#post-likes')
-
-      let isFilled = false;
-      let currentLikes = post.likes; 
-
-      heartIcon?.addEventListener('click', () => {
-        isFilled = !isFilled;
-        heartIcon.classList.toggle('active');
-        post.likes++
-        currentLikes += isFilled ? 1 : -1;
-        if(postLikes != null) {
-          postLikes.textContent = `${currentLikes}`;
-        }
-      });
-
-      sendIcon?.addEventListener('click', () => {
-        sendIcon.classList.toggle('active');
-      });
 
       saveIcon?.addEventListener('click', () => {
         saveIcon.classList.toggle('active');
       });
     }
   }
-
-  toggleComments(comments: Comment[], container: Element | null) {
-    if (!container) return;
-
-    const existing = container.querySelector('comments-over');
-    if (existing) {
-      container.innerHTML = '';
-      return;
-    }
-
-    const commentSection = document.createElement('comments-over') as HTMLElement & { data: Comment[] };
-    commentSection.data = comments;
-    commentSection.setAttribute('pfp', this.data.user.profilePicture);
-    commentSection.setAttribute('name', this.data.user.name);
-    commentSection.setAttribute('username', this.data.user.username);
-    container.appendChild(commentSection);
   }
-}
 
 export { PostCard };

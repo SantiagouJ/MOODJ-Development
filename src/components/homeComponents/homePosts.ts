@@ -1,12 +1,8 @@
-import { dataToPost } from "../../adapters/adaptData"
-import { FormattedPost } from "../../adapters/adaptData";
-import { fetchPosts } from "../../services/Firebase/GetPostsService";
+import { fetchPosts } from "../../services/Firebase/Posts/GetPostsService";
 import { GetDataActions } from "../../flux/Actions";
 import { store, State } from "../../flux/Store";
-import { getData } from "../../services/getMock"
 
 class HomePosts extends HTMLElement{
-    postsData: FormattedPost[] = [];
     constructor() {
         super();
         store.subscribe((state: State) => {this.handleChange(state)});
@@ -19,19 +15,16 @@ class HomePosts extends HTMLElement{
 
     async connectedCallback() {
         await this.loadPosts();
-        const response = await getData()
-        this.postsData = dataToPost(response);
         this.render()
     }
 
     async loadPosts() {
     const data = await fetchPosts();// Firebase call! 
     GetDataActions.getPosts(data); //Flux dispatch to store data
-  }
+    }  
 
     render(state = store.getState()) {
       const posts = state.posts;
-      console.log(posts)
         if (this.shadowRoot !== null) {
         
         this.shadowRoot.innerHTML = `
@@ -41,13 +34,20 @@ class HomePosts extends HTMLElement{
         </div>
         `
         const container = this.shadowRoot?.querySelector('.post-container');
-        this.postsData.forEach(post => {
-          const postCard = document.createElement('post-card') as HTMLElement & { data: FormattedPost };
-          postCard.data = post;
-          container?.appendChild(postCard);
-        });
-        
 
+        posts.forEach(post => {
+          const postEl = document.createElement('post-card') as HTMLElement;
+          postEl.setAttribute('id', post.id);
+          postEl.setAttribute('title', post.title);
+          postEl.setAttribute('artist', post.artist);
+          postEl.setAttribute('album', post.album);
+          postEl.setAttribute('audio', post.audio);
+          postEl.setAttribute('mood', post.mood);
+          postEl.setAttribute('caption', post.caption);
+          postEl.setAttribute('userId', post.userId);
+
+          container?.appendChild(postEl);
+        })
     }
     }
 

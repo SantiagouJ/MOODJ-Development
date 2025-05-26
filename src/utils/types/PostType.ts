@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface PostType {
     id: string,
     title: string,
@@ -7,4 +9,5 @@ export interface PostType {
     mood: string,
     caption: string,
     userId: string,
+    createdAt: Timestamp
 }

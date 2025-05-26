@@ -1,10 +1,16 @@
-import { State } from "./Store";
-import { DataActionTypes } from "./Actions";
-import { Post } from "../adapters/adaptData";
+import { DataActionTypes, UserActionsType } from "./Actions";
+import { NewPostTypes } from "./Actions";
+import { PostType } from "../utils/types/PostType";
+import { UserCredential } from "firebase/auth";
 
 export type Action =
-  | { type: typeof DataActionTypes.GET_POSTS; payload: Post[] }
-  | { type: string; payload?: any }; // fallback or other actions
+  | { type: typeof DataActionTypes.GET_POSTS; payload: PostType[] }
+  | { type: typeof NewPostTypes.NEW_POST; payload: PostType}
+  | { type: typeof UserActionsType.CHECK_AUTH }
+  | { type: typeof UserActionsType.SAVE_USER; payload: UserCredential }
+  | { type: typeof UserActionsType.LOGOUT }
+  | { type: typeof DataActionTypes.GET_USER_POSTS; payload: string };
+
 
 
 export class Dispatcher {

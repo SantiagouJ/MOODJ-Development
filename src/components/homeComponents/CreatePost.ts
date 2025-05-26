@@ -1,7 +1,7 @@
 import { initializeCarousel } from "../postComponents/carrousel"
 import { setupSearch } from "../../utils/musicAPI/musicSearch"
 import { Song } from "../../utils/types/SongTypes"
-import { NewMoodj } from "../../utils/types/SongTypes";
+import { createPost } from "../../services/Firebase/Posts/NewPostService";
 
 class CreatePost extends HTMLElement {
   private selectedSong: Song | null = null;
@@ -38,6 +38,7 @@ class CreatePost extends HTMLElement {
   
     const input = this.shadowRoot.querySelector('#input2') as HTMLInputElement;
     const text = input?.value.trim();
+    const userId = '2PF9LdFvpdNg9o79u7pg';
 
     if (text.length > 120) {
       alert("Input limit is 120 characters.");
@@ -55,25 +56,19 @@ class CreatePost extends HTMLElement {
     }
     const currentSlide = this.slides[this.currentSlideIndex];
     const mood = currentSlide?.getAttribute('data-mood') || '/photos/Smily.svg';
-      
-    this.dispatchEvent(new CustomEvent<NewMoodj>('post-created', {
-      detail: {
-        mood,
-        text,
-        song: this.selectedSong.title,
-        artist: this.selectedSong.artist.name,
-        cover: this.selectedSong.album.cover_xl,
-        preview: this.selectedSong.preview,
-        user: {
-          profilePicture: '/images/moods/angrypfp.svg',
-          name: 'Leider',
-          username: 'leider.js',
-        }
-      },
-      bubbles: true, 
-      composed: true 
-    }));
-    
+
+    //Call CreatePost which is a firebase function that also calls the dispatcher using flux...
+    createPost(
+      {
+          title: this.selectedSong.title,
+          artist: this.selectedSong.artist.name,
+          album: this.selectedSong.album.cover_xl,
+          audio: this.selectedSong.preview,
+          mood: mood,
+          caption: text,
+          userId: userId,
+      }
+    )
     const text2 = this.shadowRoot.querySelector("#text2") as HTMLParagraphElement
     const text3 = this.shadowRoot.querySelector("#text3") as HTMLParagraphElement
     const musicImgDiv = this.shadowRoot.querySelector("#music-img") as HTMLDivElement

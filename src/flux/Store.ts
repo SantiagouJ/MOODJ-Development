@@ -1,14 +1,16 @@
+import { UserCredential } from 'firebase/auth';
+import { User } from 'firebase/auth';
+import { UserType } from '../utils/types/UserType';
+import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes } from './Actions';
+import { DataActionTypes, NewPostTypes, UserActionsType } from './Actions';
 
-export type User = {
-    name: string;
-    age: number;
-}
 
 export type State = {
     posts: PostType[];
+    isAuthenticated: boolean;
+    userAuthenticated: UserCredential | UserType | User | null;
 };
 
 type Listener = (state: State) => void;
@@ -16,7 +18,9 @@ type Listener = (state: State) => void;
 
 class Store {
     private _myState: State = {
-        posts: []
+        posts: [],
+        isAuthenticated: false,
+        userAuthenticated: null
     }
 
     private _listeners: Listener[] = [];
@@ -37,6 +41,40 @@ class Store {
                         posts: action.payload,
                     }   
                 this._emitChange();
+            break;
+            case NewPostTypes.NEW_POST:
+                    this._myState = {
+                        ...this._myState,
+                        posts: [...this._myState.posts, action.payload]
+                    }   
+                this._emitChange();
+            break;
+            case UserActionsType.SAVE_USER:
+                this._myState = {
+                    ...this._myState,
+                    isAuthenticated: true,
+                    userAuthenticated: action.payload as UserCredential
+                }
+                this._emitChange();
+
+                break;
+            case UserActionsType.CHECK_AUTH:
+                auth.onAuthStateChanged((user) => {
+                    if (user) {
+                        this._myState = {
+                            ...this._myState,
+                            isAuthenticated: true,
+                            userAuthenticated: user,
+                        }
+                    } else {
+                        this._myState = {
+                            ...this._myState,
+                            isAuthenticated: false,
+                            userAuthenticated: null
+                        }
+                    }
+                    this._emitChange();
+                });
                 break;
         }
     }

@@ -4,7 +4,7 @@ import { NavbarLanding } from "./components/navigationComponents/navbarLanding";
 import { FooterElement } from "./components/navigationComponents/footer";
 
 // Post and Comment Components
-import { CreatePost } from "./components/homeComponents/create_post";
+import { CreatePost } from "./components/homeComponents/CreatePost";
 import { PostCard } from "./components/postComponents/Post";
 import { PostSong } from "./components/postComponents/PostSong";
 import { CommentsOverlay } from "./components/postComponents/CommentsOverlay";

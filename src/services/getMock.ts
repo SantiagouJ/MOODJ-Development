@@ -1,7 +1,6 @@
 async function getData() {
     return fetch("data.json")
     .then(function (response) {
-        console.log(response)
         return response.json()
     })
     .catch(function (error) {
