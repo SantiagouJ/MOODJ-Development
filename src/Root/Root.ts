@@ -19,8 +19,7 @@ class Root extends HTMLElement{
         this.shadowRoot.innerHTML = `
             <nav-bar></nav-bar>
             <profile-preview></profile-preview>
-            <home-page></home-page>
-            <footer></footer>
+            <footer-element></footer-element>
         `
     }
     }

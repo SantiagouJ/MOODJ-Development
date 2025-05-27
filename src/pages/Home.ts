@@ -40,7 +40,6 @@ class Home extends HTMLElement {
         wrapper.appendChild(document.createElement('recent-posts'));
         wrapper.appendChild(document.createElement('home-posts'));
         wrapper.appendChild(document.createElement('weekly-stats'));
-        wrapper.appendChild(document.createElement('footer-element'));
     
 
 

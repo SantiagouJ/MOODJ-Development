@@ -1,3 +1,5 @@
+import { store } from "../../flux/Store";
+import { State } from "../../flux/Store";
 
 class ProfileRender extends HTMLElement{
     constructor() {
@@ -5,24 +7,29 @@ class ProfileRender extends HTMLElement{
         this.attachShadow({mode: "open"})
     }
     async connectedCallback() {
-        this.render()
+        store.subscribe((state: State) => {
+            this.render(state);
+        });
     }
-    render() {
+    render(state: State) {
+        const user = state.userProfile;
+
         if (this.shadowRoot !== null) {
+
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="styles/profileComponents/profileView.css">
 
         <div class="banner">
         <div class="profile-container">
-            <img src="/images/moods/smilypfp.svg" class="profile-pic" />
+            <img src="${user?.pfp}" class="profile-pic" />
         </div>
         </div>
         <div class="profile-info">
             <div class="top-profile">
-            <h1 class="user-name">Kevin</h1>
+            <h1 class="user-name">${user?.name}</h1>
             <button id="edit-profile">Edit Profile</button>
         </div>
-            <p class="username">@odiosyri</p>
+            <p class="username">${user?.username}</p>
             <div class="stats">
                 <p><span style="color:white;font-weight:bold;">32</span> Followers</p>
                 <p><span style="color:white;font-weight:bold;">10</span> Following</p>

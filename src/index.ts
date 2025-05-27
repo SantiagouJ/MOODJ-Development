@@ -43,8 +43,8 @@ import { logIn } from "./components/authComponents/logIn";
 import { AuthError } from "./components/AuthError";
 
 // Carousel Components
-import { UserCarousel } from "./components/suggCarouselComponents/UserCarousel";
-import { UserCard } from "./components/suggCarouselComponents/UserCard";
+import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
+import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 
 // Define Navigation Components
@@ -67,7 +67,6 @@ customElements.define('recent-posts', RecentPosts);
 
 // Define Stats and Profile Components
 customElements.define("profile-preview", ProfilePreview);
-
 customElements.define('weekly-stats', WeeklyStats);
 customElements.define('private-stats', PrivateStats);
 customElements.define('user-lists', UserLists);

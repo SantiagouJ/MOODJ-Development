@@ -80,7 +80,7 @@ class NavBar extends HTMLElement {
                 <div class="pf">
                     <div class="user">
                         <h4>${profile.name}</h4>
-                        <p>${profile.username}</p>
+                        <p>@${profile.username}</p>
                     </div>
                     <div class="pfp-container">
                         <img class="pfp" src="${profile.pfp}" alt="">
