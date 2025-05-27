@@ -1,3 +1,5 @@
+import { NavigationActions } from "../../../flux/Actions";
+
 class PrivateStats extends HTMLElement{
     constructor() {
         super()
@@ -5,14 +7,28 @@ class PrivateStats extends HTMLElement{
     }
     connectedCallback() {
         this.render()
+        this.addEventListeners()
+    }
+
+    addEventListeners() {
+        if (!this.shadowRoot) return;
+        const prevBtn = this.shadowRoot.querySelector('#prev-btn');
+        prevBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/profile');
+        });
     }
     render(){ 
         if(this.shadowRoot){
             this.shadowRoot.innerHTML= `
 
             <link rel="stylesheet" href="/styles/privateStats.css">
+                    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
 
   <section class="stats-section">
+          <span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
+
     <div class="stats-header">
       <img src="images/stats/left-bubbles.svg" alt="left bubbles" class="bubble-decoration left">
       

@@ -9,6 +9,11 @@ body {
   .playlist-container {
     max-width: none;
     margin-left: 100px;
+    margin-top: 50px;
+  }
+  #prev-btn {
+    font-size: 40px;
+    cursor: pointer;
   }
   
   .back-button {
