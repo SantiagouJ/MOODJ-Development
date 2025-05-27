@@ -4,13 +4,14 @@ import { UserType } from '../utils/types/UserType';
 import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes, NewPostTypes, UserActionsType } from './Actions';
+import { DataActionTypes, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
 
 
 export type State = {
     posts: PostType[];
     isAuthenticated: boolean;
     userAuthenticated: UserCredential | UserType | User | null;
+    currentPath: string;
 };
 
 type Listener = (state: State) => void;
@@ -20,7 +21,8 @@ class Store {
     private _myState: State = {
         posts: [],
         isAuthenticated: false,
-        userAuthenticated: null
+        userAuthenticated: null,
+        currentPath: ""
     }
 
     private _listeners: Listener[] = [];
@@ -35,6 +37,21 @@ class Store {
 
     _handleActions(action: Action): void {
         switch (action.type) {
+            case NavigationActionsType.NAVIGATE:
+                this._myState = {
+                    ...this._myState,
+                    currentPath: action.payload
+                }
+                window.history.pushState({}, '', action.payload);
+                this._emitChange();
+                break;
+            case NavigationActionsType.UPDATE_PATH:
+                this._myState = {
+                    ...this._myState,
+                    currentPath: action.payload
+                }
+                this._emitChange();
+                break;
             case DataActionTypes.GET_POSTS:
                     this._myState = {
                         ...this._myState,
@@ -96,4 +113,4 @@ class Store {
     }
 }
 
-export const store = new Store();
+export const store=new Store();

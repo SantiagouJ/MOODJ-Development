@@ -1,4 +1,5 @@
-class logIn extends HTMLElement {
+import { NavigationActions } from "../../flux/Actions";
+class LogInComp extends HTMLElement {
 
     constructor() {
         super();
@@ -7,6 +8,18 @@ class logIn extends HTMLElement {
 
     connectedCallback() {
         this.render();
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        if (!this.shadowRoot) return;
+
+        const signUpLink = this.shadowRoot.querySelector('.signup-link');
+        signUpLink?.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            NavigationActions.navigate('/signup');
+        });
     }
 
     render() {
@@ -55,6 +68,6 @@ class logIn extends HTMLElement {
     }
 }
 
-export {logIn};
+export {LogInComp};
 
 
