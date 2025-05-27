@@ -1,3 +1,5 @@
+import { NavigationActions } from "../../flux/Actions";
+
 class NavBar extends HTMLElement {
 
     pfp: string = "";
@@ -12,6 +14,23 @@ class NavBar extends HTMLElement {
     connectedCallback() {
         this.render();
         this.setupListeners();
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        if (!this.shadowRoot) return;
+
+        const homeButton = this.shadowRoot.querySelector('#home-button');
+        homeButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/home');
+        });
+
+        const profileButton = this.shadowRoot.querySelector('#profile-button');
+        profileButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/profile');
+        });
     }
 
     static get observedAttributes() {
@@ -48,8 +67,8 @@ class NavBar extends HTMLElement {
 
                 <div class="nav-buttons">
 
-                    <button>Home</button>
-                    <button>Profile</button>
+                    <button id="home-button">Home</button>
+                    <button id="profile-button">Profile</button>
 
                 </div>
 

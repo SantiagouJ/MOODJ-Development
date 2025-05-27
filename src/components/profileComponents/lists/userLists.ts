@@ -10,12 +10,9 @@ class UserLists extends HTMLElement{
         if(this.shadowRoot){
             this.shadowRoot.innerHTML= `
 
-            <link rel="stylesheet" href="listStyles.css" />
+            <link rel="stylesheet" href="/styles/listStyles.css" />
 
     <div class="playlist-container">
-      <button class="back-button">
-        <img src="/images/icons/Left-arrow.svg" alt="" />
-      </button>
       <h1 class="playlist-title">My Lists</h1>
 
       <div class="playlist-card">

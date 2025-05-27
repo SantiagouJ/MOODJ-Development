@@ -1,4 +1,4 @@
-
+import { NavigationActions } from "../../flux/Actions";
 class ProfileRender extends HTMLElement{
     constructor() {
         super()
@@ -6,7 +6,26 @@ class ProfileRender extends HTMLElement{
     }
     async connectedCallback() {
         this.render()
+        this.addEventListeners();
     }
+
+    addEventListeners() {
+        if (!this.shadowRoot) return;
+
+        const yourStats = this.shadowRoot.querySelector('#your-stats');
+        yourStats?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/stats');
+        });
+
+        const yourLists = this.shadowRoot.querySelector('#your-lists');
+        yourLists?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/lists');
+        });
+
+    }
+
     render() {
         if (this.shadowRoot !== null) {
         this.shadowRoot.innerHTML = `
@@ -30,8 +49,8 @@ class ProfileRender extends HTMLElement{
             </div>
         </div>
         <div class="sections">
-            <img src="images/stats/your stats.png" alt="Your Statistics" class="profile-sections">
-            <img src="images/stats/your lists.png" alt="Your Lists" class="profile-sections">
+            <img src="images/stats/your stats.png" alt="Your Statistics" id="your-stats" class="profile-sections">
+            <img src="images/stats/your lists.png" alt="Your Lists" id="your-lists" class="profile-sections">
         </div>
         <profile-post class="container">
         </profile-post>
