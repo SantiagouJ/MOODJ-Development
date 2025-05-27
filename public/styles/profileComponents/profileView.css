@@ -1,5 +1,3 @@
-
-
 .banner {
     width: 100%px;
     height: 223px;
@@ -123,3 +121,308 @@
       align-items: center;
       justify-content: center;
     }
+
+    @media (max-width: 430px) {
+      .banner {
+          height: 140px;
+          border-radius: 0px 0px 0px 0px;
+          margin-top: 0px;
+      }
+  
+      .profile-container {
+          width: 70px;
+          height: 70px;
+          bottom: -35px;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+  
+      .profile-pic {
+          width: 50px;
+          height: 47px;
+      }
+  
+      .profile-info {
+          margin-top: 50px;
+          margin-left: 20px;
+          margin-right: 20px;
+          text-align: center;
+      }
+  
+      .top-profile {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 20px;
+      }
+  
+      .user-name {
+          font-size: 32px;
+          margin-bottom: 5px;
+          order: 1;
+      }
+  
+      .username {
+          font-size: 16px;
+          margin-bottom: 15px;
+          order: 2;
+      }
+  
+      .stats {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 40px;
+          margin-top: 0;
+          order: 3;
+          margin-bottom: 15px;
+      }
+  
+      .stats p {
+          font-size: 14px;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 2px;
+      }
+  
+      .stats span {
+          font-size: 18px;
+          font-weight: bold;
+          color: white;
+      }
+  
+      #edit-profile {
+          width: 120px;
+          height: 32px;
+          font-size: 14px;
+          padding: 8px 20px;
+          border-radius: 11px;
+          order: 4;
+          margin-top: 10px;
+      }
+  
+      .sections {
+          flex-direction: column;
+          margin-top: 30px;
+          gap: 16px;
+          padding: 0 20px;
+          align-items: center;
+          justify-content: center;
+      }
+  
+      .profile-sections {
+          width: 100%;
+          max-width: 350px;
+          height: auto;
+          border-radius: 18px;
+          border: 4px solid #5267EE;
+      }
+  
+      .container {
+          margin-top: 16px;
+          padding: 0 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+  }
+  
+/* Ajustes ultra precisos para iPhone 14 Pro Max (430x932px) */
+@media (min-width: 428px) and (max-width: 432px) and (min-height: 900px) {
+  .banner {
+    height: 150px;
+    border-radius: 0 0 28px 28px;
+    margin-top: 0;
+    padding: 0;
+  }
+  .profile-container {
+    width: 82px;
+    height: 82px;
+    left: 32px;
+    bottom: -48px;
+    transform: none;
+    box-shadow: 0 4px 16px 0 #0003;
+  }
+  .profile-pic {
+    width: 62px;
+    height: 58px;
+  }
+  .profile-info {
+    margin-top: 38px;
+    margin-left: 130px;
+    margin-right: 0;
+    text-align: left;
+    align-items: flex-start;
+    position: relative;
+  }
+  .user-name {
+    font-size: 2.1rem;
+    margin-bottom: 0;
+    font-weight: 700;
+    line-height: 1.1;
+    text-align: left;
+    margin-left: -1px;
+    margin-top: 22px;
+    width: max-content;
+    position: absolute;
+    left: -98px;
+    top: 0;
+  }
+  .username {
+    font-size: 1.05rem;
+    margin-bottom: 0;
+    color: #bdbdbd;
+    margin-left: -98px;
+    margin-top: -3px;
+  }
+  .stats {
+    gap: 18px;
+    margin-bottom: 0;
+    margin-left: 20px;
+    margin-top: -138px;
+  }
+  .stats p {
+    font-size: 0.98rem;
+    gap: 0;
+  }
+  .stats span {
+    font-size: 1.09rem;
+  }
+  #edit-profile {
+    width: 140px;
+    height: 34px;
+    font-size: 1rem;
+    margin-top: 40px;
+    margin-left: 135px;
+    border-radius: 15px;
+    padding: 7px 0;
+    box-sizing: border-box;
+  }
+  .sections {
+    flex-direction: column;
+    margin-top: 120px;
+    gap: 18px;
+    padding: 0 0;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile-sections {
+    max-width: 340px !important;
+    width: 95% !important;
+    border-radius: 14px !important;
+    border-width: 3px !important;
+    margin: 0 auto 10px auto !important;
+  }
+  .container {
+    margin-top: 12px;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .profile-sections {
+    box-shadow: 0 2px 12px 0 #0002;
+    background: #232323;
+  }
+  /* Tarjetas de música */
+  .music-card, .musicCard, .music-card-container {
+    width: 100%;
+    max-width: 390px;
+    margin: 0 auto 18px auto;
+    border-radius: 18px;
+    border: 4px solid #5267EE;
+    background: #181818;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 18px;
+    box-sizing: border-box;
+    padding: 10px 0 10px 10px;
+  }
+  .music-card img, .musicCard img {
+    width: 72px;
+    height: 72px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  .music-card .music-info, .musicCard .music-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+  }
+  .music-card .music-title, .musicCard .music-title {
+    font-size: 1.08rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 2px;
+  }
+  .music-card .music-artist, .musicCard .music-artist {
+    font-size: 0.98rem;
+    color: #bdbdbd;
+  }
+  .music-card .music-emoji, .musicCard .music-emoji {
+    width: 54px;
+    height: 54px;
+    margin-right: 10px;
+  }
+
+  profile-post.container:last-of-type, .container:last-of-type, profile-post:last-of-type, profile-post.container:last-child, .container:last-child {
+    max-width: 440px !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    border-width: 2px !important;
+    margin: 0 auto 6px auto !important;
+    box-sizing: border-box !important;
+    padding: 3px 0 3px 3px !important;
+    gap: 4px !important;
+    min-height: 40px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  profile-post.container:last-of-type img,
+  .container:last-of-type img,
+  profile-post:last-of-type img,
+  profile-post.container:last-child img,
+  .container:last-child img {
+    width: 400px !important;
+    height: 160px !important;
+    border-radius: 5px !important;
+  }
+  profile-post.container:last-of-type .music-emoji,
+  .container:last-of-type .music-emoji,
+  profile-post:last-of-type .music-emoji,
+  profile-post.container:last-child .music-emoji,
+  .container:last-child .music-emoji {
+    width: 400px;
+    height: 160px;
+  }
+  profile-post.container:last-of-type .music-title,
+  .container:last-of-type .music-title,
+  profile-post:last-of-type .music-title,
+  profile-post.container:last-child .music-title,
+  .container:last-child .music-title {
+    font-size: 0.65rem !important;
+  }
+  profile-post.container:last-of-type .music-artist,
+  .container:last-of-type .music-artist,
+  profile-post:last-of-type .music-artist,
+  profile-post.container:last-child .music-artist,
+  .container:last-child .music-artist {
+    font-size: 0.55rem !important;
+  }
+  /* Ajuste de padding inferior para evitar el notch */
+  body, .main-content, .profile-main {
+    padding-bottom: 32px !important;
+  }
+}
+  
