@@ -20,7 +20,25 @@ export const UserActionsType = {
     LOGOUT: 'LOGOUT'
 } as const;
 
+export const NavigationActionsType = {
+    NAVIGATE: 'NAVIGATE',
+    UPDATE_PATH: 'UPDATE_PATH'
+} as const;
 
+export const NavigationActions = {
+    navigate: (path: string) => {
+        AppDispatcher.dispatch({
+            type: NavigationActionsType.NAVIGATE,
+            payload: path
+        });
+    },
+    updatePath: (path: string) => {
+        AppDispatcher.dispatch({
+            type: NavigationActionsType.UPDATE_PATH,
+            payload: path
+        });
+    }
+}
 
 export const GetDataActions = {
     getPosts: (data: PostType[]) => {

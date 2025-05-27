@@ -1,3 +1,4 @@
+import { NavigationActions } from "../../flux/Actions";
 import { store } from "../../flux/Store";
 import { State } from "../../flux/Store";
 class NavBar extends HTMLElement {
@@ -69,8 +70,8 @@ class NavBar extends HTMLElement {
                 <img class="full-logo" src="/images/logos/Full-logo.svg" alt="">
                 <img class="mobile-logo" src="/images/logos/Logo-small.svg" alt="Small-logo">
                 <div class="nav-buttons">
-                    <button>Home</button>
-                    <button>Profile</button>
+                    <button id="home-button">Home</button>
+                    <button id="profile-button">Profile</button>
 
                 </div>
                 <div class="search">
@@ -89,6 +90,18 @@ class NavBar extends HTMLElement {
             </div>
             `;
             this.setupListeners();
+            const homeButton = this.shadowRoot.querySelector('#home-button');
+        homeButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/home');
+        });
+
+        const profileButton = this.shadowRoot.querySelector('#profile-button');
+        profileButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/profile');
+ });
+
         }
     }
 }

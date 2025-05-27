@@ -1,3 +1,5 @@
+import { NavigationActions } from "../../flux/Actions";
+
 class NavbarLanding extends HTMLElement {
   
     constructor() {
@@ -7,8 +9,32 @@ class NavbarLanding extends HTMLElement {
   
     connectedCallback(): void {
       this.render();
+      this.addEventListeners();
     }
   
+    addEventListeners() {
+      if (!this.shadowRoot) return;
+
+      const logo = this.shadowRoot.querySelector('.logo');
+      logo?.addEventListener('click', (e) => {
+        e.preventDefault();
+        NavigationActions.navigate('/');
+      });
+      
+      const signUpButton = this.shadowRoot.querySelector('.register-buttons button:last-child');
+      signUpButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        NavigationActions.navigate('/signup');
+      });
+
+      const signInButton = this.shadowRoot.querySelector('.register-buttons button:first-child');
+      signInButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        NavigationActions.navigate('/login');
+      });
+    }
   
     render() {
       if (this.shadowRoot){
