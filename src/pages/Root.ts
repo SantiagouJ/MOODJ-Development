@@ -1,5 +1,5 @@
 import { State, store } from "../flux/Store";
-import { UserActions, NavigationActions } from "../flux/Actions";
+import { UserActions} from "../flux/Actions";
 
 class Root extends HTMLElement {
     private lastPath: string = '';
