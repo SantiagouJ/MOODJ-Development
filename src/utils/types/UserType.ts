@@ -3,5 +3,7 @@ export interface UserType {
     username: string,
     name: string,
     email?: string,
-    pfp: string
+    pfp: string,
+    followers: [],
+    following: [],
 }

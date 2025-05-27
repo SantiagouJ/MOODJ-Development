@@ -11,8 +11,6 @@ export async function fetchLastLike(postId: string): Promise<LikeType | null> {
   );
 
   const snapshot = await getDocs(q);
-  console.log("Like snapshot size:", snapshot.size);
-
 
   if (snapshot.empty) return null;
 

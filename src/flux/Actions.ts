@@ -1,4 +1,5 @@
 import { PostType } from '../utils/types/PostType';
+import { UserType } from '../utils/types/UserType';
 import { AppDispatcher } from './Dispatcher';
 import { UserCredential } from "firebase/auth";
 
@@ -14,6 +15,7 @@ export const NewPostTypes = {
 
 export const UserActionsType = {
     SAVE_USER: 'SAVE_USER',
+    SET_CURRENT_USER: 'SET_CURRENT_USER',
     CHECK_AUTH: 'CHECK_AUTH',
     LOGOUT: 'LOGOUT'
 } as const;
@@ -50,6 +52,12 @@ export const UserActions = {
             type: UserActionsType.SAVE_USER,
             payload: user
         });
+    },
+    setUser: (profile: UserType) => {
+        AppDispatcher.dispatch({
+            type: UserActionsType.SET_CURRENT_USER,
+            payload: profile
+        })
     },
     checkAuth: () => {
         AppDispatcher.dispatch({

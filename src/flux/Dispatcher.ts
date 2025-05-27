@@ -2,12 +2,14 @@ import { DataActionTypes, UserActionsType } from "./Actions";
 import { NewPostTypes } from "./Actions";
 import { PostType } from "../utils/types/PostType";
 import { UserCredential } from "firebase/auth";
+import { UserType } from "../utils/types/UserType";
 
 export type Action =
   | { type: typeof DataActionTypes.GET_POSTS; payload: PostType[] }
   | { type: typeof NewPostTypes.NEW_POST; payload: PostType}
   | { type: typeof UserActionsType.CHECK_AUTH }
   | { type: typeof UserActionsType.SAVE_USER; payload: UserCredential }
+  | { type: typeof UserActionsType.SET_CURRENT_USER; payload: UserType }
   | { type: typeof UserActionsType.LOGOUT }
   | { type: typeof DataActionTypes.GET_USER_POSTS; payload: string };
 

@@ -1,51 +1,68 @@
+import { store } from "../../flux/Store";
+import { State } from "../../flux/Store";
+
 class ProfilePreview extends HTMLElement {
+    private listenersSetup = false;
+
     constructor() {
         super()
         this.attachShadow({ mode: "open" })
     }
 
     connectedCallback() {
-        this.render()
-        this.setupListeners()
+        store.subscribe((state: State) => {
+            this.render(state);
+        });       
+        if (!this.listenersSetup) {
+        this.setupListeners();
+        this.listenersSetup = true;
+        }
     }
 
     setupListeners() {
-        const container = this.shadowRoot?.querySelector(".profile-preview")
-
+        
         window.addEventListener("toggle-profile-preview", () => {
-            container?.classList.toggle("active")
+            const container = this.shadowRoot?.querySelector(".profile-preview");
+            if (!container) return;
+
+            requestAnimationFrame(() => {
+                container.classList.toggle("active");
+            });
         })
 
         window.addEventListener("click", (event) => {
             const composedPath = event.composedPath()
-            const target = event.composedPath()[0] as HTMLElement;
-
-            const clickedInsidePreview = target.closest('profile-preview');
+            const clickedInsidePreview = composedPath.some(node => node === this);
             const navBar = document.querySelector("nav-bar")
             const clickedInPf = navBar?.shadowRoot?.querySelector(".pf");
-const clickedInMenu = navBar?.shadowRoot?.querySelector(".menu");
+            const clickedInMenu = navBar?.shadowRoot?.querySelector(".menu");
 
-const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf);
-const clickedInsideMenu = clickedInMenu && composedPath.includes(clickedInMenu);
+            const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf);
+            const clickedInsideMenu = clickedInMenu && composedPath.includes(clickedInMenu);
 
-if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
-    container?.classList.remove("active");
-}
+            if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
+                const container = this.shadowRoot?.querySelector(".profile-preview");
+                if(!container) return;
+                container.classList.remove("active");
+            }
         })
     }
 
-    render() {
+    render(state: State) {
         if (this.shadowRoot) {
+
+            const profile = state.userProfile;
+
             this.shadowRoot.innerHTML = `
                 <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
                 <link rel="stylesheet" href="/styles/profilePreview.css">
 
                 <div class="profile-preview">
                     <div class="usercontainer">
-                        <div class="profilepicture"><img src="/images/moods2/Angry.svg" alt=""></div>
+                        <div class="profilepicture"><img src="${profile?.pfp}" alt=""></div>
                         <div class="user-data">
-                            <h3 class="name">Leider</h3>
-                            <h3 class="user">@leider.js</h3>
+                            <h3 class="name">${profile?.name}</h3>
+                            <h3 class="user">@${profile?.username}</h3>
                         </div>
                     </div>
                     <div class="container-img">

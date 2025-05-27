@@ -14,12 +14,17 @@ class HomePosts extends HTMLElement{
     }
 
     async connectedCallback() {
-        await this.loadPosts();
-        this.render()
-    }
+        const currentPosts = store.getState().posts;
+
+        if (currentPosts.length === 0) {
+            await this.loadPosts();
+        }
+
+        this.render();
+        }
 
     async loadPosts() {
-    const data = await fetchPosts();// Firebase call! 
+    const data = await fetchPosts(); // Firebase call! 
     GetDataActions.getPosts(data); //Flux dispatch to store data
     }  
 

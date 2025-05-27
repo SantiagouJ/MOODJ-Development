@@ -11,6 +11,7 @@ export type State = {
     posts: PostType[];
     isAuthenticated: boolean;
     userAuthenticated: UserCredential | UserType | User | null;
+    userProfile: UserType | null;
 };
 
 type Listener = (state: State) => void;
@@ -20,7 +21,8 @@ class Store {
     private _myState: State = {
         posts: [],
         isAuthenticated: false,
-        userAuthenticated: null
+        userAuthenticated: null,
+        userProfile: null,
     }
 
     private _listeners: Listener[] = [];
@@ -45,7 +47,7 @@ class Store {
             case NewPostTypes.NEW_POST:
                     this._myState = {
                         ...this._myState,
-                        posts: [...this._myState.posts, action.payload]
+                        posts: [action.payload, ...this._myState.posts]
                     }   
                 this._emitChange();
             break;
@@ -57,7 +59,7 @@ class Store {
                 }
                 this._emitChange();
 
-                break;
+            break;
             case UserActionsType.CHECK_AUTH:
                 auth.onAuthStateChanged((user) => {
                     if (user) {
@@ -75,7 +77,17 @@ class Store {
                     }
                     this._emitChange();
                 });
-                break;
+            break;
+            case UserActionsType.SET_CURRENT_USER:
+                if (JSON.stringify(this._myState.userProfile) !== JSON.stringify(action.payload)) {
+                    this._myState = {
+                    ...this._myState,
+                    userProfile: action.payload,
+                    isAuthenticated: true
+                    };
+                    this._emitChange();
+                }
+            break;
         }
     }
 

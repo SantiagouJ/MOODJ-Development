@@ -12,7 +12,7 @@ class NavbarLanding extends HTMLElement {
   
     render() {
       if (this.shadowRoot){
-  
+        
         this.shadowRoot.innerHTML = `
           <link rel="stylesheet" href="/styles/navbarLanding.css">
           <div class="navbar">

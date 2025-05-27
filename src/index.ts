@@ -19,6 +19,7 @@ import { PrivateStats } from "./components/profileComponents/stats/PrivateStats"
 import { UserLists } from "./components/profileComponents/lists/userLists";
 
 // Page Components
+import { Root } from "./Root/Root";
 import { Home } from "./pages/Home";
 import { Profile } from "./pages/Profile";
 import { LandingPage } from "./pages/LandingPage";
@@ -39,11 +40,12 @@ import { BannerThree } from "./components/landingComponents/bannerThree";
 // Authentication Components
 import { SignUpComp } from "./components/authComponents/SignUp";
 import { logIn } from "./components/authComponents/logIn";
+import { AuthError } from "./components/AuthError";
 
 // Carousel Components
-import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
-import { UserCard } from "./components/suggCarouselComponents/userCard";
-import { CarouselComponent } from "./components/suggCarouselComponents/carouselComponent";
+import { UserCarousel } from "./components/suggCarouselComponents/UserCarousel";
+import { UserCard } from "./components/suggCarouselComponents/UserCard";
+import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 
 // Define Navigation Components
 if (!customElements.get("nav-bar")) {
@@ -64,14 +66,14 @@ customElements.define('comments-over', CommentsOverlay);
 customElements.define('recent-posts', RecentPosts);
 
 // Define Stats and Profile Components
-if (!customElements.get("profile-preview")) {
-    customElements.define("profile-preview", ProfilePreview);
-}
+customElements.define("profile-preview", ProfilePreview);
+
 customElements.define('weekly-stats', WeeklyStats);
 customElements.define('private-stats', PrivateStats);
 customElements.define('user-lists', UserLists);
 
 // Define Page Components
+customElements.define('root-element', Root)
 customElements.define('home-page', Home);
 customElements.define('profile-page', Profile);
 customElements.define('landing-page', LandingPage);
@@ -92,6 +94,7 @@ customElements.define('banner-three', BannerThree);
 // Define Authentication Components
 customElements.define('sign-up-comp', SignUpComp);
 customElements.define('log-in', logIn);
+customElements.define('auth-error', AuthError)
 
 // Define Carousel Components
 customElements.define('user-carousel', UserCarousel);

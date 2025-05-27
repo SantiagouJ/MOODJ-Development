@@ -1,4 +1,4 @@
-import { initializeCarousel } from "../postComponents/carrousel"
+import { initializeCarousel } from "../CarouselMoods"
 import { registerUser } from "../../services/Firebase/Register/RegisterUserService"
 
 class SignUpComp extends HTMLElement {
@@ -71,11 +71,34 @@ class SignUpComp extends HTMLElement {
                 e.preventDefault();
                 const formData = new FormData(form);
                 const currentSlide = this.slides[this.currentSlideIndex];
-                const profilePicture = currentSlide?.getAttribute('data-mood') || '/photos/Smily.svg';
+                const mood = currentSlide?.getAttribute('data-mood');
+                let profilePic = ''
+
+                if(mood === 'images/moods2/Happy.svg') {
+                  profilePic = 'images/pfp/happypfp.svg';
+                } else if (mood === 'images/moods2/Angry.svg') {
+                  profilePic = 'images/pfp/angrypfp.svg';
+                } else if(mood === 'images/moods2/Crying.svg') {
+                  profilePic = 'images/pfp/crypfp.svg';
+                } else if(mood === 'images/moods2/Love.svg') {
+                  profilePic = 'images/pfp/blushpfp.svg';
+                } else if(mood === 'images/moods2/Sad.svg') {
+                  profilePic = 'images/pfp/sadpfp.svg';
+                } else if(mood === 'images/moods2/Serious.svg') {
+                  profilePic = 'images/pfp/boredpfp.svg';
+                } else if(mood === 'images/moods2/Smily.svg') {
+                  profilePic = 'images/pfp/smilypfp.svg';
+                } else if(mood === 'images/moods2/Worried.svg') {
+                  profilePic = 'images/pfp/worriedpfp.svg';
+                } else {
+                  profilePic = 'images/pfp/smilypfp.svg';
+                }
+                
                 const data = {
                 username: formData.get('username') as string,
+                name: formData.get('name') as string,
                 email: formData.get('email') as string,
-                pfp: profilePicture,
+                pfp: profilePic,
                 password: formData.get('password') as string,
                 }
 
@@ -92,7 +115,6 @@ class SignUpComp extends HTMLElement {
                         return;
                     }
                     alert('Usuario registrado exitosamente.');
-                    console.log('Usuario registrado:', response);
                 })
                 .catch((error) => {
                     console.error('Error al registrar el usuario:', error);
