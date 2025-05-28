@@ -1,4 +1,4 @@
-import { DataActionTypes, NavigationActionsType, UserActionsType } from "./Actions";
+import { DataActionTypes, InteractionActionsType, NavigationActionsType, UserActionsType } from "./Actions";
 import { NewPostTypes } from "./Actions";
 import { PostType } from "../utils/types/PostType";
 import { UserCredential } from "firebase/auth";
@@ -13,7 +13,8 @@ export type Action =
   | { type: typeof UserActionsType.LOGOUT }
   | { type: typeof DataActionTypes.GET_USER_POSTS; payload: string }
   | { type: typeof NavigationActionsType.NAVIGATE; payload: string }
-  | { type: typeof NavigationActionsType.UPDATE_PATH; payload: string };
+  | { type: typeof NavigationActionsType.UPDATE_PATH; payload: string }
+  | { type: typeof InteractionActionsType.SET_PROFILE_ID; payload: string };
 
 
 export class Dispatcher {

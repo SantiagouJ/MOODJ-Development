@@ -13,12 +13,17 @@ class Home extends HTMLElement {
         });
     }
 
-    render(state: State) {
+   async render(state: State) {
 
         if (this.shadowRoot !== null) {
 
         const profile = state.userProfile;
-        const isAuthenticated = state.isAuthenticated;
+        const isAuthenticated =  state.isAuthenticated;
+
+        if (isAuthenticated === null) {
+        this.shadowRoot.innerHTML = `<p>Loading...</p>`;
+        return;
+         }
 
         if (!isAuthenticated || !profile) {
         this.shadowRoot!.innerHTML = `

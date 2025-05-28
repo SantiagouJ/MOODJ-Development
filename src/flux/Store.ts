@@ -4,15 +4,16 @@ import { UserType } from '../utils/types/UserType';
 import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
+import { DataActionTypes, InteractionActionsType, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
 
 
 export type State = {
     posts: PostType[];
-    isAuthenticated: boolean;
+    isAuthenticated: boolean | null;
     userAuthenticated: UserCredential | UserType | User | null;
     userProfile: UserType | null;
     currentPath: string;
+    selectedProfile: string;
 };
 
 type Listener = (state: State) => void;
@@ -21,10 +22,11 @@ type Listener = (state: State) => void;
 class Store {
     private _myState: State = {
         posts: [],
-        isAuthenticated: false,
+        isAuthenticated: null,
         userAuthenticated: null,
         userProfile: null,
-        currentPath: ""
+        currentPath: '',
+        selectedProfile: '',
     }
 
     private _listeners: Listener[] = [];
@@ -57,14 +59,14 @@ class Store {
             case DataActionTypes.GET_POSTS:
                     this._myState = {
                         ...this._myState,
-                        posts: action.payload,
+                        posts: action.payload as PostType[],
                     }   
                 this._emitChange();
             break;
             case NewPostTypes.NEW_POST:
                     this._myState = {
                         ...this._myState,
-                        posts: [action.payload, ...this._myState.posts]
+                        posts: [action.payload as PostType, ...this._myState.posts]
                     }   
                 this._emitChange();
             break;
@@ -99,12 +101,20 @@ class Store {
                 if (JSON.stringify(this._myState.userProfile) !== JSON.stringify(action.payload)) {
                     this._myState = {
                     ...this._myState,
-                    userProfile: action.payload,
+                    userProfile: action.payload as UserType,
                     isAuthenticated: true
                     };
                     this._emitChange();
                 }
             break;
+            case InteractionActionsType.SET_PROFILE_ID:
+                    this._myState = {
+                    ...this._myState,
+                    selectedProfile: action.payload
+                }
+                this._emitChange();
+            break;
+
         }
     }
 

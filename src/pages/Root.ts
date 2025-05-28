@@ -27,17 +27,13 @@ class Root extends HTMLElement {
                 return;
             }
             
-            // Initial render
             this.render();
             
-            // Handle route change
             this.handleRouteChange();
             
-            // Login if not logged in
             if (!this.loggedIn) {
                 await loginWithTestUser();
                 this.loggedIn = true;
-                // Re-render after login
                 this.handleRouteChange();
             }
         } catch (error) {
@@ -51,15 +47,9 @@ class Root extends HTMLElement {
                 console.error('Shadow root not available in handleRouteChange');
                 return;
             }
-
             const path = state.currentPath || window.location.pathname;
-            console.log('Current path:', path);
-            
             const content = this.shadowRoot.querySelector('#content');
-            if (!content) {
-                console.error('Content element not found');
-                return;
-            }
+            if(!content) return;
 
             let contentHTML = '';
             switch (path) {
@@ -90,6 +80,12 @@ class Root extends HTMLElement {
                         <footer-element></footer-element>
                     `;
                     break;
+                case '/publicprofile':
+                    contentHTML = `
+                    <nav-bar></nav-bar>
+                    <other-profile></other-profile>
+                    `;
+                    break;
                 case '/lists':
                     contentHTML = `
                         <nav-bar></nav-bar>
@@ -103,7 +99,6 @@ class Root extends HTMLElement {
             }
 
             content.innerHTML = contentHTML;
-            console.log('Content updated for path:', path);
         } catch (error) {
             console.error('Error in handleRouteChange:', error);
         }
@@ -121,7 +116,6 @@ class Root extends HTMLElement {
                     <div>Loading...</div>
                 </div>
             `;
-            console.log('Initial render completed');
         } catch (error) {
             console.error('Error in render:', error);
         }

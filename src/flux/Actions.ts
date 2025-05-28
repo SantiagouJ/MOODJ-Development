@@ -25,6 +25,10 @@ export const NavigationActionsType = {
     UPDATE_PATH: 'UPDATE_PATH'
 } as const;
 
+export const InteractionActionsType = {
+    SET_PROFILE_ID: 'SET_PROFILE_ID'
+} as const
+
 export const NavigationActions = {
     navigate: (path: string) => {
         AppDispatcher.dispatch({
@@ -88,3 +92,12 @@ export const UserActions = {
         });
     }
 };
+
+export const InteractionActions = {
+    setProfileId: (userId: string) => {
+        AppDispatcher.dispatch({
+            type: InteractionActionsType.SET_PROFILE_ID,
+            payload: userId
+        })
+    }
+}

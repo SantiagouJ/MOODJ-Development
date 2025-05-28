@@ -4,6 +4,8 @@ import { CommentType } from "../../utils/types/CommentType";
 import { fetchComments } from "../../services/Firebase/Posts/GetCommentsService";
 import { fetchLastLike } from "../../services/Firebase/Posts/LastLikeService";
 import { UserType } from "../../utils/types/UserType";
+import { InteractionActions, NavigationActions } from "../../flux/Actions";
+import { store } from "../../flux/Store";
 
 class PostCard extends HTMLElement {
 
@@ -85,9 +87,12 @@ class PostCard extends HTMLElement {
 
   render() {
     if (this.shadowRoot !== null) {
+      const state = store.getState();
+      const user = state.userProfile;
 
       if (!this.userData) return;
       const { username, name, pfp } = this.userData;
+      const userId = this.userData.id;
 
       const title = this.getAttribute('title');
       const artist = this.getAttribute('artist');
@@ -119,7 +124,7 @@ class PostCard extends HTMLElement {
             <div class="post-top">
               <div class="post-topl">
                 <div class="profile-pic">
-                  <img src="${pfp}" alt="" class="post-profile">
+                  <img src="${pfp}" alt="" class="post-profile" id="open-profile">
                 </div>
                 <div class="post-user">
                   <h4 class="heading4">${name}</h4>
@@ -175,6 +180,16 @@ class PostCard extends HTMLElement {
       saveIcon?.addEventListener('click', () => {
         saveIcon.classList.toggle('active');
       });
+
+      const openProfile = this.shadowRoot!.querySelector('#open-profile');
+      openProfile?.addEventListener('click', () => {
+        if(userId === user?.id) {
+          NavigationActions.navigate(`/profile`);
+        } else {
+          InteractionActions.setProfileId(userId);
+          NavigationActions.navigate(`/publicprofile`);
+        }
+      })
     }
   }
 }
