@@ -40,7 +40,7 @@ class Root extends HTMLElement {
                 this.handleRouteChange();
             }
         } catch (error) {
-
+            console.error('Error in connectedCallback:', error);
         }
     }
 
@@ -106,7 +106,7 @@ class Root extends HTMLElement {
             content.innerHTML = contentHTML;
 
         } catch (error) {
-
+            console.error('Error in handleRouteChange:', error);
         }
     }
 
@@ -124,7 +124,7 @@ class Root extends HTMLElement {
             `;
             console.log('Initial render completed');
         } catch (error) {
-
+            console.error('Error in render:', error);
         }
     }
 }
