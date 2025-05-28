@@ -14,27 +14,11 @@ class ProfileRender extends HTMLElement{
     }
     
 
-    addEventListeners() {
-        if (!this.shadowRoot) return;
-
-        const yourStats = this.shadowRoot.querySelector('#your-stats');
-        yourStats?.addEventListener('click', (e) => {
-            e.preventDefault();
-            NavigationActions.navigate('/stats');
-        });
-
-        const yourLists = this.shadowRoot.querySelector('#your-lists');
-        yourLists?.addEventListener('click', (e) => {
-            e.preventDefault();
-            NavigationActions.navigate('/lists');
-        });
-
-    }
+    
 
     render(state: State) {
         const user = state.userProfile;
 
-        this.addEventListeners();
 
         if (this.shadowRoot !== null) {
 
@@ -66,6 +50,17 @@ class ProfileRender extends HTMLElement{
         </profile-post>
         
         `
+        const yourStats = this.shadowRoot.querySelector('#your-stats');
+        yourStats?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/stats');
+        });
+
+        const yourLists = this.shadowRoot.querySelector('#your-lists');
+        yourLists?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/lists');
+        });
     }
     }
 

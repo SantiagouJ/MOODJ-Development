@@ -23,7 +23,6 @@ class Root extends HTMLElement {
     async connectedCallback() {
         try {
             if (!this.shadowRoot) {
-                console.error('Shadow root not available');
                 return;
             }
             
@@ -41,29 +40,31 @@ class Root extends HTMLElement {
                 this.handleRouteChange();
             }
         } catch (error) {
-            console.error('Error in connectedCallback:', error);
+
         }
     }
 
     handleRouteChange(state = store.getState()) {
         try {
             if (!this.shadowRoot) {
-                console.error('Shadow root not available in handleRouteChange');
+
                 return;
             }
 
             const path = state.currentPath || window.location.pathname;
-            console.log('Current path:', path);
+
             
             const content = this.shadowRoot.querySelector('#content');
             if (!content) {
-                console.error('Content element not found');
+
                 return;
             }
 
             let contentHTML = '';
             switch (path) {
                 case '/':
+                    contentHTML = ` <landing-page></landing-page>`;
+                    break;
                 case '/home':
                     contentHTML = `
                         <nav-bar></nav-bar>
@@ -103,16 +104,16 @@ class Root extends HTMLElement {
             }
 
             content.innerHTML = contentHTML;
-            console.log('Content updated for path:', path);
+
         } catch (error) {
-            console.error('Error in handleRouteChange:', error);
+
         }
     }
 
     render() {
         try {
             if (!this.shadowRoot) {
-                console.error('Shadow root not available in render');
+
                 return;
             }
             
@@ -123,7 +124,7 @@ class Root extends HTMLElement {
             `;
             console.log('Initial render completed');
         } catch (error) {
-            console.error('Error in render:', error);
+
         }
     }
 }
