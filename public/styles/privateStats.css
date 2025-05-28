@@ -91,15 +91,7 @@ body {
   }
   
   .stats-data {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0px;
-    font-size: 25px;
-    font-weight: bold;
-    position: absolute;
-    left: 83%;
-    top: 8%;
+    display: none;
   }
   
   .division {
@@ -146,6 +138,8 @@ body {
     text-align: left;
     top: 6%;
     left: 7%;
+    margin-left: 177px;
+    margin-top: 322px;
   }
   
   .happy {
@@ -221,7 +215,7 @@ body {
     }
   
     .mobile-division {
-      margin-top: 120px;
+      margin-top: 22px;
       background-color: #5267EE;
       height: 4px;
       width: 280px;
@@ -235,7 +229,7 @@ body {
       text-align: right;
       font-size: 28px;
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 350px;
     }
   
     .stats-data,
@@ -258,6 +252,7 @@ body {
       height: 215px;
       margin-left: 25px;
       margin-bottom: 10px;
+      margin-top: 64px;
     }
   
     .happy,
@@ -317,26 +312,112 @@ body {
       width: 250px;
       height: 46px;
       margin-right: 50px;
+      line-height: 1.1 !important;
+      margin-bottom: 2px !important;
     }
   
-    .mobile-happy-data {
-      color: #FFEA4B;
-      line-height: 0;
+    .mobile-happy-data { color: #FFEA4B; }
+    .mobile-sad-data { color: #5267EE; }
+    .mobile-bored-data { color: #C06DFF; }
+    .mobile-angry-data { color: #FF6D6D; }
+  
+    .bubble-decoration.left {
+      left: 276px;
+      top: 165px;
+      width: 115px;
+      height: auto;
     }
   
-    .mobile-sad-data {
-      color: #5267EE;
-      line-height: 2;
+    .bubble-decoration.right {
+      right: 18px;
+      top: 40px;
+      width: 171px;
+      height: auto;
     }
   
-    .mobile-bored-data {
-      color: #C06DFF;
-      line-height: 4;
+    .stats-header {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 0;
+      margin-top: 24px;
+      margin-bottom: 0;
+      width: 100vw;
+      padding: 0;
+      position: relative;
+      z-index: 2;
     }
   
-    .mobile-angry-data {
-      color: #FF6D6D;
-      line-height: 6;
+    .title-texts {
+      align-items: flex-start;
+      margin-left: 35px;
+      margin-top: 55px;
+      margin-bottom: 0;
+      width: 90vw;
+    }
+  
+    .main-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 2px 0;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      text-align: left;
+      margin-top: -20px;
+    }
+  
+    .subtitle {
+      font-size: 16px;
+      color: #fff;
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: left;
+      opacity: 0.85;
+    }
+  
+    .stats-title {
+      display: block;
+      position: relative;
+      width: 90vw;
+      max-width: 191px;
+      height: auto;
+      margin: 20px 0 0 -220px;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      text-align: left;
+      opacity: 0.92;
+      z-index: 2;
+    }
+    .stats-title p {
+      margin: 0;
+      padding: 0;
+      font-size: inherit;
+      font-weight: inherit;
+      color: inherit;
+      line-height: inherit;
+      letter-spacing: inherit;
+      text-align: inherit;
+      opacity: inherit;
+    }
+    .stats-section {
+      min-height: 900px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .mobile-stats-data {
+      position: absolute;
+      width: 200px;
+      z-index: 10;
+      display: block;
+      margin-top: 410px;
+      margin-right: -68px;
     }
   }
   

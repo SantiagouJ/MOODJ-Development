@@ -10,27 +10,21 @@ class PrivateStats extends HTMLElement{
         if(this.shadowRoot){
             this.shadowRoot.innerHTML= `
 
-            <link rel="stylesheet" href="privateStats.css">
+            <link rel="stylesheet" href="/styles/privateStats.css">
 
   <section class="stats-section">
     <div class="stats-header">
-      <img src="public/images/stats/left-bubbles.svg" alt="left bubbles" class="bubble-decoration left">
+      <img src="images/stats/left-bubbles.svg" alt="left bubbles" class="bubble-decoration left">
       
       <div class="title-texts">
         <h1 class="main-title">Know your stats!</h1>
         <p class="subtitle">This week you felt:</p>
       </div>
       
-      <img src="public/images/stats/right-bubbles.svg" alt="right bubbles" class="bubble-decoration right">
+      <img src="images/stats/right-bubbles.svg" alt="right bubbles" class="bubble-decoration right">
     </div>
 
     <div class="statsbox">
-      <div class="stats-title">
-        <p>You felt mainly
-        Happy, and your songs helped
-        you express that! </p>
-      </div>
-
       <div class="stats-data">
         <div class="happy-data"><p>Happy 40%</p></div>
         <div class="sad-data"><p>Sad 30%</p></div>
@@ -53,6 +47,12 @@ class PrivateStats extends HTMLElement{
       <div class="bubble angry">
         <img src="images/stats/mad circle.svg" alt="mad face" class="mad-icon">
       </div>
+    </div>
+
+    <div class="stats-title">
+      <p>You felt mainly
+      Happy, and your songs helped
+      you express that! </p>
     </div>
 
     <div class="mobile-stats-data">
