@@ -47,6 +47,16 @@ class logIn extends HTMLElement {
                         </div>
                     </div>
                 </div>
+
+                <div class="bottom-container"> 
+
+                    <div class="circle-container-mobile">
+                            <img class="yellow-circle-mobile" src="/images/moods2/happy-yellow-circle.svg" alt="">
+                            <img class="red-circle-mobile" src="/images/moods2/happy-red-circle.svg" alt="">
+                        </div>
+
+                </div>
+
             </div>
                         
             `;
