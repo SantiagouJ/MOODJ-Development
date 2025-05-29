@@ -39,15 +39,12 @@ class SignUpComp extends HTMLElement {
                             <label for="username">Username</label>
                             <input type="text" id="username" placeholder="Enter username">
                             <label for="password">Email</label>
-                            <input type="password" id="email" placeholder="Enter email">
+                            <input type="text" id="email" placeholder="Enter email">
                             <label for="username">Password</label>
-                            <input type="text" id="password" placeholder="Enter password">
+                            <input type="password" id="password" placeholder="Enter password">
                             <label for="password">Confirm Password</label>
                             <input type="password" id="confirm-password" placeholder="Enter password">
-                            <button type="submit" class="login-btn">Sign up</button>
-                            <div class="forgot-row">
-                                <a href="#" class="forgot-link">Already have an account? sign in</a>
-                            </div>
+                            
                         </form>
                     </div>
                     <div id="createPost-carrousel">
@@ -60,6 +57,12 @@ class SignUpComp extends HTMLElement {
                         </div>
                         <p id="text-carrousel">Choose your avatar!</p>
                     </div>
+
+                    <button type="submit" class="login-btn">Sign up</button>
+                            <div class="forgot-row">
+                                <a href="#" class="forgot-link">Already have an account? sign in</a>
+                            </div>
+
                 </div>
     
     ` 
