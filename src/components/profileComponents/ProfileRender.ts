@@ -52,6 +52,7 @@ class ProfileRender extends HTMLElement {
 
     render(state: State, posts: PostType[], followers:number, following:number) {
         const user = state.userProfile;
+        const postNumber = posts.length;
 
         this.addEventListeners();
 
@@ -74,7 +75,7 @@ class ProfileRender extends HTMLElement {
             <div class="stats">
                 <p><span style="color:white;font-weight:bold;">${followers}</span> Followers</p>
                 <p><span style="color:white;font-weight:bold;">${following}</span> Following</p>
-                <p><span style="color:white;font-weight:bold;">2</span> Posts</p>
+                <p><span style="color:white;font-weight:bold;">${postNumber}</span> Posts</p>
             </div>
         </div>
         <div class="sections">
@@ -98,6 +99,17 @@ class ProfileRender extends HTMLElement {
 
                 container?.appendChild(postEl);
             });
+
+            const editProfile = this.shadowRoot.getElementById('edit-profile')
+            editProfile?.addEventListener('click', () => {
+                 const existingOverlay = document.querySelector('profile-overlay');
+                if (existingOverlay) {
+                    existingOverlay.remove(); 
+                }
+
+                const overlay = document.createElement('edit-profile');
+                document.body.appendChild(overlay);
+            })
         }
     }
 

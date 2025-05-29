@@ -18,6 +18,7 @@ import { WeeklyStats } from "./components/homeComponents/WeeklyStats";
 import { ProfilePreview } from "./components/navigationComponents/ProfilePreview";
 import { PrivateStats } from "./components/profileComponents/stats/PrivateStats";
 import { UserLists } from "./components/profileComponents/lists/userLists";
+import { EditProfile } from "./components/profileComponents/EditProfile";
 
 // Page Components
 import { Home } from "./pages/Home";
@@ -70,6 +71,7 @@ customElements.define("profile-preview", ProfilePreview);
 customElements.define('weekly-stats', WeeklyStats);
 customElements.define('private-stats', PrivateStats);
 customElements.define('user-lists', UserLists);
+customElements.define('edit-profile', EditProfile);
 
 // Define Page Components
 customElements.define('home-page', Home);

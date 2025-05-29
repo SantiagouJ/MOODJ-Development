@@ -38,6 +38,7 @@ class OtherProfile extends HTMLElement{
         if(!loggedUser) return;
         const userId = data.id;
         if(!userId) return;
+        const postNumber = posts.length;
         
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/otherProfile/otherView.css">
@@ -58,7 +59,7 @@ class OtherProfile extends HTMLElement{
                     </div>
                     <div>
                     <h2>Posts</h2>
-                    <p>2</p>
+                    <p>${postNumber}</p>
                     </div>
                     <div>
                     <h2>Following</h2>

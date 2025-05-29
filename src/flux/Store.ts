@@ -107,6 +107,16 @@ class Store {
                     this._emitChange();
                 }
             break;
+            case UserActionsType.NEW_NAME:
+                this._myState = {
+                    ...this._myState,
+                    userProfile: {
+                        ...this._myState.userProfile as UserType,
+                        name: action.payload,
+                    }
+                };
+                this._emitChange();
+            break;
             case InteractionActionsType.SET_PROFILE_ID:
                     this._myState = {
                     ...this._myState,

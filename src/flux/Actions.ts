@@ -17,7 +17,8 @@ export const UserActionsType = {
     SAVE_USER: 'SAVE_USER',
     SET_CURRENT_USER: 'SET_CURRENT_USER',
     CHECK_AUTH: 'CHECK_AUTH',
-    LOGOUT: 'LOGOUT'
+    LOGOUT: 'LOGOUT',
+    NEW_NAME: 'NEW_NAME'
 } as const;
 
 export const NavigationActionsType = {
@@ -79,6 +80,12 @@ export const UserActions = {
         AppDispatcher.dispatch({
             type: UserActionsType.SET_CURRENT_USER,
             payload: profile
+        })
+    },
+    updateName: (newName: string) => {
+        AppDispatcher.dispatch({
+            type: UserActionsType.NEW_NAME,
+            payload: newName
         })
     },
     checkAuth: () => {
