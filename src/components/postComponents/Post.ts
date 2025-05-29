@@ -9,6 +9,7 @@ import { store } from "../../flux/Store";
 import { followUser } from "../../services/Firebase/Follow/FollowUserService";
 import { isFollowing } from "../../services/Firebase/Follow/FollowUserService";
 import { unfollowUser } from "../../services/Firebase/Follow/FollowUserService";
+import { createLike, removeLike } from "../../services/Firebase/Posts/NewLikeService";
 
 
 class PostCard extends HTMLElement {
@@ -158,6 +159,40 @@ class PostCard extends HTMLElement {
           </div>
         </div>
       `;
+
+      // Add like/remove like functionality
+      const heartIcon = this.shadowRoot.querySelector('#heart-icon');
+      heartIcon?.addEventListener('click', async () => {
+        const state = store.getState();
+        const loggedUser = state.userProfile;
+        const postId = this.getAttribute('id');
+        if (!loggedUser || !postId) {
+          console.error('No hay usuario autenticado o postId');
+          return;
+        }
+
+        // Buscar si el usuario ya dio like a este post
+        const userLike = state.likes.find(like => like.userId === loggedUser.id && like.postId === postId);
+
+        if (userLike) {
+          // Si ya dio like, lo quitamos
+          try {
+            await removeLike(userLike);
+            console.log('Like eliminado');
+          } catch (error) {
+            console.error('Error al eliminar like:', error);
+          }
+        } else {
+          // Si no ha dado like, lo agregamos
+          try {
+            const newLike = await createLike(loggedUser.id, postId);
+            console.log('Like agregado:', newLike);
+          } catch (error) {
+            console.error('Error al agregar like:', error);
+          }
+        }
+      });
+  
 
       // Show song information
       const songContainer = this.shadowRoot.querySelector('.song-space');

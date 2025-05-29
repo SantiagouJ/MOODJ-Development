@@ -1,3 +1,4 @@
+import { LikeType } from '../utils/types/LikeType';
 import { PostType } from '../utils/types/PostType';
 import { UserType } from '../utils/types/UserType';
 import { AppDispatcher } from './Dispatcher';
@@ -11,6 +12,11 @@ export const DataActionTypes = {
 
 export const NewPostTypes = {
     NEW_POST: 'NEW_POST'
+} as const;
+
+export const LikeActionTypes = {
+    ADD_LIKE: 'ADD_LIKE',
+    REMOVE_LIKE: 'REMOVE_LIKE'
 } as const;
 
 export const UserActionsType = {
@@ -69,6 +75,20 @@ export const NewPostAction = {
     }
 };
 
+export const LikeActions = {
+    addLike: (likeData: LikeType) => {
+        AppDispatcher.dispatch({
+            type: LikeActionTypes.ADD_LIKE,
+            payload: likeData
+        });
+    },
+    removeLike: (likeData: LikeType) => {
+        AppDispatcher.dispatch({
+            type: LikeActionTypes.REMOVE_LIKE,
+            payload: likeData
+        });
+    }
+}
 export const UserActions = {
     saveUser: (user: UserCredential) => {
         AppDispatcher.dispatch({

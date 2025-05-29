@@ -1,8 +1,9 @@
-import { DataActionTypes, InteractionActionsType, NavigationActionsType, UserActionsType } from "./Actions";
+import { DataActionTypes, InteractionActionsType, NavigationActionsType, UserActionsType, LikeActionTypes } from "./Actions";
 import { NewPostTypes } from "./Actions";
 import { PostType } from "../utils/types/PostType";
 import { UserCredential } from "firebase/auth";
 import { UserType } from "../utils/types/UserType";
+import { LikeType } from "../utils/types/LikeType";
 
 export type Action =
   | { type: typeof DataActionTypes.GET_POSTS; payload: PostType[] }
@@ -15,7 +16,9 @@ export type Action =
   | { type: typeof DataActionTypes.GET_USER_POSTS; payload: string }
   | { type: typeof NavigationActionsType.NAVIGATE; payload: string }
   | { type: typeof NavigationActionsType.UPDATE_PATH; payload: string }
-  | { type: typeof InteractionActionsType.SET_PROFILE_ID; payload: string };
+  | { type: typeof InteractionActionsType.SET_PROFILE_ID; payload: string }
+  | { type: typeof LikeActionTypes.ADD_LIKE; payload: LikeType }
+  | { type: typeof LikeActionTypes.REMOVE_LIKE; payload: LikeType };
 
 
 export class Dispatcher {

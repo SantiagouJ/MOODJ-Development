@@ -4,7 +4,8 @@ import { UserType } from '../utils/types/UserType';
 import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes, InteractionActionsType, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
+import { DataActionTypes, InteractionActionsType, LikeActionTypes, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
+import { LikeType } from '../utils/types/LikeType';
 
 
 export type State = {
@@ -14,6 +15,7 @@ export type State = {
     userProfile: UserType | null;
     currentPath: string;
     selectedProfile: string;
+    likes: LikeType[];
 };
 
 type Listener = (state: State) => void;
@@ -27,6 +29,7 @@ class Store {
         userProfile: null,
         currentPath: '',
         selectedProfile: '',
+        likes: []
     }
 
     private _listeners: Listener[] = [];
@@ -68,6 +71,20 @@ class Store {
                         ...this._myState,
                         posts: [action.payload as PostType, ...this._myState.posts]
                     }   
+                this._emitChange();
+            break;
+            case LikeActionTypes.ADD_LIKE:
+                this._myState = {
+                    ...this._myState,
+                    likes: [action.payload as LikeType, ...this._myState.likes]
+                }
+                this._emitChange();
+            break;
+            case LikeActionTypes.REMOVE_LIKE:
+                this._myState = {
+                    ...this._myState,
+                    likes: this._myState.likes.filter(like => like.id !== action.payload.id)
+                }
                 this._emitChange();
             break;
             case UserActionsType.SAVE_USER:
