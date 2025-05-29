@@ -18,7 +18,12 @@ export type State = {
     likes: LikeType[];
 };
 
-type Listener = (state: State) => void;
+interface StoreListener {
+    (state: State): void;
+    interestedProperties?: string[];
+}
+
+type Listener = StoreListener;
 
 
 class Store {
@@ -78,15 +83,15 @@ class Store {
                     ...this._myState,
                     likes: [action.payload as LikeType, ...this._myState.likes]
                 }
-                this._emitChange();
-            break;
+                this._emitChangeToListeners(['likes']);
+                break;
             case LikeActionTypes.REMOVE_LIKE:
                 this._myState = {
                     ...this._myState,
                     likes: this._myState.likes.filter(like => like.id !== action.payload.id)
                 }
-                this._emitChange();
-            break;
+                this._emitChangeToListeners(['likes']);
+                break;
             case UserActionsType.SAVE_USER:
                 this._myState = {
                     ...this._myState,
@@ -152,7 +157,25 @@ class Store {
         }
     }
 
-    subscribe(listener: Listener): void {
+    private _emitChangeToListeners(properties: string[]): void {
+        const state = this.getState();
+        for (const listener of this._listeners) {
+            if (listener.interestedProperties) {
+                if (listener.interestedProperties.some(prop => properties.includes(prop))) {
+                    listener(state);
+                }
+            } else {
+                if (!properties.includes('likes')) {
+                    listener(state);
+                }
+            }
+        }
+    }
+
+    subscribe(listener: Listener, interestedProperties?: string[]): void {
+        if (interestedProperties) {
+            listener.interestedProperties = interestedProperties;
+        }
         this._listeners.push(listener);
         listener(this.getState());
     }
