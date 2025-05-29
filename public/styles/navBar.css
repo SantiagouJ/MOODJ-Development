@@ -133,7 +133,7 @@ body{
 .mobile-logo{
     display: none;
 }
-.menu{
+#menu{
     display: none;
 }
 
@@ -213,13 +213,13 @@ body{
            
     }
 
-    .menu {
+    #menu {
 
         display: block;
-        height: 50px;
         width: auto;
-        margin-bottom: 2px;
         margin-right: 42px;
+        margin-bottom: 18px;
+        font-size: 2rem;
     
     }
 

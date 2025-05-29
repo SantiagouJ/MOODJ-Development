@@ -17,6 +17,7 @@ class NavBar extends HTMLElement {
 
     setupListeners() {
         const pf = this.shadowRoot?.querySelector(".pf");
+        const menu = this.shadowRoot?.querySelector("#menu");
         if (pf) {
         pf.addEventListener("click", () => {
             queueMicrotask(() => {
@@ -24,7 +25,12 @@ class NavBar extends HTMLElement {
             });
         });
         }
-    
+        if (menu) {
+            menu.addEventListener("click", () => {
+                window.dispatchEvent(new CustomEvent("toggle-profile-preview"));
+                console.log("menu");
+            });
+        }
     }
     
 
@@ -65,6 +71,8 @@ class NavBar extends HTMLElement {
             this.shadowRoot.innerHTML = `
 
                 <link rel="stylesheet" href="/styles/navBar.css">
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
    
             <div class="navbar-home">
                 <img class="full-logo" src="/images/logos/Full-logo.svg" alt="">
@@ -87,6 +95,7 @@ class NavBar extends HTMLElement {
                         <img class="pfp" src="${profile.pfp}" alt="">
                     </div>
                 </div>
+                <span id="menu" class="material-symbols-outlined">menu</span>
             </div>
             `;
             this.setupListeners();
