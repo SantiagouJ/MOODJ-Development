@@ -44,6 +44,10 @@ class SignUpComp extends HTMLElement {
                             <input type="password" id="password" placeholder="Enter password">
                             <label for="password">Confirm Password</label>
                             <input type="password" id="confirm-password" placeholder="Enter password">
+                            <button type="submit" class="login-btn">Sign up</button>
+                            <div class="forgot-row">
+                                <a href="#" class="forgot-link">Already have an account? sign in</a>
+                            </div>
                             
                         </form>
                     </div>
@@ -58,8 +62,8 @@ class SignUpComp extends HTMLElement {
                         <p id="text-carrousel">Choose your avatar!</p>
                     </div>
 
-                    <button type="submit" class="login-btn">Sign up</button>
-                            <div class="forgot-row">
+                    <button type="submit" class="login-btn-mobile">Sign up</button>
+                            <div class="forgot-row-mobile">
                                 <a href="#" class="forgot-link">Already have an account? sign in</a>
                             </div>
 
