@@ -122,6 +122,40 @@ class PostCard extends HTMLElement {
       this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+        <style>
+          .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transition: all 0.3s ease;
+            cursor: pointer;
+          }
+          
+          .material-symbols-outlined.active {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transform: scale(1.1);
+          }
+
+          .material-symbols-outlined#heart-icon.active {
+            color: #ff4d4d;
+          }
+
+          .material-symbols-outlined#comment-icon.active {
+            color: #4d79ff;
+          }
+
+          .material-symbols-outlined#save-icon.active {
+            color: #ffd700;
+          }
+
+          @keyframes iconPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1.1); }
+          }
+
+          .material-symbols-outlined.active {
+            animation: iconPop 0.3s ease;
+          }
+        </style>
         <div id="overlay-container"></div>
         <div class="container">
           <div class="post-card">
@@ -178,6 +212,7 @@ class PostCard extends HTMLElement {
           // Si ya dio like, lo quitamos
           try {
             await removeLike(userLike);
+            heartIcon?.classList.remove('active');
             console.log('Like eliminado');
           } catch (error) {
             console.error('Error al eliminar like:', error);
@@ -186,6 +221,7 @@ class PostCard extends HTMLElement {
           // Si no ha dado like, lo agregamos
           try {
             const newLike = await createLike(loggedUser.id, postId);
+            heartIcon?.classList.add('active');
             console.log('Like agregado:', newLike);
           } catch (error) {
             console.error('Error al agregar like:', error);
@@ -259,6 +295,14 @@ class PostCard extends HTMLElement {
           }
           }
         });
+      }
+
+      // Check initial like state
+      if (loggedUser && postId) {
+        const userLike = state.likes.find(like => like.userId === loggedUser.id && like.postId === postId);
+        if (userLike) {
+          heartIcon?.classList.add('active');
+        }
       }
     }
 
