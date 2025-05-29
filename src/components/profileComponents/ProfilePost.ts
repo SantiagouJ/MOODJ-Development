@@ -8,16 +8,20 @@ class ProfilePost extends HTMLElement{
     }
     render() {
         if (this.shadowRoot !== null) {
+        const title = this.getAttribute('title');
+        const artist = this.getAttribute('artist');
+        const album = this.getAttribute('album');
+        const mood = this.getAttribute('mood')
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="styles/profileComponents/profilePost.css">
         <div class="post-border">
             <div class="post">
-                <img src="https://cdn-images.dzcdn.net/images/cover/67bbf9fc8e49fc8d373c91963061572b/1000x1000-000000-80-0-0.jpg" id="song-img">
+                <img src="${album}" id="song-img">
                 <div>
-                    <h2 id="song-title">Dance the night</h2>
-                    <p id="artist">Dua Lipa</p>
+                    <h2 id="song-title">${title}</h2>
+                    <p id="artist">${artist}</p>
                     <div class="mood-contain">
-                        <img src="/images/moods/happymood.svg" id="mood">
+                        <img src="${mood}" id="mood">
                     </div>
                 </div>
                 

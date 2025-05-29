@@ -62,20 +62,25 @@ class Root extends HTMLElement {
                     `;
                     break;
                 case '/login':
-                    contentHTML = `<log-in></log-in>`;
+                    contentHTML = `<log-in></log-in>
+                    <footer-element></footer-element>`;
                     break;
                 case '/signup':
-                    contentHTML = `<sign-up></sign-up>`;
+                    contentHTML = `<sign-up></sign-up>
+                    <footer-element></footer-element>`;
                     break;
                 case '/profile':
                     contentHTML = `
                         <nav-bar></nav-bar>
+                        <profile-preview></profile-preview>
                         <profile-page></profile-page>
+                        <footer-element></footer-element>
                     `;
                     break;
                 case '/stats':
                     contentHTML = `
                         <nav-bar></nav-bar>
+                        <profile-preview></profile-preview>
                         <private-stats></private-stats>
                         <footer-element></footer-element>
                     `;
@@ -83,12 +88,15 @@ class Root extends HTMLElement {
                 case '/publicprofile':
                     contentHTML = `
                     <nav-bar></nav-bar>
+                    <profile-preview></profile-preview>
                     <other-profile></other-profile>
+                    <footer-element></footer-element>
                     `;
                     break;
                 case '/lists':
                     contentHTML = `
                         <nav-bar></nav-bar>
+                        <profile-preview></profile-preview>
                         <user-lists></user-lists>
                         <footer-element></footer-element>
                     `;

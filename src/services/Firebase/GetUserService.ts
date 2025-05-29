@@ -16,6 +16,8 @@ export async function fetchUser(userId: string): Promise<UserType | null> {
     id: snapshot.id,
     username: data.username,
     name: data.name,
-    pfp: data.pfp
+    pfp: data.pfp,
+    followers: data.followers,
+    following: data.following
   } as UserType;
 }

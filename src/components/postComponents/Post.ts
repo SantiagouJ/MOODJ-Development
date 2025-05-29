@@ -6,6 +6,10 @@ import { fetchLastLike } from "../../services/Firebase/Posts/LastLikeService";
 import { UserType } from "../../utils/types/UserType";
 import { InteractionActions, NavigationActions } from "../../flux/Actions";
 import { store } from "../../flux/Store";
+import { followUser } from "../../services/Firebase/Follow/FollowUserService";
+import { isFollowing } from "../../services/Firebase/Follow/FollowUserService";
+import { unfollowUser } from "../../services/Firebase/Follow/FollowUserService";
+
 
 class PostCard extends HTMLElement {
 
@@ -88,8 +92,8 @@ class PostCard extends HTMLElement {
   render() {
     if (this.shadowRoot !== null) {
       const state = store.getState();
-      const user = state.userProfile;
-
+      const loggedUser = state.userProfile;
+      if (!loggedUser) return;
       if (!this.userData) return;
       const { username, name, pfp } = this.userData;
       const userId = this.userData.id;
@@ -101,7 +105,7 @@ class PostCard extends HTMLElement {
       const mood = this.getAttribute('mood')
       const caption = this.getAttribute('caption')
       const postId = this.getAttribute('id');
-      
+
       if (!postId) return;
 
       const songCard = document.createElement('song-card') as HTMLElement;
@@ -116,8 +120,7 @@ class PostCard extends HTMLElement {
 
       this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
         <div id="overlay-container"></div>
         <div class="container">
           <div class="post-card">
@@ -181,17 +184,52 @@ class PostCard extends HTMLElement {
         saveIcon.classList.toggle('active');
       });
 
+      //Open user profile
+
       const openProfile = this.shadowRoot!.querySelector('#open-profile');
       openProfile?.addEventListener('click', () => {
-        if(userId === user?.id) {
+        if (userId === loggedUser?.id) {
           NavigationActions.navigate(`/profile`);
         } else {
           InteractionActions.setProfileId(userId);
           NavigationActions.navigate(`/publicprofile`);
         }
-      })
+      });
+
+      //Follow functionality
+      const followBtn = this.shadowRoot?.querySelector("#follow-btn") as HTMLElement;
+      if(followBtn) {
+        isFollowing(loggedUser.id, userId).then((alreadyFollowing) => {
+          followBtn.textContent = alreadyFollowing ? "Following" : "Follow";
+          followBtn.style.backgroundColor = alreadyFollowing ? "#C06DFF" : "#2A2A2A";
+          followBtn.style.color = alreadyFollowing ? "white" : "white";
+        });
+
+        // call firebase to toggle follow or unfollow..
+        followBtn.addEventListener("click", async () => {
+          const following = await isFollowing(loggedUser.id, userId);
+          if(loggedUser.id != userId) {
+            try {
+            if (following) {
+              await unfollowUser(loggedUser.id, userId);
+              followBtn.textContent = "Follow";
+              followBtn.style.backgroundColor = "#2A2A2A"
+            } else {
+              await followUser(loggedUser.id, userId);
+              followBtn.textContent = "Following";
+              followBtn.style.backgroundColor = "#C06DFF"
+            }
+          } catch (e) {
+            console.error("Follow/unfollow failed:", e);
+          }
+          }
+        });
+      }
+    }
+
+
+
     }
   }
-}
 
 export { PostCard };

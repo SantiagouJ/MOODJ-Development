@@ -28,7 +28,6 @@ import { LogIn } from "./pages/LogIn";
 // Profile Related Components
 import { ProfileRender } from "./components/profileComponents/ProfileRender";
 import { ProfilePost } from "./components/profileComponents/ProfilePost";
-import { AProfilePost } from "./components/otherProfileComponents/AProfilePost";
 import { OtherProfile } from "./pages/OtherProfile";
 
 // Landing Page Components
@@ -43,8 +42,8 @@ import { AuthError } from "./components/AuthError";
 import { LogInComp } from "./components/authComponents/logIn";
 
 // Carousel Components
-import { UserCarousel } from "./components/suggCarouselComponents/userCarousel";
-import { UserCard } from "./components/suggCarouselComponents/userCard";
+import { UserCard } from "./components/suggCarouselComponents/UserCard";
+import { UserCarousel } from "./components/suggCarouselComponents/UserCarousel";
 import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 
 // Define Navigation Components
@@ -81,7 +80,6 @@ customElements.define('log-in', LogIn);
 // Define Profile Related Components
 customElements.define('profile-render', ProfileRender);
 customElements.define('profile-post', ProfilePost);
-customElements.define('a-profile-post', AProfilePost);
 customElements.define('other-profile', OtherProfile);
 
 // Define Landing Page Components

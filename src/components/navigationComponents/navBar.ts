@@ -100,7 +100,7 @@ class NavBar extends HTMLElement {
         profileButton?.addEventListener('click', (e) => {
             e.preventDefault();
             NavigationActions.navigate('/profile');
- });
+        });
 
         }
     }

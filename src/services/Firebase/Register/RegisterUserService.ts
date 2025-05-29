@@ -37,6 +37,8 @@ const registerUser = async (email: string, password: string, username: string, p
 			email: user.email,
 			username: username,
             pfp: pfp,
+            followers: [],
+            following: [],
 			createdAt: new Date()
 		});
 

@@ -23,7 +23,7 @@ class UserLists extends HTMLElement{
             this.shadowRoot.innerHTML= `
 
             <link rel="stylesheet" href="/styles/listStyles.css" />
-                    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+              <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 
     <div class="playlist-container">

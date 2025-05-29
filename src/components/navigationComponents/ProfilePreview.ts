@@ -1,6 +1,6 @@
 import { store } from "../../flux/Store";
 import { State } from "../../flux/Store";
-
+import { NavigationActions, UserActions } from "../../flux/Actions";
 class ProfilePreview extends HTMLElement {
     private listenersSetup = false;
 
@@ -12,15 +12,15 @@ class ProfilePreview extends HTMLElement {
     connectedCallback() {
         store.subscribe((state: State) => {
             this.render(state);
-        });       
+        });
         if (!this.listenersSetup) {
-        this.setupListeners();
-        this.listenersSetup = true;
+            this.setupListeners();
+            this.listenersSetup = true;
         }
     }
 
     setupListeners() {
-        
+
         window.addEventListener("toggle-profile-preview", () => {
             const container = this.shadowRoot?.querySelector(".profile-preview");
             if (!container) return;
@@ -42,7 +42,7 @@ class ProfilePreview extends HTMLElement {
 
             if (!clickedInsidePreview && !clickedInsidePf && !clickedInsideMenu) {
                 const container = this.shadowRoot?.querySelector(".profile-preview");
-                if(!container) return;
+                if (!container) return;
                 container.classList.remove("active");
             }
         })
@@ -54,11 +54,10 @@ class ProfilePreview extends HTMLElement {
             const profile = state.userProfile;
 
             this.shadowRoot.innerHTML = `
-                <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
                 <link rel="stylesheet" href="/styles/profilePreview.css">
 
                 <div class="profile-preview">
-                    <div class="usercontainer">
+                    <div class="usercontainer" id="profile-button">
                         <div class="profilepicture"><img src="${profile?.pfp}" alt=""></div>
                         <div class="user-data">
                             <h3 class="name">${profile?.name}</h3>
@@ -66,14 +65,37 @@ class ProfilePreview extends HTMLElement {
                         </div>
                     </div>
                     <div class="container-img">
-                        <div class="profile-stats"><img src="/images/icons/your stats.png" alt="" class="statsimg"></div>
-                        <div class="profile-lists"><img src="/images/icons/your lists.png" alt="" class="listimg"></div>
+                        <div class="profile-stats" id="your-stats"><img src="/images/icons/your stats.png" alt="" class="statsimg"></div>
+                        <div class="profile-lists" id="your-lists"><img src="/images/icons/your lists.png" alt="" class="listimg"></div>
                     </div>
                     <div class="sign-out">
-                        <button>Sign out</button>
+                        <button id="log-out">Sign out</button>
                     </div>
                 </div>
             `
+            const profileButton = this.shadowRoot.querySelector('#profile-button');
+            profileButton?.addEventListener('click', (e) => {
+                e.preventDefault();
+                NavigationActions.navigate('/profile');
+            });
+
+            const logoutButton = this.shadowRoot.querySelector('#log-out');
+            logoutButton?.addEventListener('click', (e) => {
+                e.preventDefault();
+                UserActions.logout();
+            })
+
+            const yourStats = this.shadowRoot.querySelector('#your-stats');
+            yourStats?.addEventListener('click', (e) => {
+                e.preventDefault();
+                NavigationActions.navigate('/stats');
+            });
+
+            const yourLists = this.shadowRoot.querySelector('#your-lists');
+            yourLists?.addEventListener('click', (e) => {
+                e.preventDefault();
+                NavigationActions.navigate('/lists');
+            });
         }
     }
 }

@@ -21,7 +21,7 @@ class HomePosts extends HTMLElement{
         }
 
         this.render();
-        }
+    }
 
     async loadPosts() {
     const data = await fetchPosts(); // Firebase call! 
