@@ -4,7 +4,7 @@ import { UserType } from '../utils/types/UserType';
 import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes, InteractionActionsType, LikeActionTypes, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
+import { DataActionTypes, InteractionActionsType, LikeActionTypes, NavigationActionsType, NewPostTypes, UserActionsType, PersistActionTypes } from './Actions';
 import { LikeType } from '../utils/types/LikeType';
 
 
@@ -16,6 +16,8 @@ export type State = {
     currentPath: string;
     selectedProfile: string;
     likes: LikeType[];
+    navigation: string;
+    user: UserType | null;
 };
 
 interface StoreListener {
@@ -34,7 +36,9 @@ class Store {
         userProfile: null,
         currentPath: '',
         selectedProfile: '',
-        likes: []
+        likes: [],
+        navigation: '',
+        user: null
     }
 
     private _listeners: Listener[] = [];
@@ -49,6 +53,20 @@ class Store {
 
     _handleActions(action: Action): void {
         switch (action.type) {
+            case PersistActionTypes.PERSIST_USER:
+                this._myState = {
+                    ...this._myState,
+                    user: action.payload as UserType
+                }
+                this._emitChange();
+                break;
+            case PersistActionTypes.PERSIST_NAVIGATION:
+                this._myState = {
+                    ...this._myState,
+                    navigation: action.payload as string
+                }
+                this._emitChange();
+                break;
             case NavigationActionsType.NAVIGATE:
                 this._myState = {
                     ...this._myState,

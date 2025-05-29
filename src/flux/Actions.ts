@@ -10,6 +10,11 @@ export const DataActionTypes = {
     GET_USER_POSTS: 'GET_USER_POSTS'
 } as const;
 
+export const PersistActionTypes = {
+    PERSIST_USER: 'PERSIST_USER',
+    PERSIST_NAVIGATION: 'PERSIST_NAVIGATION'
+} as const;
+
 export const NewPostTypes = {
     NEW_POST: 'NEW_POST'
 } as const;
@@ -36,6 +41,20 @@ export const InteractionActionsType = {
     SET_PROFILE_ID: 'SET_PROFILE_ID'
 } as const
 
+export const PersistActions = {
+    persistUser: (user: UserType) => {
+        AppDispatcher.dispatch({
+            type: PersistActionTypes.PERSIST_USER,
+            payload: user
+        });
+    },
+    persistNavigation: (path: string) => {
+        AppDispatcher.dispatch({
+            type: PersistActionTypes.PERSIST_NAVIGATION,
+            payload: path
+        });
+    }
+}
 export const NavigationActions = {
     navigate: (path: string) => {
         AppDispatcher.dispatch({

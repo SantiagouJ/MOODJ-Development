@@ -1,4 +1,4 @@
-import { DataActionTypes, InteractionActionsType, NavigationActionsType, UserActionsType, LikeActionTypes } from "./Actions";
+import { DataActionTypes, InteractionActionsType, NavigationActionsType, UserActionsType, LikeActionTypes, PersistActionTypes } from "./Actions";
 import { NewPostTypes } from "./Actions";
 import { PostType } from "../utils/types/PostType";
 import { UserCredential } from "firebase/auth";
@@ -18,7 +18,11 @@ export type Action =
   | { type: typeof NavigationActionsType.UPDATE_PATH; payload: string }
   | { type: typeof InteractionActionsType.SET_PROFILE_ID; payload: string }
   | { type: typeof LikeActionTypes.ADD_LIKE; payload: LikeType }
-  | { type: typeof LikeActionTypes.REMOVE_LIKE; payload: LikeType };
+  | { type: typeof LikeActionTypes.REMOVE_LIKE; payload: LikeType }
+  | { type: typeof PersistActionTypes.PERSIST_USER; payload: UserType }
+  | { type: typeof PersistActionTypes.PERSIST_NAVIGATION; payload: string };
+
+  
 
 
 export class Dispatcher {
