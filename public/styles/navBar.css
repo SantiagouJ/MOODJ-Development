@@ -30,6 +30,7 @@ body{
     display: flex;
     gap: 3.5rem;
     margin-left: 4rem;
+    cursor: pointer;
 
 
 }
@@ -41,6 +42,7 @@ body{
     color: #FFFF;
     font-weight: 500;
     font-size: 0.9rem;
+    cursor: pointer;
 
 
 }
@@ -105,6 +107,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
 }
 
@@ -130,7 +133,7 @@ body{
 .mobile-logo{
     display: none;
 }
-.menu{
+#menu{
     display: none;
 }
 
@@ -210,13 +213,13 @@ body{
            
     }
 
-    .menu {
+    #menu {
 
         display: block;
-        height: 50px;
         width: auto;
-        margin-bottom: 2px;
         margin-right: 42px;
+        margin-bottom: 18px;
+        font-size: 2rem;
     
     }
 
