@@ -44,6 +44,15 @@ class Store {
     private _listeners: Listener[] = [];
 
     constructor() {
+        // Leer de localStorage
+        const savedProfile = localStorage.getItem('userProfile');
+        const savedAuth = localStorage.getItem('isAuthenticated');
+        if (savedProfile) {
+            this._myState.userProfile = JSON.parse(savedProfile);
+        }
+        if (savedAuth) {
+            this._myState.isAuthenticated = JSON.parse(savedAuth);
+        }
         AppDispatcher.register(this._handleActions.bind(this)); // Bind the context of this method to the Store instance
     }
 
@@ -140,10 +149,12 @@ class Store {
             case UserActionsType.SET_CURRENT_USER:
                 if (JSON.stringify(this._myState.userProfile) !== JSON.stringify(action.payload)) {
                     this._myState = {
-                    ...this._myState,
-                    userProfile: action.payload as UserType,
-                    isAuthenticated: true
+                        ...this._myState,
+                        userProfile: action.payload as UserType,
+                        isAuthenticated: true
                     };
+                    localStorage.setItem('userProfile', JSON.stringify(this._myState.userProfile));
+                    localStorage.setItem('isAuthenticated', JSON.stringify(this._myState.isAuthenticated));
                     this._emitChange();
                 }
             break;
