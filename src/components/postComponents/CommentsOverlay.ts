@@ -1,45 +1,59 @@
 import { createComment } from "../../services/Firebase/Posts/NewCommentService";
 import { CommentType } from "../../utils/types/CommentType";
 import { fetchComments } from "../../services/Firebase/Posts/GetCommentsService";
+import { store } from "../../flux/Store";
+import { NavigationActions } from "../../flux/Actions";
+import { InteractionActions } from "../../flux/Actions";
+import { isFollowing } from "../../services/Firebase/Follow/FollowUserService";
+import { unfollowUser } from "../../services/Firebase/Follow/FollowUserService";
+import { followUser } from "../../services/Firebase/Follow/FollowUserService";
 
 class CommentsOverlay extends HTMLElement {
 
     private comments: CommentType[] = [];
 
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+    }
 
-   set data(comments: CommentType[]) {
-    this.comments = comments;
-  }
+    set data(comments: CommentType[]) {
+        this.comments = comments;
+    }
 
-  connectedCallback() {
-    this.render();
-  }
+    connectedCallback() {
+        this.render();
+    }
 
-  async createComment() {
-    const postId = this.getAttribute('postId');
-    if (!postId) return;
-    const input = this.shadowRoot?.querySelector('.write-comment') as HTMLInputElement;
-    const inputVal = input?.value.trim();
-    if (!inputVal) return;
+    async createComment() {
+        const state = store.getState();
+        const loggedUserId = state.userProfile?.id;
+        if (!loggedUserId) return;
+        const postId = this.getAttribute('postId');
+        if (!postId) return;
+        const input = this.shadowRoot?.querySelector('.write-comment') as HTMLInputElement;
+        const inputVal = input?.value.trim();
+        if (!inputVal) return;
 
-    await createComment(postId, {
-    userId: "2PF9LdFvpdNg9o79u7pg",
-    content: inputVal,
-    likes: 0
-    });
+        await createComment(postId, {
+            userId: loggedUserId,
+            content: inputVal,
+            likes: 0
+        });
 
-    input.value = '';
-    this.comments = await fetchComments(postId);
-    this.render();
-  }
+        input.value = '';
+        this.comments = await fetchComments(postId);
+        this.render();
+    }
 
-  render() {
-    if (this.shadowRoot) {
-      this.shadowRoot.innerHTML = `
+    render() {
+        if (this.shadowRoot) {
+            const state = store.getState()
+            const loggedUserId = state.userProfile?.id;
+            if(!loggedUserId) return;
+            const userId = this.getAttribute('userId');
+            if (!userId) return;
+            this.shadowRoot.innerHTML = `
         <style>
         .comments-overlay {
         position: fixed; 
@@ -428,7 +442,7 @@ class CommentsOverlay extends HTMLElement {
                     </div>
                 </div>
                 <div class="comment-topr">
-                    <button class="blue-btn">Follow</button>
+                    <button class="blue-btn" id="follow-btn">Follow</button>
                 </div>
             </div>
             <div class="comments">
@@ -441,28 +455,67 @@ class CommentsOverlay extends HTMLElement {
     </div>
       `;
 
-    const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
-    const commentBtn = this.shadowRoot?.querySelector('#post-comment');
+            const followBtn = this.shadowRoot?.querySelector("#follow-btn") as HTMLElement;
+            if (followBtn) {
+                isFollowing(loggedUserId, userId).then((alreadyFollowing) => {
+                    followBtn.textContent = alreadyFollowing ? "Following" : "Follow";
+                    followBtn.style.backgroundColor = alreadyFollowing ? "#C06DFF" : "#2A2A2A";
+                    followBtn.style.color = alreadyFollowing ? "white" : "white";
+                });
 
-    overlay?.addEventListener('click', (event: MouseEvent) => {
-      if (event.target === overlay) this.remove();
-    });
+                // call firebase to toggle follow or unfollow..
+                followBtn.addEventListener("click", async () => {
+                    const following = await isFollowing(loggedUserId, userId);
+                    if (loggedUserId != userId) {
+                        try {
+                            if (following) {
+                                await unfollowUser(loggedUserId, userId);
+                                followBtn.textContent = "Follow";
+                                followBtn.style.backgroundColor = "#2A2A2A"
+                            } else {
+                                await followUser(loggedUserId, userId);
+                                followBtn.textContent = "Following";
+                                followBtn.style.backgroundColor = "#C06DFF"
+                            }
+                        } catch (e) {
+                            console.error("Follow/unfollow failed:", e);
+                        }
+                    }
+                });
+            } 
 
-    commentBtn?.addEventListener('click', () => this.createComment());
+            const userRef = this.shadowRoot.querySelector('.post-user');
+            userRef?.addEventListener('click', () => {
+                if (userId === loggedUserId) {
+                    NavigationActions.navigate(`/profile`);
+                } else {
+                    InteractionActions.setProfileId(userId);
+                    NavigationActions.navigate(`/publicprofile`);
+                }
+            })
 
-      // Render comentarios existentes
-      const container = this.shadowRoot.querySelector('.comments');
-      if (!container) return;
+            const overlay = this.shadowRoot?.querySelector('.comments-overlay') as HTMLElement;
+            const commentBtn = this.shadowRoot?.querySelector('#post-comment');
 
-      this.comments.forEach((comment) => {
-        const commentCard = this.ownerDocument.createElement('comment-card');
-        commentCard.setAttribute('userId', comment.userId);
-        commentCard.setAttribute('comment', comment.content);
-        commentCard.setAttribute('likes', comment.likes.toString());
-        container.appendChild(commentCard);
-      });
+            overlay?.addEventListener('click', (event: MouseEvent) => {
+                if (event.target === overlay) this.remove();
+            });
+
+            commentBtn?.addEventListener('click', () => this.createComment());
+
+            // Render comentarios existentes
+            const container = this.shadowRoot.querySelector('.comments');
+            if (!container) return;
+
+            this.comments.forEach((comment) => {
+                const commentCard = this.ownerDocument.createElement('comment-card');
+                commentCard.setAttribute('userId', comment.userId);
+                commentCard.setAttribute('comment', comment.content);
+                commentCard.setAttribute('likes', comment.likes.toString());
+                container.appendChild(commentCard);
+            });
+        }
     }
-  }
 }
 
 export { CommentsOverlay };
