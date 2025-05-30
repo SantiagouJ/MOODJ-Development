@@ -147,9 +147,44 @@ class PostCard extends HTMLElement {
 
 
       this.shadowRoot.innerHTML = `
+              <style>
+          .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transition: all 0.3s ease;Add commentMore actions
+            cursor: pointer;
+          }
+          
+          .material-symbols-outlined.active {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            transform: scale(1.1);
+          }
+
+          .material-symbols-outlined#heart-icon.active {
+            color: #ff4d4d;
+          }
+
+          .material-symbols-outlined#comment-icon.active {
+            color: #4d79ff;
+          }
+
+          .material-symbols-outlined#save-icon.active {
+            color: #ffd700;
+          }
+
+          @keyframes iconPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1.1); }
+          }
+
+          .material-symbols-outlined.active {
+            animation: iconPop 0.3s ease;
+          }
+        </style>
+
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-        
+
         <div id="overlay-container"></div>
         <div class="container">
           <div class="post-card">
@@ -160,7 +195,7 @@ class PostCard extends HTMLElement {
                 </div>
                 <div class="post-user">
                   <h4 class="heading4">${name}</h4>
-                  <p class="smalltext">${username}</p>
+                  <p class="smalltext">@${username}</p>
                 </div>
               </div>
               <div class="post-topr">

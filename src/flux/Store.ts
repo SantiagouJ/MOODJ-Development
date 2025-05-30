@@ -59,6 +59,7 @@ class Store {
                 }
                 window.history.pushState({}, '', action.payload);
                 this._emitChange();
+                this.persist();
                 break;
             case NavigationActionsType.UPDATE_PATH:
                 this._myState = {
@@ -66,21 +67,22 @@ class Store {
                     currentPath: action.payload
                 }
                 this._emitChange();
+                this.persist();
                 break;
             case DataActionTypes.GET_POSTS:
-                    this._myState = {
-                        ...this._myState,
-                        posts: action.payload as PostType[],
-                    }   
+                this._myState = {
+                    ...this._myState,
+                    posts: action.payload as PostType[],
+                }
                 this._emitChange();
-            break;
+                break;
             case NewPostTypes.NEW_POST:
-                    this._myState = {
-                        ...this._myState,
-                        posts: [action.payload as PostType, ...this._myState.posts]
-                    }   
+                this._myState = {
+                    ...this._myState,
+                    posts: [action.payload as PostType, ...this._myState.posts]
+                }
                 this._emitChange();
-            break;
+                break;
             case LikeActionTypes.ADD_LIKE:
                 this._myState = {
                     ...this._myState,
@@ -107,7 +109,7 @@ class Store {
                     ...this._myState,
                     commentLikes: this._myState.commentLikes.filter(
                         like => !(like.postId === action.payload.postId && like.commentId === action.payload.commentId)
-                      )
+                    )
                 }
                 this._emitChangeToListeners(['commentLikes']);
                 break;
@@ -119,7 +121,7 @@ class Store {
                 }
                 this._emitChange();
 
-            break;
+                break;
             case UserActionsType.CHECK_AUTH:
                 auth.onAuthStateChanged((user) => {
                     if (user) {
@@ -137,17 +139,18 @@ class Store {
                     }
                     this._emitChange();
                 });
-            break;
+                break;
             case UserActionsType.SET_CURRENT_USER:
                 if (JSON.stringify(this._myState.userProfile) !== JSON.stringify(action.payload)) {
                     this._myState = {
-                    ...this._myState,
-                    userProfile: action.payload as UserType,
-                    isAuthenticated: true
+                        ...this._myState,
+                        userProfile: action.payload as UserType,
+                        isAuthenticated: true
                     };
                     this._emitChange();
+                    this.persist();
                 }
-            break;
+                break;
             case UserActionsType.NEW_NAME:
                 this._myState = {
                     ...this._myState,
@@ -157,16 +160,35 @@ class Store {
                     }
                 };
                 this._emitChange();
-            break;
+                break;
             case InteractionActionsType.SET_PROFILE_ID:
-                    this._myState = {
+                this._myState = {
                     ...this._myState,
                     selectedProfile: action.payload
                 }
                 this._emitChange();
+                this.persist();
+            break;
+            case UserActionsType.LOGOUT:
+                auth.signOut().then(() => {
+                    this._myState = {
+                        ...this._myState,
+                        currentPath: '/',
+                        isAuthenticated: false,
+                        userProfile: null,
+                        posts: [],
+                        selectedProfile: ''
+
+                    }
+                    this._emitChange();
+                    this.persist()
+                }).catch((error) => {
+                    console.error('Error al cerrar sesión:', error);
+                });
             break;
 
         }
+
     }
 
     private _emitChange(): void {
@@ -202,6 +224,24 @@ class Store {
     unsubscribe(listener: Listener): void {
         this._listeners = this._listeners.filter(l => l !== listener);
     }
+
+    persist(): void {
+        const { userProfile, isAuthenticated, currentPath, selectedProfile, posts } = this._myState;
+        const persistedState = { userProfile, isAuthenticated, currentPath, selectedProfile, posts };
+        localStorage.setItem('flux:state', JSON.stringify(persistedState));
+    }
+
+    load(): void {
+        const persistedState = localStorage.getItem('flux:state');
+        if (persistedState) {
+            const parsed = JSON.parse(persistedState);
+            this._myState = {
+                ...this._myState, // default state
+                ...parsed         // overrides only allowed parts
+            };
+            this._emitChange();
+        }
+    }
 }
 
-export const store=new Store();
+export const store = new Store();

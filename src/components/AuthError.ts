@@ -1,3 +1,5 @@
+import { NavigationActions } from "../flux/Actions";
+
 class AuthError extends HTMLElement {
   constructor() {
     super();
@@ -23,11 +25,16 @@ class AuthError extends HTMLElement {
                             <div class="bigtext"><p>Please log in to see your content...!</p></div>
                             <div class="error-emoji"><img src="images/moods/erroremoji.svg" alt=""></div>
                         </div>
+                        <button id="log-in" class="login-btn">Log in</button>
                     </div>
                         
                 </div>
 
                             `;
+    const logBtn = this.shadowRoot.getElementById('log-in');
+    logBtn?.addEventListener('click', () => {
+      NavigationActions.navigate('/login')
+    })
     }
   }
 }

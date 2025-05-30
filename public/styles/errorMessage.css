@@ -61,3 +61,24 @@ body {
     align-items: center;
     gap: 8px;
 }
+
+.login-btn {
+
+    width: 241px;
+    padding: 12px 57px;
+    background: #C06DFF;
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 24px;
+    margin: 16px;
+    cursor: pointer;
+    margin-left: 60px;
+
+
+}
+
+.login-btn:hover {
+    background: #ac52f1;
+}

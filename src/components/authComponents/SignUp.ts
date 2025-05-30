@@ -1,5 +1,7 @@
 import { initializeCarousel } from "../CarouselMoods"
 import { registerUser } from "../../services/Firebase/Register/RegisterUserService"
+import { loginUser } from "../../services/Firebase/Login/LoginService"
+import { NavigationActions } from "../../flux/Actions"
 
 class SignUpComp extends HTMLElement {
   private currentSlideIndex: number = 0
@@ -47,7 +49,7 @@ class SignUpComp extends HTMLElement {
                             <input type="password" name="password" id="confirm-password" placeholder="Enter password">
                             <button type="submit" class="login-btn">Sign up</button>
                             <div class="forgot-row">
-                                <a href="#" class="forgot-link">Already have an account? sign in</a>
+                                <a href="#" class="forgot-link" id="login-btn">Already have an account? sign in</a>
                             </div>
                         </form>
                     </div>
@@ -64,6 +66,10 @@ class SignUpComp extends HTMLElement {
                 </div>
     
     ` 
+        const signIn = this.shadowRoot.getElementById('login-btn');
+        signIn?.addEventListener('click', () => {
+          NavigationActions.navigate('/login') 
+        })
 
         const form = this.shadowRoot!.querySelector<HTMLFormElement>('#register-form')!;
 
@@ -115,6 +121,8 @@ class SignUpComp extends HTMLElement {
                         return;
                     }
                     alert('Usuario registrado exitosamente.');
+                    loginUser(data.email, data.password);
+                    NavigationActions.navigate('/home');
                 })
                 .catch((error) => {
                     console.error('Error al registrar el usuario:', error);

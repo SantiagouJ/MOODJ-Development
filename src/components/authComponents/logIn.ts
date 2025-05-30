@@ -64,21 +64,27 @@ class LogInComp extends HTMLElement {
 
             const form = this.shadowRoot!.querySelector<HTMLFormElement>('#login-form')!;
             if (form) {
-                form.addEventListener('submit', (e) => {
+                form.addEventListener('submit', async (e) => {
                     e.preventDefault();
                     const formData = new FormData(form);
                     const email = formData.get('email') as string;
                     const password = formData.get('password') as string;
-                    loginUser(email, password)
-                    //navigate home
 
+                    const result = await loginUser(email, password);
+
+                    if (result.isLoggedIn) {
+                        NavigationActions.navigate('/home');
+                    } else {
+                        console.error('Login failed:', result.error);
+                    }
                 });
+
 
                 const signUp = this.shadowRoot!.querySelector('#signup');
                 signUp?.addEventListener('click', () => {
                     const path = signUp.getAttribute('navigate-to');
                     if (path) {
-                        //navigate sign in
+                        NavigationActions.navigate('/signup')
                     }
                 });
             }

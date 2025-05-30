@@ -41,7 +41,7 @@ class Home extends HTMLElement {
         createPost.setAttribute('user-id', profile.id);
         wrapper.appendChild(createPost);
 
-        wrapper.appendChild(document.createElement('carousel-component'));
+        //wrapper.appendChild(document.createElement('carousel-component'));
         wrapper.appendChild(document.createElement('recent-posts'));
         wrapper.appendChild(document.createElement('home-posts'));
         wrapper.appendChild(document.createElement('weekly-stats'));

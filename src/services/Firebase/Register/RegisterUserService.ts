@@ -36,6 +36,7 @@ const registerUser = async (email: string, password: string, username: string, p
 		await setDoc(doc(db, "users", user.uid), {
 			email: user.email,
 			username: username,
+            name: username,
             pfp: pfp,
             followers: [],
             following: [],

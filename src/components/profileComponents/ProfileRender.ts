@@ -71,7 +71,7 @@ class ProfileRender extends HTMLElement {
             <h1 class="user-name">${user?.name}</h1>
             <button id="edit-profile">Edit Profile</button>
         </div>
-            <p class="username">${user?.username}</p>
+            <p class="username">@${user?.username}</p>
             <div class="stats">
                 <p><span style="color:white;font-weight:bold;">${followers}</span> Followers</p>
                 <p><span style="color:white;font-weight:bold;">${following}</span> Following</p>

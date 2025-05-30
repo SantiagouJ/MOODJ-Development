@@ -1,10 +1,8 @@
 import { State, store } from "../flux/Store";
 import { UserActions} from "../flux/Actions";
-import { loginWithTestUser } from "../services/Firebase/TestUser";
 
 class Root extends HTMLElement {
     private lastPath: string = '';
-    private loggedIn = false;
 
     constructor() {
         super();
@@ -26,16 +24,10 @@ class Root extends HTMLElement {
                 console.error('Shadow root not available');
                 return;
             }
-            
+            store.load();
+            UserActions.checkAuth();
             this.render();
-            
             this.handleRouteChange();
-            
-            if (!this.loggedIn) {
-                await loginWithTestUser();
-                this.loggedIn = true;
-                this.handleRouteChange();
-            }
         } catch (error) {
             console.error('Error in connectedCallback:', error);
         }
@@ -54,6 +46,11 @@ class Root extends HTMLElement {
             let contentHTML = '';
             switch (path) {
                 case '/':
+                case '/landing':
+                    contentHTML = `
+                        <landing-page></landing-page>
+                    `;
+                break;
                 case '/home':
                     contentHTML = `
                         <nav-bar></nav-bar>
@@ -62,12 +59,12 @@ class Root extends HTMLElement {
                     `;
                     break;
                 case '/login':
-                    contentHTML = `<log-in></log-in>
-                    <footer-element></footer-element>`;
+                    contentHTML = 
+                    `<log-in></log-in>`;
                     break;
                 case '/signup':
-                    contentHTML = `<sign-up></sign-up>
-                    <footer-element></footer-element>`;
+                    contentHTML = 
+                    `<sign-up></sign-up>`;
                     break;
                 case '/profile':
                     contentHTML = `
@@ -98,13 +95,6 @@ class Root extends HTMLElement {
                         <nav-bar></nav-bar>
                         <profile-preview></profile-preview>
                         <user-lists></user-lists>
-                        <footer-element></footer-element>
-                    `;
-                break;
-                case '/landing':
-                    contentHTML = `
-                        <navbar-landing></navbar-landing>
-                        <landing-page></landing-page>
                         <footer-element></footer-element>
                     `;
                 break;
