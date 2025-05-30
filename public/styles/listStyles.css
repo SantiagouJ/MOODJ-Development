@@ -1,15 +1,12 @@
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #1e1e1e;
-    color: white;
-    margin: 0;
-    padding: 40px;
-  }
-  
+
   .playlist-container {
-    width: 100%;
     max-width: none;
     margin-left: 100px;
+    margin-top: 50px;
+  }
+  #prev-btn {
+    font-size: 40px;
+    cursor: pointer;
   }
   
   .back-button {
@@ -56,7 +53,6 @@ body {
   
   .playlist-info h2 {
     color: #FFF;
-    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
