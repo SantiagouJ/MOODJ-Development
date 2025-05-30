@@ -454,11 +454,14 @@ class CommentsOverlay extends HTMLElement {
       const container = this.shadowRoot.querySelector('.comments');
       if (!container) return;
 
+      const postId = this.getAttribute('postId');
       this.comments.forEach((comment) => {
         const commentCard = this.ownerDocument.createElement('comment-card');
         commentCard.setAttribute('userId', comment.userId);
         commentCard.setAttribute('comment', comment.content);
         commentCard.setAttribute('likes', comment.likes.toString());
+        if (postId) commentCard.setAttribute('postid', postId);
+        if (comment.id) commentCard.setAttribute('commentid', comment.id);
         container.appendChild(commentCard);
       });
     }

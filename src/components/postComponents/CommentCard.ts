@@ -1,8 +1,10 @@
 import { fetchUser } from "../../services/Firebase/GetUserService";
 import { UserType } from "../../utils/types/UserType";
+import { addCommentLike, removeCommentLike } from '../../services/Firebase/Posts/NewComentLikeService';
 
 class CommentCard extends HTMLElement {
     private userData: UserType | null = null;
+    private liked: boolean = false; // Simulación local de like
     
     constructor() {
       super();
@@ -15,6 +17,7 @@ class CommentCard extends HTMLElement {
       this.userData = await fetchUser(userId)
     }
     this.render()
+    this.addLikeListener();
   }
   
     render() {
@@ -350,13 +353,43 @@ class CommentCard extends HTMLElement {
                 </div>
                 <div class="commentr">
                     <h4 id="comment-num">${this.getAttribute('likes')}</h4>
-                    <span class="material-symbols-outlined" id="heart-icon">
+                    <span class="material-symbols-outlined" id="heart-icon" style="color: ${this.liked ? '#e25555' : '#fff'}; cursor:pointer;">
                         favorite
                     </span>
                 </div>
                 </div>
         `;
+        this.addLikeListener();
       }
+    }
+
+    addLikeListener() {
+      if (!this.shadowRoot) return;
+      
+      
+      const heartIcon = this.shadowRoot.getElementById('heart-icon');
+      const likesNum = this.shadowRoot.getElementById('comment-num');
+      if (!heartIcon || !likesNum) return;
+      heartIcon.addEventListener('click', async () => {
+        console.log("Pene");
+        
+        const postId = this.getAttribute('postid');
+        const commentId = this.getAttribute('commentid');
+        if (!postId || !commentId) return;
+        let likes = parseInt(this.getAttribute('likes') || '0', 10);
+        if (!this.liked) {
+          await addCommentLike(postId, commentId);
+          likes++;
+          this.liked = true;
+        } else {
+          await removeCommentLike(postId, commentId);
+          likes = Math.max(0, likes - 1);
+          this.liked = false;
+        }
+        this.setAttribute('likes', likes.toString());
+        likesNum.textContent = likes.toString();
+        heartIcon.style.color = this.liked ? '#e25555' : '#fff';
+      });
     }
   }
   
