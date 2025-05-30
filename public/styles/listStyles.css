@@ -1,57 +1,67 @@
 body {
-    font-family: "Inter", sans-serif;
     background-color: #1e1e1e;
     color: white;
     margin: 0;
-    padding: 40px;
-  }
-  
-  .playlist-container {
+    padding: 20px;
     width: 100%;
-    max-width: 500px;
+    box-sizing: border-box;
+}
+
+.playlist-container {
+    width: 100%;
+    max-width: 800px;
     padding: 0;
     box-sizing: border-box;
-    margin-top: 50px;
-  }
-  
-  .back-button {
+    margin: 50px auto 0;
+    position: relative;
+}
+
+.back-button {
     background: none;
     width: 10px;
     border: none;
     color: white;
     cursor: pointer;
     margin-bottom: 20px;
-  }
+}
 
-  .back-button img {
+.back-button img {
     width: 24px;  
     height: auto;
     margin-left: 40px;
-  }
-  
-  
-  .playlist-title {
-    font-size: 36px;
+}
+
+.carousel-prev {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+}
+
+.playlist-title {
+    font-size: clamp(24px, 5vw, 36px);
     font-weight: bold;
     margin-bottom: 40px;
-    margin-left: 40px;
-  }
-  
-  .playlist-card {
+    padding-left: 40px;
+}
+
+.playlist-card {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-radius: 15px;
     background: var(--degradado, linear-gradient(180deg, #5267EE 0%, #C06DFF 100%));
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 454px;
-    height: 142px;
-    flex-shrink: 0;
-    margin-left: 40px;
-  }
-  
-  .playlist-info {
+    padding: clamp(15px, 3vw, 20px);
+    margin: 0 auto 20px;
+    width: 90%;
+    max-width: 454px;
+    min-height: 142px;
+    box-sizing: border-box;
+}
+
+.playlist-info {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -61,75 +71,56 @@ body {
   
   .playlist-info h2 {
     color: #FFF;
-    font-family: Inter;
-    font-size: 24px;
+    font-size: clamp(18px, 4vw, 24px);
     font-style: normal;
     font-weight: 600;
     line-height: normal;
     margin: 0;
-  }
-  
-  .playlist-info p {
-    font-size: 14px;
+}
+
+.playlist-info p {
+    font-size: clamp(12px, 2.5vw, 14px);
     margin: 0;
     opacity: 0.9;
-  }
-  
+}
 
-  
-  .emoji-frame img {
+.emoji-frame img {
     display: block;
-    width: 143px;
-    height: 127px;
-    flex-shrink: 0;
+    width: clamp(100px, 20vw, 143px);
+    height: auto;
+    aspect-ratio: 1;
     border-radius: 15px;
     background: var(--d-9-d-9-d-9, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A);
     padding: 10px;
-  }
-  
-
-/* Responsive styles for iPhone 14 Pro Max (430px) */
-@media screen and (max-width: 430px) {
-  :host {
-    display: block;
-    width: 100%;
-  }
-
-  :host .playlist-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  :host .playlist-title {
-    font-size: 28px !important;
-    margin-bottom: 30px !important;
-  }
-
-  :host .playlist-card {
-    width: 100% !important;
-    height: auto !important;
-    min-height: 120px !important;
-    padding: 15px !important;
-    margin-bottom: 15px !important;
-  }
-
-  :host .playlist-info {
-    margin-left: 15px !important;
-  }
-
-  :host .playlist-info h2 {
-    font-size: 20px !important;
-  }
-
-  :host .playlist-info p {
-    font-size: 12px !important;
-  }
-
-  :host .emoji-frame img {
-    width: 100px !important;
-    height: 90px !important;
-  }
+    object-fit: cover;
 }
-  
+
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .playlist-container {
+        margin-top: 30px;
+    }
+
+    .playlist-card {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .playlist-info {
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+
+    .emoji-frame img {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .playlist-card {
+        width: 95%;
+    }
+}

@@ -56,6 +56,7 @@ class Root extends HTMLElement {
                         <nav-bar></nav-bar>
                         <profile-preview></profile-preview>
                         <home-page></home-page>
+                        <footer-element></footer-element>
                     `;
                     break;
                 case '/login':

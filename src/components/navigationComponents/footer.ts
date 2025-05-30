@@ -32,7 +32,6 @@ class FooterElement extends HTMLElement {
 
                         <div class="footer-logo">
 
-                            <img src="/logos/Logo-slogan.svg" alt="">
                             
                         </div>
 
