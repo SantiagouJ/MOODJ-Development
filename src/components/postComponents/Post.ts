@@ -257,7 +257,7 @@ class PostCard extends HTMLElement {
           NavigationActions.navigate(`/profile`);
         } else {
           InteractionActions.setProfileId(userId);
-          NavigationActions.navigate(`/publicprofile`);
+          NavigationActions.navigate(`/publicprofile?id=${userId}`);
         }
       });
 

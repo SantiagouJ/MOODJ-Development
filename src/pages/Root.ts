@@ -52,62 +52,59 @@ class Root extends HTMLElement {
             if(!content) return;
 
             let contentHTML = '';
-            switch (path) {
-                case '/':
-                    contentHTML = `
-                        <landing-page></landing-page>
-                    `;
-                    break;
-                case '/home':
-                    contentHTML = `
-                        <nav-bar></nav-bar>
-                        <profile-preview></profile-preview>
-                        <home-page></home-page>
-                    `;
-                    break;
-                case '/login':
-                    contentHTML = `<log-in></log-in>
-                    `;
-                    break;
-                case '/signup':
-                    contentHTML = `<sign-up></sign-up>
-                    `;
-                    break;
-                case '/profile':
-                    contentHTML = `
-                        <nav-bar></nav-bar>
-                        <profile-preview></profile-preview>
-                        <profile-page></profile-page>
-                        <footer-element></footer-element>
-                    `;
-                    break;
-                case '/stats':
-                    contentHTML = `
-                        <nav-bar></nav-bar>
-                        <profile-preview></profile-preview>
-                        <private-stats></private-stats>
-                        <footer-element></footer-element>
-                    `;
-                    break;
-                case '/publicprofile':
-                    contentHTML = `
+            if (path.startsWith('/publicprofile')) {
+                contentHTML = `
                     <nav-bar></nav-bar>
                     <profile-preview></profile-preview>
                     <other-profile></other-profile>
                     <footer-element></footer-element>
-                    `;
-                    break;
-                case '/lists':
-                    contentHTML = `
-                        <nav-bar></nav-bar>
-                        <profile-preview></profile-preview>
-                        <user-lists></user-lists>
-                        <footer-element></footer-element>
-                    `;
-                    break;
-                default:
-                    contentHTML = `<h1>404 - Página no encontrada</h1>`;
-                    break;
+                `;
+            } else {
+                switch (path) {
+                    case '/':
+                    case '/home':
+                        contentHTML = `
+                            <nav-bar></nav-bar>
+                            <profile-preview></profile-preview>
+                            <home-page></home-page>
+                        `;
+                        break;
+                    case '/login':
+                        contentHTML = `<log-in></log-in>
+                        <footer-element></footer-element>`;
+                        break;
+                    case '/signup':
+                        contentHTML = `<sign-up></sign-up>
+                        <footer-element></footer-element>`;
+                        break;
+                    case '/profile':
+                        contentHTML = `
+                            <nav-bar></nav-bar>
+                            <profile-preview></profile-preview>
+                            <profile-page></profile-page>
+                            <footer-element></footer-element>
+                        `;
+                        break;
+                    case '/stats':
+                        contentHTML = `
+                            <nav-bar></nav-bar>
+                            <profile-preview></profile-preview>
+                            <private-stats></private-stats>
+                            <footer-element></footer-element>
+                        `;
+                        break;
+                    case '/lists':
+                        contentHTML = `
+                            <nav-bar></nav-bar>
+                            <profile-preview></profile-preview>
+                            <user-lists></user-lists>
+                            <footer-element></footer-element>
+                        `;
+                        break;
+                    default:
+                        contentHTML = `<h1>404 - Página no encontrada</h1>`;
+                        break;
+                }
             }
 
             content.innerHTML = contentHTML;

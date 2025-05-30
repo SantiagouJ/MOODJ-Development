@@ -8,6 +8,7 @@ import { isFollowing } from "../services/Firebase/Follow/FollowUserService";
 import { followUser } from "../services/Firebase/Follow/FollowUserService";
 import { unfollowUser } from "../services/Firebase/Follow/FollowUserService";
 import { getFollowCount } from "../services/Firebase/Follow/FollowCountService";
+import { InteractionActions } from "../flux/Actions";
 
 class OtherProfile extends HTMLElement{
     constructor() {
@@ -15,6 +16,17 @@ class OtherProfile extends HTMLElement{
         this.attachShadow({mode: "open"})
     }
     async connectedCallback() {
+        // Obtener el ID del perfil de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const profileId = urlParams.get('id');
+        
+        if (profileId) {
+            // Actualizar el estado con el ID del perfil
+            InteractionActions.setProfileId(profileId);
+            this.getProfile(profileId);
+        }
+
+        // Suscribirse a cambios en el estado
         store.subscribe((state: State) => {
             const userId = state.selectedProfile;
             if(!userId) return;
