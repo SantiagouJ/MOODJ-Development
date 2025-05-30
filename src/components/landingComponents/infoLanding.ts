@@ -66,7 +66,8 @@ class InfoLanding extends HTMLElement{
                 <div class="info-right">    
                     <div class="info-text">
                         <h1>Analize your moods!</h1>
-                    </div>  
+                        <p>Track your and your friend’s <br> weekly moods.</p>
+                    </div>   
                     <div class="info-image">
                         <div class="img-one">
                             <img src="/images/moods2/Love.svg" alt="Logo">

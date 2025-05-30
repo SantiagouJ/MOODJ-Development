@@ -232,6 +232,28 @@
     font-size: 36px;
     margin-right: 8px;
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#heart-icon:hover {
+    transform: scale(1.1);
+}
+
+.material-symbols-outlined.active {
+    color: #C06DFF !important;
+    font-variation-settings: 'FILL' 1 !important;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: heartBeat 0.3s ease-in-out;
+}
+.material-symbols-outlined.active:hover {
+  transform: scale(1.1);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 #comment-icon {
@@ -239,12 +261,18 @@
     margin-left: 32px;
     margin-right: 8px;
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
 }
 
 #save-icon {
     font-size: 36px;
     margin-left: 24px;
     cursor: pointer;
+}
+
+#save-icon:hover {
+    transform: scale(1.1);
 }
 
 .post-interact {

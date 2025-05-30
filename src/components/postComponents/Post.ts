@@ -48,13 +48,25 @@ class PostCard extends HTMLElement {
   async showPostLikes(postId: string) {
 
     const likesEl = this.shadowRoot?.querySelector("#post-likes");
+    const heartIcon = this.shadowRoot?.querySelector('#heart-icon');
     if (!likesEl) return;
+    if (!heartIcon) return;
+
+    const state = store.getState();
+    const loggedUser = state.userProfile;
+    if (!loggedUser) return;
 
     const likes = await fetchLikes(postId);
     const totalLikes = likes.length;
 
-    // try catch inside the function and if likes === false return an error.
     likesEl.textContent = `${totalLikes}`;
+
+    const userLike = likes.find((like) => like.userId === loggedUser.id);
+    if (userLike) {
+      heartIcon.classList.add("active");
+    } else {
+      heartIcon.classList.remove("active");
+    }
 
     const latestLike = await fetchLastLike(postId);
 
@@ -65,7 +77,6 @@ class PostCard extends HTMLElement {
         likedByElement!.innerHTML = `<span style="font-weight:600;">Liked by</span> ${user.username}`;
       }
     }
-
 
   }
 
@@ -100,6 +111,7 @@ class PostCard extends HTMLElement {
     commentSection.setAttribute("name", userData.name);
     commentSection.setAttribute("username", userData.username);
     commentSection.setAttribute("postId", postId);
+    commentSection.setAttribute("userId", userData.id); 
 
     overlayContainer.appendChild(commentSection);
   }
@@ -178,6 +190,7 @@ class PostCard extends HTMLElement {
 
       // Add like/remove like functionality
       const heartIcon = this.shadowRoot.querySelector('#heart-icon');
+
       heartIcon?.addEventListener('click', async (event) => {
         event.preventDefault();
         const state = store.getState();
@@ -188,8 +201,9 @@ class PostCard extends HTMLElement {
           return;
         }
 
+        const likes = await fetchLikes(postId); // <- from Firestore
+        const userLike = likes.find(like => like.userId === loggedUser.id);
         // Buscar si el usuario ya dio like a este post
-        const userLike = state.likes.find(like => like.userId === loggedUser.id && like.postId === postId);
         const likesEl = this.shadowRoot?.querySelector("#post-likes");
         const currentLikes = parseInt(likesEl?.textContent || "0");
 
@@ -205,10 +219,8 @@ class PostCard extends HTMLElement {
         try {
           if (userLike) {
             await removeLike(userLike);
-            console.log('Like eliminado');
           } else {
-            const newLike = await createLike(loggedUser.id, postId);
-            console.log('Like agregado:', newLike);
+            await createLike(loggedUser.id, postId);
           }
         } catch (error) {
           // Revert UI changes if the operation failed
@@ -222,7 +234,7 @@ class PostCard extends HTMLElement {
           console.error('Error al manejar like:', error);
         }
       });
-  
+
 
       // Show song information
       const songContainer = this.shadowRoot.querySelector('.song-space');
@@ -263,7 +275,7 @@ class PostCard extends HTMLElement {
 
       //Follow functionality
       const followBtn = this.shadowRoot?.querySelector("#follow-btn") as HTMLElement;
-      if(followBtn) {
+      if (followBtn) {
         isFollowing(loggedUser.id, userId).then((alreadyFollowing) => {
           followBtn.textContent = alreadyFollowing ? "Following" : "Follow";
           followBtn.style.backgroundColor = alreadyFollowing ? "#C06DFF" : "#2A2A2A";
@@ -273,20 +285,20 @@ class PostCard extends HTMLElement {
         // call firebase to toggle follow or unfollow..
         followBtn.addEventListener("click", async () => {
           const following = await isFollowing(loggedUser.id, userId);
-          if(loggedUser.id != userId) {
+          if (loggedUser.id != userId) {
             try {
-            if (following) {
-              await unfollowUser(loggedUser.id, userId);
-              followBtn.textContent = "Follow";
-              followBtn.style.backgroundColor = "#2A2A2A"
-            } else {
-              await followUser(loggedUser.id, userId);
-              followBtn.textContent = "Following";
-              followBtn.style.backgroundColor = "#C06DFF"
+              if (following) {
+                await unfollowUser(loggedUser.id, userId);
+                followBtn.textContent = "Follow";
+                followBtn.style.backgroundColor = "#2A2A2A"
+              } else {
+                await followUser(loggedUser.id, userId);
+                followBtn.textContent = "Following";
+                followBtn.style.backgroundColor = "#C06DFF"
+              }
+            } catch (e) {
+              console.error("Follow/unfollow failed:", e);
             }
-          } catch (e) {
-            console.error("Follow/unfollow failed:", e);
-          }
           }
         });
       }
@@ -302,7 +314,7 @@ class PostCard extends HTMLElement {
 
 
 
-    }
   }
+}
 
 export { PostCard };
