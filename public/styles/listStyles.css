@@ -1,12 +1,17 @@
-
-  .playlist-container {
-    max-width: none;
-    margin-left: 100px;
-    margin-top: 50px;
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #1e1e1e;
+    color: white;
+    margin: 0;
+    padding: 40px;
   }
-  #prev-btn {
-    font-size: 40px;
-    cursor: pointer;
+  
+  .playlist-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 50px;
   }
   
   .back-button {
@@ -21,6 +26,7 @@
   .back-button img {
     width: 24px;  
     height: auto;
+    margin-left: 40px;
   }
   
   
@@ -28,6 +34,7 @@
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 40px;
+    margin-left: 40px;
   }
   
   .playlist-card {
@@ -41,6 +48,7 @@
     width: 454px;
     height: 142px;
     flex-shrink: 0;
+    margin-left: 40px;
   }
   
   .playlist-info {
@@ -53,6 +61,7 @@
   
   .playlist-info h2 {
     color: #FFF;
+    font-family: Inter;
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -77,4 +86,50 @@
     background: var(--d-9-d-9-d-9, linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A);
     padding: 10px;
   }
+  
+
+/* Responsive styles for iPhone 14 Pro Max (430px) */
+@media screen and (max-width: 430px) {
+  :host {
+    display: block;
+    width: 100%;
+  }
+
+  :host .playlist-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  :host .playlist-title {
+    font-size: 28px !important;
+    margin-bottom: 30px !important;
+  }
+
+  :host .playlist-card {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 120px !important;
+    padding: 15px !important;
+    margin-bottom: 15px !important;
+  }
+
+  :host .playlist-info {
+    margin-left: 15px !important;
+  }
+
+  :host .playlist-info h2 {
+    font-size: 20px !important;
+  }
+
+  :host .playlist-info p {
+    font-size: 12px !important;
+  }
+
+  :host .emoji-frame img {
+    width: 100px !important;
+    height: 90px !important;
+  }
+}
   

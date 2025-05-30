@@ -7,7 +7,9 @@ class UserLists extends HTMLElement{
     }
     connectedCallback() {
         this.render()
+        this.handleResponsive()
         this.addEventListeners()
+        window.addEventListener('resize', () => this.handleResponsive())
     }
 
     addEventListeners() {
@@ -18,6 +20,44 @@ class UserLists extends HTMLElement{
             NavigationActions.navigate('/profile');
         });
     }
+
+    handleResponsive() {
+        if (this.shadowRoot) {
+            const container = this.shadowRoot.querySelector('.playlist-container')
+            const cards = this.shadowRoot.querySelectorAll('.playlist-card')
+            const title = this.shadowRoot.querySelector('.playlist-title')
+            const emojis = this.shadowRoot.querySelectorAll('.emoji-frame img')
+
+            if (window.innerWidth <= 430) {
+                if (container) {
+                    container.setAttribute('style', 'width: 100%; max-width: 100%; padding: 0; margin: 0; margin-top: 50px;')
+                }
+                if (title) {
+                    title.setAttribute('style', 'font-size: 24px; margin-bottom: 25px;')
+                }
+                cards.forEach(card => {
+                    card.setAttribute('style', 'width: 85%; height: auto; min-height: 100px; padding: 12px; margin-bottom: 15px; margin-left: auto; margin-right: auto;')
+                })
+                emojis.forEach(emoji => {
+                    emoji.setAttribute('style', 'width: 80px; height: 72px;')
+                })
+            } else {
+                if (container) {
+                    container.setAttribute('style', 'width: 100%; max-width: 500px; padding: 0;')
+                }
+                if (title) {
+                    title.setAttribute('style', 'font-size: 36px; margin-bottom: 40px;')
+                }
+                cards.forEach(card => {
+                    card.setAttribute('style', 'width: 454px; height: 142px; padding: 20px; margin-bottom: 20px;')
+                })
+                emojis.forEach(emoji => {
+                    emoji.setAttribute('style', 'width: 143px; height: 127px;')
+                })
+            }
+        }
+    }
+
     render(){ 
         if(this.shadowRoot){
             this.shadowRoot.innerHTML= `
@@ -25,6 +65,7 @@ class UserLists extends HTMLElement{
             <link rel="stylesheet" href="/styles/listStyles.css" />
               <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
+                <link rel="stylesheet" href="/styles/listStyles.css">
 
     <div class="playlist-container">
     <span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
@@ -57,8 +98,6 @@ class UserLists extends HTMLElement{
             `
         }
     }
-
-
 }
 
 export {UserLists}

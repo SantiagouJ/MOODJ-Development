@@ -23,11 +23,11 @@ class PrivateStats extends HTMLElement{
             this.shadowRoot.innerHTML= `
 
             <link rel="stylesheet" href="/styles/privateStats.css">
-                    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+            <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
 
   <section class="stats-section">
-          <span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
+        <span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
 
     <div class="stats-header">
       <img src="images/stats/left-bubbles.svg" alt="left bubbles" class="bubble-decoration left">
@@ -41,12 +41,6 @@ class PrivateStats extends HTMLElement{
     </div>
 
     <div class="statsbox">
-      <div class="stats-title">
-        <p>You felt mainly
-        Happy, and your songs helped
-        you express that! </p>
-      </div>
-
       <div class="stats-data">
         <div class="happy-data"><p>Happy 40%</p></div>
         <div class="sad-data"><p>Sad 30%</p></div>
@@ -69,6 +63,12 @@ class PrivateStats extends HTMLElement{
       <div class="bubble angry">
         <img src="images/stats/mad circle.svg" alt="mad face" class="mad-icon">
       </div>
+    </div>
+
+    <div class="stats-title">
+      <p>You felt mainly
+      Happy, and your songs helped
+      you express that! </p>
     </div>
 
     <div class="mobile-stats-data">
