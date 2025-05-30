@@ -99,6 +99,17 @@ h1{
     object-fit: contain;
 }
 
+.login-btn-mobile {
+
+    display: none;
+
+}
+
+.forgot-row-mobile {
+    display: none;
+}
+
+
 
 form {
 
@@ -192,7 +203,6 @@ input::placeholder {
     color: #ffffff;
     font-weight: 700;
     margin: 0px;
-
     font-size: 48px;
 }
 
@@ -213,7 +223,7 @@ input::placeholder {
         margin-top: 20px; 
         margin-bottom: 20px; 
         border-radius: 20px; 
-        padding: 20px 0; 
+        padding: 25px 0; 
     }
 
     #createPost-info {
@@ -252,20 +262,6 @@ input::placeholder {
         width: calc(100% - 24px); 
     }
 
-    .login-btn {
-        width: 80%; 
-        margin-left: 10%;
-        padding: 10px 0;
-        font-size: 16px; 
-        margin-top: 20px; 
-        margin-bottom: 10px; 
-    }
-
-    .forgot-row {
-        margin-right: 0; 
-        justify-content: center; 
-        margin-bottom: 0; 
-    }
 
     .login-title {
         font-size: 36px; 
@@ -287,6 +283,7 @@ input::placeholder {
         margin-top: 80px;
         border-radius: 50px;
         padding-top: 55px;
+        margin-left: 35px;
         
     }
 
@@ -325,5 +322,52 @@ input::placeholder {
         max-width: 85%;
         max-height: 85%;
         object-fit: contain;
+    }
+
+    .login-btn {
+
+        display: none;
+
+    }
+
+    .login-btn-mobile {
+        width: 60%;
+        padding: 10px 0;
+        font-size: 16px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        background: #C06DFF;
+        color: #FFFFFF;
+        font-weight: 700;
+        border: none;
+        border-radius: 24px;
+        cursor: pointer;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .forgot-row {
+        display: none;
+    }
+
+    .forgot-row-mobile {
+        display: flex;
+        align-items: center;
+        padding-bottom: 20px;
+        margin-right: 0;
+        justify-content: center;
+        margin-bottom: 0;
+        color: #fff;
+    }
+
+    .forgot-row-mobile a.forgot-link {
+        color: #FFFFFF;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .forgot-row-mobile a.forgot-link:hover {
+        text-decoration: underline;
     }
 }

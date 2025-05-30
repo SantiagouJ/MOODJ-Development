@@ -310,7 +310,7 @@ input::placeholder {
 
     input[type="text"],
     input[type="password"] {
-        width: calc(100% - 24px); /* Adjust width considering padding */
+        width: calc(100% - 24px); 
     }
 
     .forgot-row {

@@ -13,17 +13,18 @@ class BannerLanding extends HTMLElement{
 
         <div class="banner-container">
 
-        <div class = "banner-text">
-            <p class="banner-text-welcome">Welcome to</p>
-            <img class="banner-logo" src="/images/logos/full-logo.svg" alt="Logo">
-            <p class="banner-text-two">Your music diary</p>
-            <button class="banner-button">Start now</button>
+            <div class = "banner-text">
+                <p class="banner-text-welcome">Welcome to</p>
+                <img class="banner-logo" src="/images/logos/full-logo.svg" alt="Logo">
+                <p class="banner-text-two">Your music diary</p>
+                <button class="banner-button">Start now</button>
 
-        </div>
+            </div>
 
-        <div class = "banner-image">
-            <img class="banner-image" src="/images/moods/groupmoods.svg" alt="Banner">
-        </div>
+            <div class = "banner-image-container">
+                <img class="banner-image" src="/images/moods/groupmoods.svg" alt="Banner">
+                <img class="banner-image-mobile" src="/images/moods/groupmoods-mobile.svg" alt="Banner">
+            </div>
              
         </div>
 
