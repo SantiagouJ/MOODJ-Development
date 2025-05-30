@@ -233,6 +233,20 @@ class CommentCard extends HTMLElement {
         #heart-icon {
             font-size: 36px;
             margin-right: 8px;
+            transition: color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+        #heart-icon:hover {
+            color: #e25555;
+            transform: scale(1.2);
+        }
+        .heart-pop {
+            animation: pop 0.3s;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
         }
 
         .new-comment {
@@ -337,7 +351,8 @@ class CommentCard extends HTMLElement {
             }
         }
         </style>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
 
         
                 <div class="comment">
@@ -353,7 +368,7 @@ class CommentCard extends HTMLElement {
                 </div>
                 <div class="commentr">
                     <h4 id="comment-num">${this.getAttribute('likes')}</h4>
-                    <span class="material-symbols-outlined" id="heart-icon" style="color: ${this.liked ? '#e25555' : '#fff'}; cursor:pointer;">
+                    <span class="material-symbols-outlined" id="heart-icon" style="color: ${this.liked ? '#e25555' : '#fff'}; font-variation-settings: 'FILL' ${this.liked ? 1 : 0};">
                         favorite
                     </span>
                 </div>
@@ -365,14 +380,10 @@ class CommentCard extends HTMLElement {
 
     addLikeListener() {
       if (!this.shadowRoot) return;
-      
-      
       const heartIcon = this.shadowRoot.getElementById('heart-icon');
       const likesNum = this.shadowRoot.getElementById('comment-num');
       if (!heartIcon || !likesNum) return;
-      heartIcon.addEventListener('click', async () => {
-        console.log("Pene");
-        
+      heartIcon.onclick = async () => {
         const postId = this.getAttribute('postid');
         const commentId = this.getAttribute('commentid');
         if (!postId || !commentId) return;
@@ -389,7 +400,11 @@ class CommentCard extends HTMLElement {
         this.setAttribute('likes', likes.toString());
         likesNum.textContent = likes.toString();
         heartIcon.style.color = this.liked ? '#e25555' : '#fff';
-      });
+        heartIcon.style.fontVariationSettings = `'FILL' ${this.liked ? 1 : 0}`;
+        heartIcon.classList.remove('heart-pop');
+        void heartIcon.offsetWidth; // Trigger reflow for animation restart
+        heartIcon.classList.add('heart-pop');
+      };
     }
   }
   
