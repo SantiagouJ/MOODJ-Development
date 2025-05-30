@@ -43,7 +43,7 @@ import { LogInComp } from "./components/authComponents/logIn";
 
 // Carousel Components
 import { UserCard } from "./components/suggCarouselComponents/UserCard";
-import { UserCarousel } from "./components/suggCarouselComponents/asdhjasdjh";
+import { UserCarousel } from "./components/suggCarouselComponents/CarouselUser";
 import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 
 // Define Navigation Components
