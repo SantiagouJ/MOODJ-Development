@@ -21,6 +21,12 @@ class NavbarLanding extends HTMLElement {
         NavigationActions.navigate('/');
       });
       
+      const mobileLogo = this.shadowRoot.querySelector('.mobile-logo');
+      mobileLogo?.addEventListener('click', (e) => {
+        e.preventDefault();
+        NavigationActions.navigate('/');
+      });
+
       const signUpButton = this.shadowRoot.querySelector('.register-buttons button:last-child');
       signUpButton?.addEventListener('click', (e) => {
         e.preventDefault();
@@ -41,6 +47,8 @@ class NavbarLanding extends HTMLElement {
         
         this.shadowRoot.innerHTML = `
           <link rel="stylesheet" href="/styles/navbarLanding.css">
+                              <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
           <div class="navbar">
           
               <img class="logo" src="/images/logos/Logo-medium.svg" alt="Logo">
@@ -54,7 +62,7 @@ class NavbarLanding extends HTMLElement {
                 </div>
 
                 <div>
-                  <img class="menu" src="/images/icons/Menu-responsive.svg" alt="Menu">
+                  <span id="menu" class="material-symbols-outlined">menu</span>
                 </div>
 
               </div>

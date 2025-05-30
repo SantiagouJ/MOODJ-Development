@@ -105,6 +105,12 @@ class NavBar extends HTMLElement {
             NavigationActions.navigate('/home');
         });
 
+        const mobileLogo = this.shadowRoot.querySelector('.mobile-logo');
+        mobileLogo?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/home');
+        });
+
         const profileButton = this.shadowRoot.querySelector('#profile-button');
         profileButton?.addEventListener('click', (e) => {
             e.preventDefault();

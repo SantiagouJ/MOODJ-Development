@@ -48,6 +48,9 @@
    color: #1F1F1F;
 
 }
+#menu{
+    display: none;
+}
 
 .mobile-logo{
 
@@ -100,6 +103,17 @@
         height: 50px;
         width: auto;
         margin-bottom: 6px;
+        color: #C06DFF;
+    
+    }
+    #menu {
+
+        display: block;
+        width: auto;
+        margin-right: 42px;
+        margin-bottom: 18px;
+        font-size: 2rem;
+        color: #C06DFF;
     
     }
 

@@ -1,3 +1,4 @@
+import { NavigationActions } from "../../flux/Actions";
 class BannerLanding extends HTMLElement{
     constructor() {
         super()
@@ -29,6 +30,11 @@ class BannerLanding extends HTMLElement{
         </div>
 
         `
+        const bannerButton = this.shadowRoot.querySelector('.banner-button');
+        bannerButton?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/login');
+        });
     }
     }
 
