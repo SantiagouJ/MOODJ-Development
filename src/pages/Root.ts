@@ -54,6 +54,10 @@ class Root extends HTMLElement {
             let contentHTML = '';
             switch (path) {
                 case '/':
+                    contentHTML = `
+                        <landing-page></landing-page>
+                    `;
+                    break;
                 case '/home':
                     contentHTML = `
                         <nav-bar></nav-bar>
@@ -63,11 +67,11 @@ class Root extends HTMLElement {
                     break;
                 case '/login':
                     contentHTML = `<log-in></log-in>
-                    <footer-element></footer-element>`;
+                    `;
                     break;
                 case '/signup':
                     contentHTML = `<sign-up></sign-up>
-                    <footer-element></footer-element>`;
+                    `;
                     break;
                 case '/profile':
                     contentHTML = `
