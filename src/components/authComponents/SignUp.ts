@@ -63,13 +63,21 @@ class SignUpComp extends HTMLElement {
                         </div>
                         <p id="text-carrousel">Choose your avatar!</p>
                     </div>
+                     <div class="forgot-row-mobile">
+                                <a href="#" class="forgot-link">Already have an account? sign in</a>
+                            </div>
+
                 </div>
     
     ` 
-        const signIn = this.shadowRoot.getElementById('login-btn');
-        signIn?.addEventListener('click', () => {
-          NavigationActions.navigate('/login') 
-        })
+
+        const forgotLinks = this.shadowRoot.querySelectorAll('.forgot-link');
+        forgotLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/login');
+          });
+        });
 
         const form = this.shadowRoot!.querySelector<HTMLFormElement>('#register-form')!;
 

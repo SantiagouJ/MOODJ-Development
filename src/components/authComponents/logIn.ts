@@ -54,11 +54,21 @@ class LogInComp extends HTMLElement {
                             <button type="submit" class="login-btn">Log in</button>
                         </form>
                         <div class="signup-row">
-                            <span>New user? </span><a href="#" class="signup-link" id="signup">sign up</a>
+                            <span>New user? </span><a href="#" class="signup-link">sign up</a>
                         </div>
                     </div>
                 </div>
-            </div>
+
+                <div class="bottom-container"> 
+
+                    <div class="circle-container-mobile">
+                            <img class="yellow-circle-mobile" src="/images/moods2/happy-yellow-circle.svg" alt="">
+                            <img class="red-circle-mobile" src="/images/moods2/happy-red-circle.svg" alt="">
+                        </div>
+
+                </div>
+
+  </div>
                         
             `;
 
