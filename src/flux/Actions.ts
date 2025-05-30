@@ -3,7 +3,7 @@ import { PostType } from '../utils/types/PostType';
 import { UserType } from '../utils/types/UserType';
 import { AppDispatcher } from './Dispatcher';
 import { UserCredential } from "firebase/auth";
-
+import { CommentLikeType } from '../utils/types/LikeCommentType';
 
 export const DataActionTypes = {
     GET_POSTS:'GET_POSTS',
@@ -17,6 +17,11 @@ export const NewPostTypes = {
 export const LikeActionTypes = {
     ADD_LIKE: 'ADD_LIKE',
     REMOVE_LIKE: 'REMOVE_LIKE'
+} as const;
+
+export const CommentLikeActionTypes = {
+    ADD_COMMENT_LIKE: 'ADD_COMMENT_LIKE',
+    REMOVE_COMMENT_LIKE: 'REMOVE_COMMENT_LIKE'
 } as const;
 
 export const UserActionsType = {
@@ -89,6 +94,22 @@ export const LikeActions = {
         });
     }
 }
+
+export const CommentLikeActions = {
+    addCommentLike: (likeData: CommentLikeType) => {
+        AppDispatcher.dispatch({
+            type: CommentLikeActionTypes.ADD_COMMENT_LIKE,
+            payload: likeData
+        });
+    },
+    removeCommentLike: (likeData: CommentLikeType) => {
+        AppDispatcher.dispatch({
+            type: CommentLikeActionTypes.REMOVE_COMMENT_LIKE,
+            payload: likeData
+        });
+    }
+}
+
 export const UserActions = {
     saveUser: (user: UserCredential) => {
         AppDispatcher.dispatch({
