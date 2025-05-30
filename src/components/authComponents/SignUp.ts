@@ -1,4 +1,5 @@
-import { initializeCarousel } from "../postComponents/carrousel"
+import { initializeCarousel } from "../CarouselMoods"
+import { registerUser } from "../../services/Firebase/Register/RegisterUserService"
 
 class SignUpComp extends HTMLElement {
   private currentSlideIndex: number = 0
@@ -35,15 +36,15 @@ class SignUpComp extends HTMLElement {
                     <div id="createPost-info">
                         <h2 class="login-title">Sign up</h2>
                         <p class="welcome-text">Welcome to MOODJ! please create your account</p>
-                        <form>
+                        <form id="register-form">
                             <label for="username">Username</label>
-                            <input type="text" id="username" placeholder="Enter username">
-                            <label for="password">Email</label>
-                            <input type="password" id="email" placeholder="Enter email">
-                            <label for="username">Password</label>
-                            <input type="text" id="password" placeholder="Enter password">
+                            <input type="text" name="username" id="username" placeholder="Enter username">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" placeholder="Enter email">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Enter password">
                             <label for="password">Confirm Password</label>
-                            <input type="password" id="confirm-password" placeholder="Enter password">
+                            <input type="password" name="password" id="confirm-password" placeholder="Enter password">
                             <button type="submit" class="login-btn">Sign up</button>
                             <div class="forgot-row">
                                 <a href="#" class="forgot-link">Already have an account? sign in</a>
@@ -63,6 +64,64 @@ class SignUpComp extends HTMLElement {
                 </div>
     
     ` 
+
+        const form = this.shadowRoot!.querySelector<HTMLFormElement>('#register-form')!;
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const currentSlide = this.slides[this.currentSlideIndex];
+                const mood = currentSlide?.getAttribute('data-mood');
+                let profilePic = ''
+
+                if(mood === 'images/moods2/Happy.svg') {
+                  profilePic = 'images/pfp/happypfp.svg';
+                } else if (mood === 'images/moods2/Angry.svg') {
+                  profilePic = 'images/pfp/angrypfp.svg';
+                } else if(mood === 'images/moods2/Crying.svg') {
+                  profilePic = 'images/pfp/crypfp.svg';
+                } else if(mood === 'images/moods2/Love.svg') {
+                  profilePic = 'images/pfp/blushpfp.svg';
+                } else if(mood === 'images/moods2/Sad.svg') {
+                  profilePic = 'images/pfp/sadpfp.svg';
+                } else if(mood === 'images/moods2/Serious.svg') {
+                  profilePic = 'images/pfp/boredpfp.svg';
+                } else if(mood === 'images/moods2/Smily.svg') {
+                  profilePic = 'images/pfp/smilypfp.svg';
+                } else if(mood === 'images/moods2/Worried.svg') {
+                  profilePic = 'images/pfp/worriedpfp.svg';
+                } else {
+                  profilePic = 'images/pfp/smilypfp.svg';
+                }
+                
+                const data = {
+                username: formData.get('username') as string,
+                name: formData.get('name') as string,
+                email: formData.get('email') as string,
+                pfp: profilePic,
+                password: formData.get('password') as string,
+                }
+
+                if (data.password.length < 6) {
+                alert('La contraseña debe tener al menos 6 caracteres.');
+                return;
+            }
+
+            registerUser(data.email, data.password, data.username, data.pfp)
+                .then((response) => {
+                    if (!response.isRegistered) {
+                        console.error('Error al registrar el usuario:', response.error);
+                        alert('Error al registrar el usuario. Por favor, verifica tus datos.');
+                        return;
+                    }
+                    alert('Usuario registrado exitosamente.');
+                })
+                .catch((error) => {
+                    console.error('Error al registrar el usuario:', error);
+                    alert('Ocurrió un error. Por favor, intenta nuevamente.');
+                });
+
+            });
   }
 
   updateCarousel(skipTransition: boolean = false) {

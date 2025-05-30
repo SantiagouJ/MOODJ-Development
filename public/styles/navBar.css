@@ -30,6 +30,7 @@ body{
     display: flex;
     gap: 3.5rem;
     margin-left: 4rem;
+    cursor: pointer;
 
 
 }
@@ -41,6 +42,7 @@ body{
     color: #FFFF;
     font-weight: 500;
     font-size: 0.9rem;
+    cursor: pointer;
 
 
 }
@@ -105,6 +107,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
 }
 

@@ -1,7 +1,7 @@
-import { initializeCarousel } from "../postComponents/carrousel"
+import { initializeCarousel } from "../CarouselMoods";
 import { setupSearch } from "../../utils/musicAPI/musicSearch"
 import { Song } from "../../utils/types/SongTypes"
-import { NewMoodj } from "../../utils/types/SongTypes";
+import { createPost } from "../../services/Firebase/Posts/NewPostService";
 
 class CreatePost extends HTMLElement {
   private selectedSong: Song | null = null;
@@ -35,6 +35,8 @@ class CreatePost extends HTMLElement {
   }
   createPost() {
     if (!this.shadowRoot) return;
+    const userId = this.getAttribute('user-id');
+    if(!userId) return;
   
     const input = this.shadowRoot.querySelector('#input2') as HTMLInputElement;
     const text = input?.value.trim();
@@ -55,25 +57,19 @@ class CreatePost extends HTMLElement {
     }
     const currentSlide = this.slides[this.currentSlideIndex];
     const mood = currentSlide?.getAttribute('data-mood') || '/photos/Smily.svg';
-      
-    this.dispatchEvent(new CustomEvent<NewMoodj>('post-created', {
-      detail: {
-        mood,
-        text,
-        song: this.selectedSong.title,
-        artist: this.selectedSong.artist.name,
-        cover: this.selectedSong.album.cover_xl,
-        preview: this.selectedSong.preview,
-        user: {
-          profilePicture: '/images/moods/angrypfp.svg',
-          name: 'Leider',
-          username: 'leider.js',
-        }
-      },
-      bubbles: true, 
-      composed: true 
-    }));
-    
+
+    //Call CreatePost which is a firebase function that also calls the dispatcher using flux...
+    createPost(
+      {
+          title: this.selectedSong.title,
+          artist: this.selectedSong.artist.name,
+          album: this.selectedSong.album.cover_xl,
+          audio: this.selectedSong.preview,
+          mood: mood,
+          caption: text,
+          userId: userId,
+      }
+    )
     const text2 = this.shadowRoot.querySelector("#text2") as HTMLParagraphElement
     const text3 = this.shadowRoot.querySelector("#text3") as HTMLParagraphElement
     const musicImgDiv = this.shadowRoot.querySelector("#music-img") as HTMLDivElement
@@ -88,13 +84,15 @@ class CreatePost extends HTMLElement {
 
   render(): void {
     if (!this.shadowRoot) return
+      
+    const userName = this.getAttribute('username');
     this.shadowRoot.innerHTML = `
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
                 <link rel="stylesheet" href="styles/create_post.css">
 
                 <div id="createPost-container">
                     <div id="createPost-info">
-                        <h1>Hello Leider!</h1>
+                        <h1>Hello ${userName}!</h1>
                         <p id="text1">How are you feeling today?</p>
 
                         <div id="music-container">

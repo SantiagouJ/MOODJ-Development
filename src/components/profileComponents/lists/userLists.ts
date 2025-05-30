@@ -1,3 +1,5 @@
+import { NavigationActions } from "../../../flux/Actions";
+
 class UserLists extends HTMLElement{
     constructor() {
         super()
@@ -6,7 +8,17 @@ class UserLists extends HTMLElement{
     connectedCallback() {
         this.render()
         this.handleResponsive()
+        this.addEventListeners()
         window.addEventListener('resize', () => this.handleResponsive())
+    }
+
+    addEventListeners() {
+        if (!this.shadowRoot) return;
+        const prevBtn = this.shadowRoot.querySelector('#prev-btn');
+        prevBtn?.addEventListener('click', (e) => {
+            e.preventDefault();
+            NavigationActions.navigate('/profile');
+        });
     }
 
     handleResponsive() {
@@ -49,12 +61,15 @@ class UserLists extends HTMLElement{
     render(){ 
         if(this.shadowRoot){
             this.shadowRoot.innerHTML= `
+
+            <link rel="stylesheet" href="/styles/listStyles.css" />
+              <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
                 <link rel="stylesheet" href="/styles/listStyles.css">
 
     <div class="playlist-container">
-      <button class="back-button">
-        <img src="/images/icons/Left-arrow.svg" alt="" />
-      </button>
+    <span id="prev-btn" class="carousel-prev material-symbols-outlined">keyboard_arrow_left</span>          
+
       <h1 class="playlist-title">My Lists</h1>
 
       <div class="playlist-card">

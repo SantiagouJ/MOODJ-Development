@@ -1,15 +1,25 @@
+import { fetchUser } from "../../services/Firebase/GetUserService";
+import { UserType } from "../../utils/types/UserType";
+
 class CommentCard extends HTMLElement {
+    private userData: UserType | null = null;
+    
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
     }
   
-    connectedCallback() {
-      this.render();
+  async connectedCallback() {
+    const userId = this.getAttribute('userId');
+    if(userId) {
+      this.userData = await fetchUser(userId)
     }
+    this.render()
+  }
   
     render() {
       if (this.shadowRoot !== null) {
+
         this.shadowRoot.innerHTML = `
           <style>
         .comments-container::-webkit-scrollbar { 
@@ -330,11 +340,11 @@ class CommentCard extends HTMLElement {
                 <div class="comment">
                 <div class="commentl">
                     <div class="profile-pic2">
-                        <img src="${this.getAttribute('pfp')}" alt="" class="comment-profile">
+                        <img src="${this.userData?.pfp}" alt="" class="comment-profile">
                     </div>
                     <div class="user-info">
-                        <h4 id="comment-name">${this.getAttribute('name')}</h4>
-                        <p id="comment-user">${this.getAttribute('username')}</p>
+                        <h4 id="comment-name">${this.userData?.name}</h4>
+                        <p id="comment-user">${this.userData?.username}</p>
                     </div>
                     <p id="comment-msg">${this.getAttribute('comment')}</p>
                 </div>

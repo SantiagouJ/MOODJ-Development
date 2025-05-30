@@ -17,7 +17,6 @@ body {
 
 .smalltext {
     color: #FFF;
-    font-family: Inter;
     font-size: 20px;
     font-weight: 500;
     width: 570px;
@@ -41,7 +40,6 @@ body {
     width: 427px;
     height: 110px;
     color: #FFF;
-    font-family: Inter;
     font-size: 40px;
     font-weight: 700;
     display: flex;
