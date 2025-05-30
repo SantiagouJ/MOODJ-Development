@@ -1,5 +1,7 @@
 
 class PostSong extends HTMLElement{ 
+    private audio: HTMLAudioElement | null = null;
+    private isPlaying: boolean = false;
 
     constructor() {
         super()
@@ -9,6 +11,7 @@ class PostSong extends HTMLElement{
     connectedCallback() {
         this.render()
     }
+
     render() {
     
         if (this.shadowRoot !== null) {
@@ -30,8 +33,8 @@ class PostSong extends HTMLElement{
             <div class="song-info">
                 <h3 id="song-title">${title}</h3>
                 <p id="artist-name">${artist}</p>
-                <span class="material-symbols-outlined" id="play-song">
-                    play_circle
+                <span class="material-symbols-outlined" id="play-song" style="cursor: pointer;">
+                        play_circle
                 </span>
                 <p id="post-text"><span style="font-weight:600; color: rgba(255, 255, 255, 0.86);">@${username}&nbsp;</span>${caption}</p>  
             </div>
@@ -40,7 +43,19 @@ class PostSong extends HTMLElement{
             </div>   
             </div>
         `
-
+        const playButton = this.shadowRoot.getElementById('play-song');
+        let playing = false;
+        playButton?.addEventListener('click', () => {
+            if(playing == false) {
+                playButton.textContent = 'play_circle';
+                playing = true;
+            } else {
+                playButton.textContent = 'pause_circle'
+                playing = false;
+            }
+        })
+        }
     }
-}}
+}
+
 export {PostSong};

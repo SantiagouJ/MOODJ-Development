@@ -11,7 +11,6 @@ import { PostSong } from "./components/postComponents/PostSong";
 import { CommentsOverlay } from "./components/postComponents/CommentsOverlay";
 import { CommentCard } from "./components/postComponents/CommentCard";
 import { HomePosts } from "./components/homeComponents/homePosts";
-import { RecentPosts } from "./components/newPost";
 
 // Stats and Profile Components
 import { WeeklyStats } from "./components/homeComponents/WeeklyStats";
@@ -44,7 +43,7 @@ import { LogInComp } from "./components/authComponents/logIn";
 
 // Carousel Components
 import { UserCard } from "./components/suggCarouselComponents/UserCard";
-import { UserCarousel } from "./components/suggCarouselComponents/UserCarousel";
+import { UserCarousel } from "./components/suggCarouselComponents/CarouselUser";
 import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 
 // Define Navigation Components
@@ -64,7 +63,6 @@ customElements.define('song-card', PostSong);
 customElements.define('comment-card', CommentCard);
 customElements.define('home-posts', HomePosts);
 customElements.define('comments-over', CommentsOverlay);
-customElements.define('recent-posts', RecentPosts);
 
 // Define Stats and Profile Components
 customElements.define("profile-preview", ProfilePreview);

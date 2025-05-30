@@ -70,28 +70,29 @@ h2 {
     padding: 0 15px;
 }
 
-.carousel-prev,
-.carousel-next {
+#prev-btn,
+#next-btn {
     position: absolute;
-    top: 45%;    
+    top: 40%;    
     margin-top: -20px;
     z-index: 10;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
 }
 
-.carousel-prev {
+#prev-btn {
     left: -6px;
+    font-size: 40px;
+    user-select: none;
 }
 
-.carousel-next {
+#next-btn {
     right: -6px;
+    font-size: 40px;
+    user-select: none;   
 }
-
 .carousel-wrapper.dragging {
     cursor: grabbing;
     transition: none;
