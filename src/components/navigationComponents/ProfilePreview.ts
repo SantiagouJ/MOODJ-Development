@@ -35,7 +35,7 @@ class ProfilePreview extends HTMLElement {
             const clickedInsidePreview = composedPath.some(node => node === this);
             const navBar = document.querySelector("nav-bar")
             const clickedInPf = navBar?.shadowRoot?.querySelector(".pf");
-            const clickedInMenu = navBar?.shadowRoot?.querySelector(".menu");
+            const clickedInMenu = navBar?.shadowRoot?.querySelector("#menu");
 
             const clickedInsidePf = clickedInPf && composedPath.includes(clickedInPf);
             const clickedInsideMenu = clickedInMenu && composedPath.includes(clickedInMenu);

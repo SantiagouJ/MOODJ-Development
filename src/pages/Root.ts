@@ -100,7 +100,14 @@ class Root extends HTMLElement {
                         <user-lists></user-lists>
                         <footer-element></footer-element>
                     `;
-                    break;
+                break;
+                case '/landing':
+                    contentHTML = `
+                        <navbar-landing></navbar-landing>
+                        <landing-page></landing-page>
+                        <footer-element></footer-element>
+                    `;
+                break;
                 default:
                     contentHTML = `<h1>404 - Página no encontrada</h1>`;
                     break;

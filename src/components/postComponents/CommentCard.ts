@@ -1,26 +1,30 @@
 import { fetchUser } from "../../services/Firebase/GetUserService";
 import { UserType } from "../../utils/types/UserType";
+import { addCommentLike, removeCommentLike } from '../../services/Firebase/Posts/NewComentLikeService';
+import { store } from "../../flux/Store";
 
 class CommentCard extends HTMLElement {
     private userData: UserType | null = null;
-    
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" });
-    }
-  
-  async connectedCallback() {
-    const userId = this.getAttribute('userId');
-    if(userId) {
-      this.userData = await fetchUser(userId)
-    }
-    this.render()
-  }
-  
-    render() {
-      if (this.shadowRoot !== null) {
+    private liked: boolean = false; // Simulación local de like
 
-        this.shadowRoot.innerHTML = `
+    constructor() {
+        super();
+        this.attachShadow({ mode: "open" });
+    }
+
+    async connectedCallback() {
+        const userId = this.getAttribute('userId');
+        if (userId) {
+            this.userData = await fetchUser(userId)
+        }
+        this.render()
+        this.addLikeListener();
+    }
+
+    render() {
+        if (this.shadowRoot !== null) {
+
+            this.shadowRoot.innerHTML = `
           <style>
         .comments-container::-webkit-scrollbar { 
             display: none;
@@ -230,6 +234,20 @@ class CommentCard extends HTMLElement {
         #heart-icon {
             font-size: 36px;
             margin-right: 8px;
+            transition: color 0.2s, transform 0.15s;
+            cursor: pointer;
+        }
+        #heart-icon:hover {
+            color: #e25555;
+            transform: scale(1.2);
+        }
+        .heart-pop {
+            animation: pop 0.3s;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
         }
 
         .new-comment {
@@ -334,7 +352,8 @@ class CommentCard extends HTMLElement {
             }
         }
         </style>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+
 
         
                 <div class="comment">
@@ -350,15 +369,62 @@ class CommentCard extends HTMLElement {
                 </div>
                 <div class="commentr">
                     <h4 id="comment-num">${this.getAttribute('likes')}</h4>
-                    <span class="material-symbols-outlined" id="heart-icon">
+                    <span class="material-symbols-outlined" id="heart-icon" style="color: ${this.liked ? '#e25555' : '#fff'}; font-variation-settings: 'FILL' ${this.liked ? 1 : 0};">
                         favorite
                     </span>
                 </div>
                 </div>
         `;
-      }
+            this.addLikeListener();
+        }
     }
-  }
-  
-  export { CommentCard };
-  
+
+    async addLikeListener() {
+        if (!this.shadowRoot) return;
+
+        const heartIcon = this.shadowRoot.getElementById('heart-icon');
+        const likesNum = this.shadowRoot.getElementById('comment-num');
+        const postId = this.getAttribute('postid');
+        const commentId = this.getAttribute('commentid');
+
+        if (!heartIcon || !likesNum || !postId || !commentId) return;
+
+        const state = store.getState();
+        const loggedUser = state.userProfile;
+        if (!loggedUser) return;
+
+        const likeKey = `liked_${loggedUser.id}_${commentId}`;
+        this.liked = localStorage.getItem(likeKey) === "true";
+
+        // Set initial UI
+        heartIcon.style.color = this.liked ? '#e25555' : '#fff';
+        heartIcon.style.fontVariationSettings = `'FILL' ${this.liked ? 1 : 0}`;
+
+        heartIcon.onclick = async () => {
+            let likes = parseInt(this.getAttribute('likes') || '0', 10);
+
+            if (!this.liked) {
+                await addCommentLike(postId, commentId);
+                likes++;
+                this.liked = true;
+                localStorage.setItem(likeKey, "true");
+            } else {
+                await removeCommentLike(postId, commentId); 
+                likes = Math.max(0, likes - 1);
+                this.liked = false;
+                localStorage.removeItem(likeKey);
+            }
+
+            this.setAttribute('likes', likes.toString());
+            likesNum.textContent = likes.toString();
+            heartIcon.style.color = this.liked ? '#e25555' : '#fff';
+            heartIcon.style.fontVariationSettings = `'FILL' ${this.liked ? 1 : 0}`;
+            heartIcon.classList.remove('heart-pop');
+            void heartIcon.offsetWidth;
+            heartIcon.classList.add('heart-pop');
+        };
+    }
+
+}
+
+export { CommentCard };

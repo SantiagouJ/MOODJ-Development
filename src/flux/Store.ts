@@ -4,8 +4,9 @@ import { UserType } from '../utils/types/UserType';
 import { auth } from '../services/Firebase/FirebaseConfig';
 import { AppDispatcher, Action } from './Dispatcher';
 import { PostType } from '../utils/types/PostType';
-import { DataActionTypes, InteractionActionsType, LikeActionTypes, NavigationActionsType, NewPostTypes, UserActionsType } from './Actions';
+import { DataActionTypes, InteractionActionsType, LikeActionTypes, NavigationActionsType, NewPostTypes, UserActionsType, CommentLikeActionTypes } from './Actions';
 import { LikeType } from '../utils/types/LikeType';
+import { CommentLikeType } from '../utils/types/LikeCommentType';
 
 
 export type State = {
@@ -16,6 +17,7 @@ export type State = {
     currentPath: string;
     selectedProfile: string;
     likes: LikeType[];
+    commentLikes: CommentLikeType[];
 };
 
 interface StoreListener {
@@ -34,7 +36,8 @@ class Store {
         userProfile: null,
         currentPath: '',
         selectedProfile: '',
-        likes: []
+        likes: [],
+        commentLikes: []
     }
 
     private _listeners: Listener[] = [];
@@ -91,6 +94,22 @@ class Store {
                     likes: this._myState.likes.filter(like => like.id !== action.payload.id)
                 }
                 this._emitChangeToListeners(['likes']);
+                break;
+            case CommentLikeActionTypes.ADD_COMMENT_LIKE:
+                this._myState = {
+                    ...this._myState,
+                    commentLikes: [action.payload as CommentLikeType, ...this._myState.commentLikes]
+                }
+                this._emitChangeToListeners(['commentLikes']);
+                break;
+            case CommentLikeActionTypes.REMOVE_COMMENT_LIKE:
+                this._myState = {
+                    ...this._myState,
+                    commentLikes: this._myState.commentLikes.filter(
+                        like => !(like.postId === action.payload.postId && like.commentId === action.payload.commentId)
+                      )
+                }
+                this._emitChangeToListeners(['commentLikes']);
                 break;
             case UserActionsType.SAVE_USER:
                 this._myState = {
