@@ -1,29 +1,27 @@
-import { Song, SongWithUsername } from "../../adapters/adaptData";
 
 class PostSong extends HTMLElement{ 
-    private _data!: SongWithUsername; 
-
-    set data(value: SongWithUsername) {
-        this._data = value;
-        this.render();
-      }
+    private audio: HTMLAudioElement | null = null;
+    private isPlaying: boolean = false;
 
     constructor() {
         super()
         this.attachShadow({mode: "open"})
     }
-    get data():Song {
-        return this._data;
-      }
     
     connectedCallback() {
         this.render()
     }
+
     render() {
-        const { img, name, artistname, username, description, mood } = this._data;
-
-
+    
         if (this.shadowRoot !== null) {
+        const album = this.getAttribute('album');
+        const title = this.getAttribute('title');
+        const artist = this.getAttribute('artist');
+        const mood = this.getAttribute('mood');
+        const caption = this.getAttribute('caption');
+        const username = this.getAttribute('username');
+
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="/styles/postComponents/postContainer.css">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -31,21 +29,33 @@ class PostSong extends HTMLElement{
             <div class="post-content">
             <h2 class="heading2">Hey, I'm feeling...</h2>
             <div class="song-card">
-            <img src="${img}" alt="" id="album-cover">
+            <img src="${album}" alt="" id="album-cover">
             <div class="song-info">
-                <h3 id="song-title">${name}</h3>
-                <p id="artist-name">${artistname}</p>
-                <span class="material-symbols-outlined" id="play-song">
-                    play_circle
+                <h3 id="song-title">${title}</h3>
+                <p id="artist-name">${artist}</p>
+                <span class="material-symbols-outlined" id="play-song" style="cursor: pointer;">
+                        play_circle
                 </span>
-                <p id="post-text"><span style="font-weight:600; color: rgba(255, 255, 255, 0.86);">${username}&nbsp;</span>${description}</p>  
+                <p id="post-text"><span style="font-weight:600; color: rgba(255, 255, 255, 0.86);">@${username}&nbsp;</span>${caption}</p>  
             </div>
             <div class="mood-contain">
                 <img src="${mood}" alt="" id="mood-post">
             </div>   
             </div>
         `
-
+        const playButton = this.shadowRoot.getElementById('play-song');
+        let playing = false;
+        playButton?.addEventListener('click', () => {
+            if(playing == false) {
+                playButton.textContent = 'play_circle';
+                playing = true;
+            } else {
+                playButton.textContent = 'pause_circle'
+                playing = false;
+            }
+        })
+        }
     }
-}}
+}
+
 export {PostSong};

@@ -165,7 +165,7 @@ input::placeholder {
 }
 
 .login-btn {
-
+    margin-top: 20px;
     width: 241px;
     padding: 12px 57px;
     background: #C06DFF;
@@ -186,8 +186,6 @@ input::placeholder {
 }
 
 .signup-row {
-
-    
     color: #fff;
     font-size: 1rem;
     margin-left: 110px;
