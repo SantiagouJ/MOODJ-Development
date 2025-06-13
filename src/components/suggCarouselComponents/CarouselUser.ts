@@ -1,11 +1,8 @@
-interface User {
-  name: string;
-  username: string;
-  avatar: string;
-}
+import { fetchUsers } from "../../services/Firebase/FetchUsersService";
+import { UserType } from "../../utils/types/UserType";
 
 class UserCarousel extends HTMLElement {
-  private users: User[] = [];
+  private users: UserType[] = [];
   private currentIndex: number = 0;
   private slideWidth: number = 0;
   private slidesPerView: number = 3;
@@ -25,8 +22,8 @@ class UserCarousel extends HTMLElement {
     this.handleResize = this.handleResize.bind(this);
   }
 
-  connectedCallback() {
-    this.loadUsers();
+  async connectedCallback() {
+    await this.loadUsers();
     this.render();
     
     // Force layout recalculation
@@ -77,20 +74,14 @@ class UserCarousel extends HTMLElement {
     }
   }
 
-  loadUsers() {
+  async loadUsers() {
     if (this.users.length === 0) {
-      this.users = [
-        { name: "Eli", username: "@elipinipon", avatar: "/images/moods2/Love.svg" },
-        { name: "Santiago", username: "@santiti", avatar: "/images/moods2/Love.svg" },
-        { name: "Luis F", username: "@terricola", avatar: "/images/moods2/Worried.svg" },
-        { name: "Leider", username: "@leiderr.js", avatar: "/images/moods2/Angry.svg" },
-        { name: "Isa", username: "@itsabella", avatar: "/images/moods2/Happy.svg" },
-        { name: "Terry", username: "@not.terrypriv", avatar: "/images/moods2/Sad.svg" },
-      ];
+      const fetchedUsers = await fetchUsers();
+      this.users = fetchedUsers.slice(0, 6); 
     }
   }
 
-  setUsers(usersArray: User[]) {
+  setUsers(usersArray: UserType[]) {
     this.users = usersArray;
     this.render();
     setTimeout(() => {
@@ -258,6 +249,7 @@ class UserCarousel extends HTMLElement {
   render() {
     if (!this.shadowRoot) return;
 
+
     this.shadowRoot.innerHTML = `
       <link rel="stylesheet" href="/styles/moodCarousel.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
@@ -270,8 +262,9 @@ class UserCarousel extends HTMLElement {
               <div class="carousel-slide">
                 <user-card 
                   name="${user.name}" 
-                  username="${user.username}" 
-                  avatar="${user.avatar}">
+                  username="${user.username}"
+                  id="${user.id}" 
+                  avatar="${user.pfp}">
                 </user-card>
               </div>
             `).join('')}
