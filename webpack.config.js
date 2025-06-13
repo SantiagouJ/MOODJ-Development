@@ -42,7 +42,8 @@ export default {
       patterns: [
         { from: 'public/styles', to: 'styles' },
         { from: 'public/images', to: 'images' },
-        { from: 'public/data.json', to: 'data.json' }
+        { from: 'public/data.json', to: 'data.json' },
+        { from: 'public/_redirects', to: '.' }
       ]
     }),
   ]
