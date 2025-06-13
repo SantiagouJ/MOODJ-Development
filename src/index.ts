@@ -42,7 +42,7 @@ import { AuthError } from "./components/AuthError";
 import { LogInComp } from "./components/authComponents/logIn";
 
 // Carousel Components
-import { UserCard } from "./components/suggCarouselComponents/UserCard";
+import { UserCard } from "./components/suggCarouselComponents/userCard";
 import { UserCarousel } from "./components/suggCarouselComponents/CarouselUser";
 import { CarouselComponent } from "./components/suggCarouselComponents/Carousel";
 

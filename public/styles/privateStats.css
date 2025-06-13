@@ -99,7 +99,15 @@ body {
   }
   
   .stats-data {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0px;
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 83%;
+    top: 8%;
   }
   
   .division {
@@ -424,7 +432,7 @@ body {
       width: 200px;
       z-index: 10;
       display: block;
-      margin-top: 410px;
+      margin-top: 500px;
       margin-right: -68px;
     }
   }

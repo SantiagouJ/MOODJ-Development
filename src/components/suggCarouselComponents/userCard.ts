@@ -1,8 +1,15 @@
+import { isFollowing } from "../../services/Firebase/Follow/FollowUserService";
+import { store } from "../../flux/Store";
+import { State } from "../../flux/Store";
+import { unfollowUser } from "../../services/Firebase/Follow/FollowUserService";
+import { followUser } from "../../services/Firebase/Follow/FollowUserService";
+
 class UserCard extends HTMLElement {
 
     name: string = "";
     username: string = "";
     avatar: string = "";
+    id: string = "";
   
   
     constructor() {
@@ -11,12 +18,15 @@ class UserCard extends HTMLElement {
     }
   
     static get observedAttributes() {
-      return ["name", "username", "avatar"]
+      return ["name", "username", "avatar", "id"]
     }
   
     connectedCallback() {
-      this.render()
-      this.addEventListeners()
+      store.subscribe((state: State) => {
+        this.render(state);
+        this.addEventListeners(state)
+
+      });
     }
   
     attributeChangedCallback(name: string, oldValue: string, newValue: string) {
@@ -32,35 +42,45 @@ class UserCard extends HTMLElement {
         case 'avatar':
           this.avatar = newValue;
           break;
+        case 'id':
+          this.id = newValue
+          break;
       }
       
-      this.render();
     }
   
-    addEventListeners() {
-  
+    addEventListeners(state:State) {
       if (this.shadowRoot) {
-  
-        const followBtn = this.shadowRoot.querySelector(".follow-btn")
+        const loggedUser = state.userProfile;
+        if(!loggedUser || !this.id) return;
+        const followBtn = this.shadowRoot.querySelector(".follow-btn");
         if (followBtn) {
-          followBtn.addEventListener("click", () => {
-            if (followBtn.textContent === "Follow") {
-              followBtn.textContent = "Following"
-  
-            } else {
-              followBtn.textContent = "Follow"
-  
-            }
-          })
+                // call firebase to toggle follow or unfollow..
+                followBtn.addEventListener("click", async () => {
+                  const following = await isFollowing(loggedUser.id, this.id);
+                  if (loggedUser.id != this.id) {
+                    try {
+                      if (following) {
+                        await unfollowUser(loggedUser.id, this.id);
+                        followBtn.textContent = "Follow";
+                      } else {
+                        await followUser(loggedUser.id, this.id);
+                        followBtn.textContent = "Following";
+                      }
+                    } catch (e) {
+                      console.error("Follow/unfollow failed:", e);
+                    }
+                  }
+                });
         }
-  
+
       }
   
   
     }
   
-    render() {
-  
+    render(state:State) {
+      const loggedUser = state.userProfile;
       if (this.shadowRoot) {
   
         this.shadowRoot.innerHTML = `
@@ -80,11 +100,18 @@ class UserCard extends HTMLElement {
                   <button class="follow-btn">Follow</button>
               </div>
           `
-  
+        const followBtn = this.shadowRoot.querySelector(".follow-btn");
+
+        if (followBtn) {
+        if(!loggedUser || !this.id) return;
+
+        isFollowing(loggedUser.id, this.id).then((alreadyFollowing) => {
+          followBtn.textContent = alreadyFollowing ? "Following" : "Follow";
+        });
       }
   
     }
   }
-  
+}
   export { UserCard }
   

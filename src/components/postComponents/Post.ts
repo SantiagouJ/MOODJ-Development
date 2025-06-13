@@ -10,6 +10,7 @@ import { followUser } from "../../services/Firebase/Follow/FollowUserService";
 import { isFollowing } from "../../services/Firebase/Follow/FollowUserService";
 import { unfollowUser } from "../../services/Firebase/Follow/FollowUserService";
 import { createLike, removeLike } from "../../services/Firebase/Posts/NewLikeService";
+import { togglePostInLists, isPostSaved } from "../../services/Firebase/Lists/ManagePostinListService";
 
 
 class PostCard extends HTMLElement {
@@ -89,6 +90,21 @@ class PostCard extends HTMLElement {
     if (!commentsEl) return;
     commentsEl.textContent = `${totalComments}`;
 
+  }
+
+  async checkSavedStatus(postId: string) {
+    const state = store.getState();
+    const loggedUser = state.userProfile;
+    if (!loggedUser) return;
+
+    const saved = await isPostSaved(loggedUser.id, postId);
+    const saveIcon = this.shadowRoot?.querySelector('#save-icon');
+    
+    if (saved) {
+      saveIcon?.classList.add('active');
+    } else {
+      saveIcon?.classList.remove('active');
+    }
   }
 
   async toggleComments(postId: string, overlayContainer: HTMLElement, userData: UserType) {
@@ -278,7 +294,9 @@ class PostCard extends HTMLElement {
       //Show likes through async function! 
       this.showPostLikes(postId);
       //Show how many comments
-      this.commentNumber(postId)
+      this.commentNumber(postId);
+      //Check if post is saved
+      this.checkSavedStatus(postId);
 
 
       const overlayContainer = this.shadowRoot!.querySelector('#overlay-container') as HTMLElement;
@@ -292,8 +310,42 @@ class PostCard extends HTMLElement {
 
       const saveIcon = this.shadowRoot!.querySelector('#save-icon');
 
-      saveIcon?.addEventListener('click', () => {
-        saveIcon.classList.toggle('active');
+      saveIcon?.addEventListener('click', async () => {
+        const state = store.getState();
+        const loggedUser = state.userProfile;
+        if (!loggedUser || !postId) {
+          console.error('No hay usuario autenticado o postId');
+          return;
+        }
+
+        try {
+          // Actualizar UI inmediatamente
+          const isCurrentlySaved = saveIcon.classList.contains('active');
+          if (isCurrentlySaved) {
+            saveIcon.classList.remove('active');
+          } else {
+            saveIcon.classList.add('active');
+          }
+
+          // Hacer el toggle en Firebase
+          const result = await togglePostInLists(loggedUser.id, postId);
+          
+          // Mostrar feedback al usuario
+          const feedbackMessage = result.saved 
+            ? `Post guardado en "${result.listName}"` 
+            : `Post removido de "${result.listName}"`;
+          
+          console.log(feedbackMessage); // Podrías reemplazar esto con un toast/notification
+          
+        } catch (error) {
+          // Revertir cambios en la UI si falla
+          if (saveIcon.classList.contains('active')) {
+            saveIcon.classList.remove('active');
+          } else {
+            saveIcon.classList.add('active');
+          }
+          console.error('Error al guardar/quitar post:', error);
+        }
       });
 
       //Open user profile
