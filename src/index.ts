@@ -50,52 +50,115 @@ import { CarouselComponent } from "./components/suggCarouselComponents/Carousel"
 if (!customElements.get("nav-bar")) {
     customElements.define("nav-bar", NavBar);
 }
-customElements.define('navbar-landing', NavbarLanding);
-customElements.define('footer-element', FooterElement);
-customElements.define('app-root', Root);
+if (!customElements.get('navbar-landing')) {
+    customElements.define('navbar-landing', NavbarLanding);
+}
+if (!customElements.get('footer-element')) {
+    customElements.define('footer-element', FooterElement);
+}
+if (!customElements.get('app-root')) {
+    customElements.define('app-root', Root);
+}
 
 // Define Post and Comment Components
 if (!customElements.get('create-post')) {
     customElements.define('create-post', CreatePost);
 }
-customElements.define('post-card', PostCard);
-customElements.define('song-card', PostSong);
-customElements.define('comment-card', CommentCard);
-customElements.define('home-posts', HomePosts);
-customElements.define('comments-over', CommentsOverlay);
+if (!customElements.get('post-card')) {
+    customElements.define('post-card', PostCard);
+}
+if (!customElements.get('song-card')) {
+    customElements.define('song-card', PostSong);
+}
+if (!customElements.get('comment-card')) {
+    customElements.define('comment-card', CommentCard);
+}
+if (!customElements.get('home-posts')) {
+    customElements.define('home-posts', HomePosts);
+}
+if (!customElements.get('comments-over')) {
+    customElements.define('comments-over', CommentsOverlay);
+}
 
 // Define Stats and Profile Components
-customElements.define("profile-preview", ProfilePreview);
-customElements.define('weekly-stats', WeeklyStats);
-customElements.define('private-stats', PrivateStats);
-customElements.define('user-lists', UserLists);
-customElements.define('edit-profile', EditProfile);
+if (!customElements.get("profile-preview")) {
+    customElements.define("profile-preview", ProfilePreview);
+}
+if (!customElements.get('weekly-stats')) {
+    customElements.define('weekly-stats', WeeklyStats);
+}
+if (!customElements.get('private-stats')) {
+    customElements.define('private-stats', PrivateStats);
+}
+if (!customElements.get('user-lists')) {
+    customElements.define('user-lists', UserLists);
+}
+if (!customElements.get('edit-profile')) {
+    customElements.define('edit-profile', EditProfile);
+}
 
 // Define Page Components
-customElements.define('home-page', Home);
-customElements.define('profile-page', Profile);
-customElements.define('landing-page', LandingPage);
-customElements.define('sign-up', SignUp);
-customElements.define('log-in', LogIn);
+if (!customElements.get('home-page')) {
+    customElements.define('home-page', Home);
+}
+if (!customElements.get('profile-page')) {
+    customElements.define('profile-page', Profile);
+}
+if (!customElements.get('landing-page')) {
+    customElements.define('landing-page', LandingPage);
+}
+if (!customElements.get('sign-up')) {
+    customElements.define('sign-up', SignUp);
+}
+if (!customElements.get('log-in')) {
+    customElements.define('log-in', LogIn);
+}
+
 // Define Profile Related Components
-customElements.define('profile-render', ProfileRender);
-customElements.define('profile-post', ProfilePost);
-customElements.define('other-profile', OtherProfile);
+if (!customElements.get('profile-render')) {
+    customElements.define('profile-render', ProfileRender);
+}
+if (!customElements.get('profile-post')) {
+    customElements.define('profile-post', ProfilePost);
+}
+if (!customElements.get('other-profile')) {
+    customElements.define('other-profile', OtherProfile);
+}
 
 // Define Landing Page Components
-customElements.define('banner-landing', BannerLanding);
-customElements.define('info-landing', InfoLanding);
-customElements.define('banner-two', BannerTwo);
-customElements.define('banner-three', BannerThree);
+if (!customElements.get('banner-landing')) {
+    customElements.define('banner-landing', BannerLanding);
+}
+if (!customElements.get('info-landing')) {
+    customElements.define('info-landing', InfoLanding);
+}
+if (!customElements.get('banner-two')) {
+    customElements.define('banner-two', BannerTwo);
+}
+if (!customElements.get('banner-three')) {
+    customElements.define('banner-three', BannerThree);
+}
 
 // Define Authentication Components
-customElements.define('sign-up-comp', SignUpComp);
-customElements.define('auth-error', AuthError)
-customElements.define('log-in-comp', LogInComp);
+if (!customElements.get('sign-up-comp')) {
+    customElements.define('sign-up-comp', SignUpComp);
+}
+if (!customElements.get('auth-error')) {
+    customElements.define('auth-error', AuthError);
+}
+if (!customElements.get('log-in-comp')) {
+    customElements.define('log-in-comp', LogInComp);
+}
 
 // Define Carousel Components
-customElements.define('user-carousel', UserCarousel);
-customElements.define('user-card', UserCard);
-customElements.define('carousel-component', CarouselComponent);
+if (!customElements.get('user-carousel')) {
+    customElements.define('user-carousel', UserCarousel);
+}
+if (!customElements.get('user-card')) {
+    customElements.define('user-card', UserCard);
+}
+if (!customElements.get('carousel-component')) {
+    customElements.define('carousel-component', CarouselComponent);
+}
 
 

@@ -240,5 +240,4 @@ class NavBar extends HTMLElement {
     }
 }
 
-customElements.define("nav-bar", NavBar);
 export { NavBar };

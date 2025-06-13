@@ -1,0 +1,75 @@
+.container-b2 {
+    width: 1000px;
+    height: 465px;
+    border-radius: 49px;
+    border: 3px solid var(--degradado, #5267EE);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; 
+    background: transparent;
+    margin: 0 auto;
+    margin-bottom: 140px;
+}
+
+.banner2 {
+    width: 1100px;
+    height: 465px;
+    border-radius: 49px;
+    border: none;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.banner2-button {
+    width: 400px;
+    height: 65px;
+    color: #FFFF;
+    font-size: 22px;
+    font-weight: 550;
+    border: none;
+    border-radius: 34.5px;
+    background: var(--degradado, linear-gradient(180deg, #5267EE 0%, #C06DFF 100%));
+    z-index: 2;
+    /* Center the button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.banner2-button:hover {
+    background:  var(--degradado, linear-gradient(180deg, #2f43c1 0%, #8537c1 100%));
+}
+
+@media (max-width: 480px) {
+
+    .container-b2 {
+        width: 88%;
+        height: 180px;
+        border-radius: 25px;
+        margin-bottom: 60px;
+        padding: 20px;
+    }
+
+    .banner2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .banner2-button {
+        width: 74%;
+        height: 22%;
+        font-size: 18px;
+        font-weight: 500;
+        
+        
+    }
+}

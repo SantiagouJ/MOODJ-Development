@@ -1,0 +1,523 @@
+.post-card {
+    max-width: 41.667%;
+    min-width: 800px;
+    height: 646px;
+    background: linear-gradient(318deg, #778AFF 6.06%, #5267EE 29.24%);
+    border-radius: 34px;
+    margin-top: 88px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.post-top {
+    display: flex;
+    flex-direction: row;
+    gap: 237px;
+    
+}
+
+.post-topl {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 390px;
+    height: 98px;
+    border-radius: 31px 0px 64px 0px;
+    background: linear-gradient(25deg, rgba(192, 109, 255, 0.54) 14.11%, #364EEB 117.36%);
+}
+
+.post-user {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.profile-pic {
+    background-color: #1F1F1F;
+    text-align: center;
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.25));
+    display: block;
+    min-width: 40px;
+    min-height: 40px;
+    height: 70px;
+    width: 70px;
+    border-radius: 80px;
+    margin-left: 45px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+.post-profile {
+    margin-top: 10px;
+    min-width: 30px;
+    min-height: auto;
+    cursor: pointer;
+}
+
+.heading4 {
+    margin-left: 24px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 23px;
+    cursor: pointer;
+}
+
+.smalltext {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 4px;
+    margin-left: 24px;
+    cursor: default;
+}
+
+.post-topr {
+    margin-right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#follow-btn {
+    width: 140px;
+    margin-right: 33px;
+    height: 39px;
+    border-radius: 11px;
+    background: var(--HeaderGray, #1F1F1F);
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#follow-btn:hover {
+    background: #2a2a2a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#follow-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.post-content {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-left: 56px;
+    margin-right: 56px;
+    margin-top: 32px;
+    height: 80%;
+    
+}
+
+.heading2 {
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.song-card {
+    border-radius: 23px;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #2A2A2A;
+    width: 686.618px;
+    height: 269.892px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+#album-cover {
+    width: 251.713px;
+    height: 236.331px;
+    border-radius: 15px;
+    margin-left: 19px;
+    margin-top: 17px;
+    margin-bottom: 17px;
+
+}
+.song-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 22.95px;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+#song-title {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0px;
+}
+
+#artist-name {
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-top: 0px;
+}
+
+#play-song {
+    font-size: 36px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#play-song:hover {
+    transform: scale(1.2);
+    color: #C06DFF;
+}
+
+#post-text {
+    width: 213.956px;
+    height: 62.928px;
+    flex-shrink: 0;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+.mood-contain {
+    width: 148.231px;
+    height: 148.231px;
+    flex-shrink: 0;
+    border: 1.5px, solid rgba(255, 255, 255, 0.65);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#mood-post {
+    width: 117.47px;
+    height: 109.65px;
+    flex-shrink: 0;
+}
+
+#heart-icon {
+    font-size: 36px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+#heart-icon:hover {
+    transform: scale(1.1);
+}
+
+.material-symbols-outlined.active {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    transform: scale(1.1);
+    animation: iconPop 0.3s ease;
+}
+.material-symbols-outlined.active:hover {
+  transform: scale(1.1);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#comment-icon {
+    font-size: 36px;
+    margin-left: 32px;
+    margin-right: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+
+}
+
+#save-icon {
+    font-size: 36px;
+    margin-left: 24px;
+    cursor: pointer;
+}
+
+#save-icon:hover {
+    transform: scale(1.1);
+}
+
+.post-interact {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+    flex-direction: row;
+    margin-top: 4px;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    gap: 400px;
+    margin-bottom: 0px;
+    height: 64px;
+}
+
+.interact-one {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+.interact-two {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.liked-by {
+    margin-top: 0px;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 60px;
+    cursor:default;
+}
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.material-symbols-outlined:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.material-symbols-outlined#heart-icon:hover {
+    color: #ff6b6b;
+}
+
+.material-symbols-outlined#comment-icon:hover {
+    color: #6b9bff;
+}
+
+.material-symbols-outlined#save-icon:hover {
+    color: #ffeb3b;
+}
+
+.material-symbols-outlined.active {
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    transform: scale(1.1);
+    animation: iconPop 0.3s ease;
+}
+
+.material-symbols-outlined#heart-icon.active {
+    color: #ff4d4d;
+}
+
+.material-symbols-outlined#comment-icon.active {
+    color: #4d79ff;
+}
+
+.material-symbols-outlined#save-icon.active {
+    color: #ffd700;
+}
+
+@keyframes iconPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1.1); }
+}
+
+@media screen and (max-width: 768px) {
+    .post-card {
+        width: 90vw;
+        min-width: 320px;
+        max-width: 500px;
+        height: auto;
+        border-radius: 34px;
+        margin-top: 40px;
+        box-sizing: border-box;
+    }
+
+    .post-top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .post-topl {
+        width: 180px;
+        height: auto;
+        padding: 10px;
+        gap: 12px;
+    }
+
+    .post-content,
+    .post-interact,
+    .liked-by {
+        padding: 0 16px;
+    }
+
+    .profile-pic {
+        width: 48px;
+        height: 48px;
+        margin: 0;
+    }
+
+    .post-profile,
+    .post-user {
+        margin: 0;
+    }
+
+    .heading4 {
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .smalltext {
+        margin: 0;
+        font-size: 13px;
+    }
+
+    #follow-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+        width: 105px;
+        margin: 20px;
+        border-radius: 8px;
+    }
+
+    .post-content {
+        margin: 24px 16px;
+    }
+
+    .heading2 {
+        font-size: 20px;
+    }
+
+    .song-card {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        padding: 16px;
+        box-sizing: border-box;
+        gap: 12px;
+    }
+
+    #album-cover {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        object-fit: cover;
+        margin: 0;
+    }
+
+    .song-info {
+        flex: 1;
+        gap: 4px;
+        margin: 0;
+    }
+
+    #song-title {
+        font-size: 14px;
+        margin: 0;
+    }
+
+    #artist-name {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.6);
+        margin: 0;
+    }
+
+    #post-text {
+        font-size: 13px;
+        width: 100%;
+        height: auto;
+        margin: 4px 0 0 0;
+    }
+
+    #play-song {
+        font-size: 24px;
+    }
+
+    .mood-contain {
+        width: 50px;
+        height: 50px;
+    }
+
+    #mood-post {
+        width: 42px;
+        height: 42px;
+    }
+
+    #heart-icon,
+    #comment-icon,
+    #save-icon {
+        font-size: 24px;
+    }
+
+    .post-interact {
+        justify-content: space-between;
+        margin-left: 5px;
+        gap: 12px;
+        font-size: 16px;
+        height: 50px;
+    }
+
+    .interact-two {
+        gap: 0;
+    }
+
+    .liked-by {
+        font-size: 13px;
+        margin: 12px 0 0 5px;
+    }
+
+    #follow-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .material-symbols-outlined:hover {
+        transform: scale(1.05);
+    }
+
+    .profile-pic:hover {
+        transform: scale(1.03);
+    }
+
+    #play-song:hover {
+        transform: scale(1.1);
+    }
+}

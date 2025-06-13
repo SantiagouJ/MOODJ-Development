@@ -193,5 +193,4 @@ class CreatePost extends HTMLElement {
   
 }
 
-customElements.define("create-post", CreatePost)
 export {CreatePost}
