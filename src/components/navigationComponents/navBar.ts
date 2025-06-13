@@ -1,6 +1,10 @@
 import { NavigationActions } from "../../flux/Actions";
 import { store } from "../../flux/Store";
 import { State } from "../../flux/Store";
+import { searchUsers, getAllUsers } from "../../services/Firebase/SearchUsersService";
+import { UserType } from "../../utils/types/UserType";
+import { InteractionActions } from "../../flux/Actions";
+
 class NavBar extends HTMLElement {
 
     constructor() {
@@ -31,8 +35,120 @@ class NavBar extends HTMLElement {
                 console.log("menu");
             });
         }
+
+        // Setup search functionality
+        const searchInput = this.shadowRoot?.querySelector("#search-input") as HTMLInputElement;
+        const searchDropdown = this.shadowRoot?.querySelector("#search-dropdown") as HTMLElement;
+        
+        if (searchInput && searchDropdown) {
+            let searchTimeout: NodeJS.Timeout;
+            
+            searchInput.addEventListener("input", (e) => {
+                const searchTerm = (e.target as HTMLInputElement).value.trim();
+                
+                // Clear previous timeout
+                clearTimeout(searchTimeout);
+                
+                if (searchTerm.length === 0) {
+                    this.hideSearchDropdown();
+                    return;
+                }
+                
+                // Debounce search to avoid too many requests
+                searchTimeout = setTimeout(async () => {
+                    await this.performSearch(searchTerm);
+                }, 300);
+            });
+
+            // Hide dropdown when clicking outside
+            document.addEventListener("click", (e) => {
+                if (!searchInput.contains(e.target as Node) && !searchDropdown.contains(e.target as Node)) {
+                    this.hideSearchDropdown();
+                }
+            });
+
+            // Handle focus events
+            searchInput.addEventListener("focus", () => {
+                if (searchInput.value.trim().length > 0) {
+                    this.performSearch(searchInput.value.trim());
+                }
+            });
+        }
     }
-    
+
+    async performSearch(searchTerm: string) {
+        const searchDropdown = this.shadowRoot?.querySelector("#search-dropdown") as HTMLElement;
+        if (!searchDropdown) return;
+
+        try {
+            // Debug: Get all users first
+            const allUsers = await getAllUsers();
+            console.log('Debug - All users in database:', allUsers);
+            
+            const users = await searchUsers(searchTerm, 5);
+            this.showSearchResults(users);
+        } catch (error) {
+            console.error("Error searching users:", error);
+            this.hideSearchDropdown();
+        }
+    }
+
+    showSearchResults(users: UserType[]) {
+        const searchDropdown = this.shadowRoot?.querySelector("#search-dropdown") as HTMLElement;
+        if (!searchDropdown) return;
+
+        if (users.length === 0) {
+            searchDropdown.innerHTML = `
+                <div class="search-result-item no-results">
+                    <p>No users found</p>
+                </div>
+            `;
+        } else {
+            searchDropdown.innerHTML = users.map(user => `
+                <div class="search-result-item" data-user-id="${user.id}">
+                    <img src="${user.pfp}" alt="${user.name}" class="search-user-avatar">
+                    <div class="search-user-info">
+                        <h4>${user.name}</h4>
+                        <p>@${user.username}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click listeners to result items
+            const resultItems = searchDropdown.querySelectorAll('.search-result-item[data-user-id]');
+            resultItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const userId = item.getAttribute('data-user-id');
+                    if (userId) {
+                        this.navigateToUserProfile(userId);
+                    }
+                });
+            });
+        }
+
+        searchDropdown.classList.add('show');
+    }
+
+    navigateToUserProfile(userId: string) {
+        const state = store.getState();
+        const loggedUser = state.userProfile;
+        
+        this.hideSearchDropdown();
+        
+        if (userId === loggedUser?.id) {
+            NavigationActions.navigate('/profile');
+        } else {
+            InteractionActions.setProfileId(userId);
+            NavigationActions.navigate('/publicprofile');
+        }
+    }
+
+    hideSearchDropdown() {
+        const searchDropdown = this.shadowRoot?.querySelector("#search-dropdown");
+        if (searchDropdown) {
+            searchDropdown.classList.remove('show');
+        }
+    }
 
     render(state:State) {
         if (this.shadowRoot) {
@@ -52,7 +168,8 @@ class NavBar extends HTMLElement {
                 </div>
                 <div class="search">
                     <img class="search-icon" src="/images/icons/search_icon.svg" alt="">
-                    <input type="search" placeholder="Find users...">
+                    <input type="search" id="search-input" placeholder="Find users...">
+                    <div id="search-dropdown" class="search-dropdown"></div>
                 </div>
                 <div class="pf">
                     <div class="user">
@@ -65,6 +182,7 @@ class NavBar extends HTMLElement {
                 </div>
             </div>
                 `;
+                this.setupListeners();
                 return;
         }
 
@@ -84,7 +202,8 @@ class NavBar extends HTMLElement {
                 </div>
                 <div class="search">
                     <img class="search-icon" src="/images/icons/search_icon.svg" alt="">
-                    <input type="search" placeholder="Find users...">
+                    <input type="search" id="search-input" placeholder="Find users...">
+                    <div id="search-dropdown" class="search-dropdown"></div>
                 </div>
                 <div class="pf">
                     <div class="user">
