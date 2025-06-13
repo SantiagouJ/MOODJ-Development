@@ -8,7 +8,6 @@ export async function fetchUser(userId: string): Promise<UserType | null> {
   const snapshot = await getDoc(infoRef);
 
   if (!snapshot.exists()) {
-    console.warn("No user info found");
     return null;
   }
   const data =  snapshot.data();
